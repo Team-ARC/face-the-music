@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const compress = require('compression');
 const methodOverride = require('method-override');
+const cors = require('cors')
 
 const config = require('./server/config/env');
 const routes = require('./server/routes/index.route');
@@ -22,6 +23,10 @@ app.use(compress());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
+}));
+
+app.use(cors({
+    origin: true
 }));
 
 app.use(express.static(path.join(__dirname, 'client/build')));

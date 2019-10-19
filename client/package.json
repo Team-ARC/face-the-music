@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^5.5.0",
+    "@craco/craco": "^5.3.0",
     "axios": "^0.19.0",
-    "cesium": "^1.62.0",
+    "cesium": "^1.60.0",
     "cesium-react": "^0.2.2",
     "craco-cesium": "^1.1.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0",
+    "react": "^16.9.0",
+    "react-dom": "16.9.0",
+    "react-scripts": "3.1.1",
+    "resium": "^1.7.0",
     "sine-waves": "^0.3.0"
   },
   "scripts": {
