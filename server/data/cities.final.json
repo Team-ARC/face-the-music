@@ -1,1 +1,437 @@
-[{"name":"Harbin","country":"China","countryAlt":"China","population":4134775,"co2NatPercentage":0.3,"location":{"long":126.6235,"lat":45.72794},"co2":24086000,"warming":2.68,"landfill":83},{"name":"Changchun","country":"China","countryAlt":"China","population":3326311,"co2NatPercentage":0.3,"location":{"long":125.2966,"lat":43.87748},"co2":25193000,"warming":2.51,"landfill":83},{"name":"Santiago","country":"Chile","countryAlt":"Chile","population":6225904,"co2NatPercentage":30.7,"location":{"long":-70.6611,"lat":-33.4681},"co2":27274000,"warming":1.27,"landfill":99},{"name":"Jinan","country":"China","countryAlt":"China","population":3295352,"co2NatPercentage":0.3,"location":{"long":117.0421,"lat":36.67991},"co2":28036000,"warming":2.23,"landfill":83},{"name":"Montreal","country":"Canada","countryAlt":"Canada","population":2795492,"co2NatPercentage":5.4,"location":{"long":-73.6943,"lat":45.5521},"co2":28335000,"warming":2.95,"landfill":72},{"name":"Nagoya","country":"Japan","countryAlt":"Japan","population":7738386,"co2NatPercentage":2,"location":{"long":136.8378,"lat":35.12043},"co2":28801000,"warming":1.62,"landfill":1},{"name":"Ankara","country":"Turkey","countryAlt":"Turkey","population":4269330,"co2NatPercentage":6.8,"location":{"long":32.7928,"lat":39.9609},"co2":29259000,"warming":1.49,"landfill":99},{"name":"Dalian","country":"China","countryAlt":"China","population":3289015,"co2NatPercentage":0.4,"location":{"long":121.6263,"lat":38.99737},"co2":30901000,"warming":2.32,"landfill":83},{"name":"Chongqing","country":"China","countryAlt":"China","population":4979301,"co2NatPercentage":0.4,"location":{"long":106.5132,"lat":29.57461},"co2":32644000,"warming":1.11,"landfill":83},{"name":"Berlin","country":"Germany","countryAlt":"Germany","population":3216908,"co2NatPercentage":4.3,"location":{"long":13.405,"lat":52.5129},"co2":33458000,"warming":2.74,"landfill":0},{"name":"Taiyuan","country":"China","countryAlt":"China","population":3517104,"co2NatPercentage":0.4,"location":{"long":112.5425,"lat":37.83523},"co2":35568000,"warming":2.48,"landfill":83},{"name":"Chengdu","country":"China","countryAlt":"China","population":9308183,"co2NatPercentage":0.5,"location":{"long":104.0681,"lat":30.69432},"co2":40529000,"warming":1.29,"landfill":83},{"name":"Sydney","country":"Australia","countryAlt":"Australia","population":3532748,"co2NatPercentage":10.4,"location":{"long":150.9992,"lat":-33.82363},"co2":41233000,"warming":1.92,"landfill":58},{"name":"Madrid","country":"Spain","countryAlt":"Spain","population":4948998,"co2NatPercentage":12.6,"location":{"long":-3.71157,"lat":40.4176},"co2":43425000,"warming":2.53,"landfill":60},{"name":"Melbourne","country":"Australia","countryAlt":"Australia","population":3184938,"co2NatPercentage":11.1,"location":{"long":145.0297,"lat":-37.8087},"co2":44364000,"warming":1.65,"landfill":58},{"name":"Shenyang","country":"China","countryAlt":"China","population":5572948,"co2NatPercentage":0.5,"location":{"long":123.3946,"lat":41.79495},"co2":44608000,"warming":2.38,"landfill":83},{"name":"Nanjing","country":"China","countryAlt":"China","population":6323263,"co2NatPercentage":0.5,"location":{"long":118.7815,"lat":32.0514},"co2":44680000,"warming":1.88,"landfill":83},{"name":"Toronto","country":"Canada","countryAlt":"Canada","population":5054854,"co2NatPercentage":9.3,"location":{"long":-79.5519,"lat":43.722},"co2":49089000,"warming":3.06,"landfill":72},{"name":"Wuhan","country":"China","countryAlt":"China","population":7285073,"co2NatPercentage":0.6,"location":{"long":114.2986,"lat":30.5573},"co2":51215000,"warming":1.56,"landfill":83},{"name":"Istanbul","country":"Turkey","countryAlt":"Turkey","population":13587140,"co2NatPercentage":16.4,"location":{"long":29.0052,"lat":41.0194},"co2":70945000,"warming":1.71,"landfill":99},{"name":"Tianjin","country":"China","countryAlt":"China","population":7970606,"co2NatPercentage":0.8,"location":{"long":117.2377,"lat":39.08638},"co2":71424000,"warming":2.5,"landfill":83},{"name":"Paris","country":"France","countryAlt":"France","population":10119954,"co2NatPercentage":15.6,"location":{"long":2.33188,"lat":48.8549},"co2":78050000,"warming":2.84,"landfill":28},{"name":"London","country":"UK","countryAlt":"United Kingdom","population":9486361,"co2NatPercentage":14,"location":{"long":-0.147562,"lat":51.4941},"co2":98916000,"warming":2.66,"landfill":34},{"name":"Chicago","country":"USA","countryAlt":"United States","population":7260071,"co2NatPercentage":2.6,"location":{"long":-87.82,"lat":41.804},"co2":152932000,"warming":2.63,"landfill":54},{"name":"Shanghai","country":"China","countryAlt":"China","population":23803934,"co2NatPercentage":2.1,"location":{"long":121.4062,"lat":31.17447},"co2":180956000,"warming":1.89,"landfill":83},{"name":"Los Angeles","country":"USA","countryAlt":"United States","population":13482152,"co2NatPercentage":3.3,"location":{"long":-118.08,"lat":34.00594},"co2":196401000,"warming":2.01,"landfill":54},{"name":"New York","country":"USA","countryAlt":"United States","population":13648289,"co2NatPercentage":3.9,"location":{"long":-73.947,"lat":40.7587},"co2":233480000,"warming":2.86,"landfill":54},{"name":"Guangzhou","country":"China","countryAlt":"China","population":44309369,"co2NatPercentage":3.1,"location":{"long":113.4872,"lat":22.92145},"co2":272022000,"warming":0.72,"landfill":83},{"name":"Seoul","country":"South Korea","countryAlt":"South Korea","population":21253719,"co2NatPercentage":45.1,"location":{"long":126.9629,"lat":37.48175},"co2":276064000,"warming":2.16,"landfill":16}]
+[
+    {
+        "name": "Harbin",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 4134775,
+        "co2NatPercentage": 0.3,
+        "location": {
+            "long": 126.6235,
+            "lat": 45.72794
+        },
+        "co2": 24086000,
+        "warming": 2.68,
+        "landfill": 83,
+        "id": 0
+    },
+    {
+        "name": "Changchun",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 3326311,
+        "co2NatPercentage": 0.3,
+        "location": {
+            "long": 125.2966,
+            "lat": 43.87748
+        },
+        "co2": 25193000,
+        "warming": 2.51,
+        "landfill": 83,
+        "id": 1
+    },
+    {
+        "name": "Santiago",
+        "country": "Chile",
+        "countryAlt": "Chile",
+        "population": 6225904,
+        "co2NatPercentage": 30.7,
+        "location": {
+            "long": -70.6611,
+            "lat": -33.4681
+        },
+        "co2": 27274000,
+        "warming": 1.27,
+        "landfill": 99,
+        "id": 2
+    },
+    {
+        "name": "Jinan",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 3295352,
+        "co2NatPercentage": 0.3,
+        "location": {
+            "long": 117.0421,
+            "lat": 36.67991
+        },
+        "co2": 28036000,
+        "warming": 2.23,
+        "landfill": 83,
+        "id": 3
+    },
+    {
+        "name": "Montreal",
+        "country": "Canada",
+        "countryAlt": "Canada",
+        "population": 2795492,
+        "co2NatPercentage": 5.4,
+        "location": {
+            "long": -73.6943,
+            "lat": 45.5521
+        },
+        "co2": 28335000,
+        "warming": 2.95,
+        "landfill": 72,
+        "id": 4
+    },
+    {
+        "name": "Nagoya",
+        "country": "Japan",
+        "countryAlt": "Japan",
+        "population": 7738386,
+        "co2NatPercentage": 2,
+        "location": {
+            "long": 136.8378,
+            "lat": 35.12043
+        },
+        "co2": 28801000,
+        "warming": 1.62,
+        "landfill": 1,
+        "id": 5
+    },
+    {
+        "name": "Ankara",
+        "country": "Turkey",
+        "countryAlt": "Turkey",
+        "population": 4269330,
+        "co2NatPercentage": 6.8,
+        "location": {
+            "long": 32.7928,
+            "lat": 39.9609
+        },
+        "co2": 29259000,
+        "warming": 1.49,
+        "landfill": 99,
+        "id": 6
+    },
+    {
+        "name": "Dalian",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 3289015,
+        "co2NatPercentage": 0.4,
+        "location": {
+            "long": 121.6263,
+            "lat": 38.99737
+        },
+        "co2": 30901000,
+        "warming": 2.32,
+        "landfill": 83,
+        "id": 7
+    },
+    {
+        "name": "Chongqing",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 4979301,
+        "co2NatPercentage": 0.4,
+        "location": {
+            "long": 106.5132,
+            "lat": 29.57461
+        },
+        "co2": 32644000,
+        "warming": 1.11,
+        "landfill": 83,
+        "id": 8
+    },
+    {
+        "name": "Berlin",
+        "country": "Germany",
+        "countryAlt": "Germany",
+        "population": 3216908,
+        "co2NatPercentage": 4.3,
+        "location": {
+            "long": 13.405,
+            "lat": 52.5129
+        },
+        "co2": 33458000,
+        "warming": 2.74,
+        "landfill": 0,
+        "id": 9
+    },
+    {
+        "name": "Taiyuan",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 3517104,
+        "co2NatPercentage": 0.4,
+        "location": {
+            "long": 112.5425,
+            "lat": 37.83523
+        },
+        "co2": 35568000,
+        "warming": 2.48,
+        "landfill": 83,
+        "id": 10
+    },
+    {
+        "name": "Chengdu",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 9308183,
+        "co2NatPercentage": 0.5,
+        "location": {
+            "long": 104.0681,
+            "lat": 30.69432
+        },
+        "co2": 40529000,
+        "warming": 1.29,
+        "landfill": 83,
+        "id": 11
+    },
+    {
+        "name": "Sydney",
+        "country": "Australia",
+        "countryAlt": "Australia",
+        "population": 3532748,
+        "co2NatPercentage": 10.4,
+        "location": {
+            "long": 150.9992,
+            "lat": -33.82363
+        },
+        "co2": 41233000,
+        "warming": 1.92,
+        "landfill": 58,
+        "id": 12
+    },
+    {
+        "name": "Madrid",
+        "country": "Spain",
+        "countryAlt": "Spain",
+        "population": 4948998,
+        "co2NatPercentage": 12.6,
+        "location": {
+            "long": -3.71157,
+            "lat": 40.4176
+        },
+        "co2": 43425000,
+        "warming": 2.53,
+        "landfill": 60,
+        "id": 13
+    },
+    {
+        "name": "Melbourne",
+        "country": "Australia",
+        "countryAlt": "Australia",
+        "population": 3184938,
+        "co2NatPercentage": 11.1,
+        "location": {
+            "long": 145.0297,
+            "lat": -37.8087
+        },
+        "co2": 44364000,
+        "warming": 1.65,
+        "landfill": 58,
+        "id": 14
+    },
+    {
+        "name": "Shenyang",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 5572948,
+        "co2NatPercentage": 0.5,
+        "location": {
+            "long": 123.3946,
+            "lat": 41.79495
+        },
+        "co2": 44608000,
+        "warming": 2.38,
+        "landfill": 83,
+        "id": 15
+    },
+    {
+        "name": "Nanjing",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 6323263,
+        "co2NatPercentage": 0.5,
+        "location": {
+            "long": 118.7815,
+            "lat": 32.0514
+        },
+        "co2": 44680000,
+        "warming": 1.88,
+        "landfill": 83,
+        "id": 16
+    },
+    {
+        "name": "Toronto",
+        "country": "Canada",
+        "countryAlt": "Canada",
+        "population": 5054854,
+        "co2NatPercentage": 9.3,
+        "location": {
+            "long": -79.5519,
+            "lat": 43.722
+        },
+        "co2": 49089000,
+        "warming": 3.06,
+        "landfill": 72,
+        "id": 17
+    },
+    {
+        "name": "Wuhan",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 7285073,
+        "co2NatPercentage": 0.6,
+        "location": {
+            "long": 114.2986,
+            "lat": 30.5573
+        },
+        "co2": 51215000,
+        "warming": 1.56,
+        "landfill": 83,
+        "id": 18
+    },
+    {
+        "name": "Istanbul",
+        "country": "Turkey",
+        "countryAlt": "Turkey",
+        "population": 13587140,
+        "co2NatPercentage": 16.4,
+        "location": {
+            "long": 29.0052,
+            "lat": 41.0194
+        },
+        "co2": 70945000,
+        "warming": 1.71,
+        "landfill": 99,
+        "id": 19
+    },
+    {
+        "name": "Tianjin",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 7970606,
+        "co2NatPercentage": 0.8,
+        "location": {
+            "long": 117.2377,
+            "lat": 39.08638
+        },
+        "co2": 71424000,
+        "warming": 2.5,
+        "landfill": 83,
+        "id": 20
+    },
+    {
+        "name": "Paris",
+        "country": "France",
+        "countryAlt": "France",
+        "population": 10119954,
+        "co2NatPercentage": 15.6,
+        "location": {
+            "long": 2.33188,
+            "lat": 48.8549
+        },
+        "co2": 78050000,
+        "warming": 2.84,
+        "landfill": 28,
+        "id": 21
+    },
+    {
+        "name": "London",
+        "country": "UK",
+        "countryAlt": "United Kingdom",
+        "population": 9486361,
+        "co2NatPercentage": 14,
+        "location": {
+            "long": -0.147562,
+            "lat": 51.4941
+        },
+        "co2": 98916000,
+        "warming": 2.66,
+        "landfill": 34,
+        "id": 22
+    },
+    {
+        "name": "Chicago",
+        "country": "USA",
+        "countryAlt": "United States",
+        "population": 7260071,
+        "co2NatPercentage": 2.6,
+        "location": {
+            "long": -87.82,
+            "lat": 41.804
+        },
+        "co2": 152932000,
+        "warming": 2.63,
+        "landfill": 54,
+        "id": 23
+    },
+    {
+        "name": "Shanghai",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 23803934,
+        "co2NatPercentage": 2.1,
+        "location": {
+            "long": 121.4062,
+            "lat": 31.17447
+        },
+        "co2": 180956000,
+        "warming": 1.89,
+        "landfill": 83,
+        "id": 24
+    },
+    {
+        "name": "Los Angeles",
+        "country": "USA",
+        "countryAlt": "United States",
+        "population": 13482152,
+        "co2NatPercentage": 3.3,
+        "location": {
+            "long": -118.08,
+            "lat": 34.00594
+        },
+        "co2": 196401000,
+        "warming": 2.01,
+        "landfill": 54,
+        "id": 25
+    },
+    {
+        "name": "New York",
+        "country": "USA",
+        "countryAlt": "United States",
+        "population": 13648289,
+        "co2NatPercentage": 3.9,
+        "location": {
+            "long": -73.947,
+            "lat": 40.7587
+        },
+        "co2": 233480000,
+        "warming": 2.86,
+        "landfill": 54,
+        "id": 26
+    },
+    {
+        "name": "Guangzhou",
+        "country": "China",
+        "countryAlt": "China",
+        "population": 44309369,
+        "co2NatPercentage": 3.1,
+        "location": {
+            "long": 113.4872,
+            "lat": 22.92145
+        },
+        "co2": 272022000,
+        "warming": 0.72,
+        "landfill": 83,
+        "id": 27
+    },
+    {
+        "name": "Seoul",
+        "country": "South Korea",
+        "countryAlt": "South Korea",
+        "population": 21253719,
+        "co2NatPercentage": 45.1,
+        "location": {
+            "long": 126.9629,
+            "lat": 37.48175
+        },
+        "co2": 276064000,
+        "warming": 2.16,
+        "landfill": 16,
+        "id": 28
+    }
+]

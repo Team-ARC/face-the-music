@@ -10,6 +10,16 @@ const getClosestCity = (longitude, latitude) => {
     return distanceCities.slice(0, 4);
 };
 
+const getCity = (id) => {
+    return cityData.find(p => p.id === id);
+};
+
+const getCities = () => {
+    return cityData;
+};
+
 module.exports = {
-    getClosestCity
+    getClosestCity,
+    getCity,
+    getCities
 }

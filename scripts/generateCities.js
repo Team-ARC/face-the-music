@@ -12,6 +12,7 @@ async function main() {
     const landdfillData = await csv().fromFile(wasteCsvPath);
     const cities = JSON.parse(await fs.readFile(cityPath)).features;
     const output = [];
+    let id = 0;
     for(const city of cities) {
         const { name, country } = city.properties;
         const co2 = city.properties.ef;
@@ -45,6 +46,7 @@ async function main() {
                 }
             }
             if(item.landfill !== null) {
+                item.id = id++;
                 output.push(item);
             }
         }
