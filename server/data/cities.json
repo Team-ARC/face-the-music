@@ -1,0 +1,2205 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -81.6662,
+                    41.4609
+                ]
+            },
+            "properties": {
+                "name": "Cleveland",
+                "country": "USA",
+                "ef_per_cap": 24.7086,
+                "ef": 24049000,
+                "pop_in_cluster": 973304,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 100,
+                "domestic_ranking": 20,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    126.6235,
+                    45.72794
+                ]
+            },
+            "properties": {
+                "name": "Harbin",
+                "country": "China",
+                "ef_per_cap": 5.8252,
+                "ef": 24086000,
+                "pop_in_cluster": 4134775,
+                "ef_as_pct_of_national": "0.3%",
+                "global_ranking": 99,
+                "domestic_ranking": 27,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.4906,
+                    38.05647
+                ]
+            },
+            "properties": {
+                "name": "Shijiazhuang",
+                "country": "China",
+                "ef_per_cap": 7.409,
+                "ef": 24883000,
+                "pop_in_cluster": 3358464,
+                "ef_as_pct_of_national": "0.3%",
+                "global_ranking": 98,
+                "domestic_ranking": 26,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    117.2686,
+                    31.84478
+                ]
+            },
+            "properties": {
+                "name": "Hefei",
+                "country": "China",
+                "ef_per_cap": 6.4152,
+                "ef": 24886000,
+                "pop_in_cluster": 3879209,
+                "ef_as_pct_of_national": "0.3%",
+                "global_ranking": 97,
+                "domestic_ranking": 25,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.97333,
+                    52.5129
+                ]
+            },
+            "properties": {
+                "name": "Birmingham",
+                "country": "UK",
+                "ef_per_cap": 10.5696,
+                "ef": 25095000,
+                "pop_in_cluster": 2374252,
+                "ef_as_pct_of_national": "3.6%",
+                "global_ranking": 96,
+                "domestic_ranking": 3,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    76.8976,
+                    43.2746
+                ]
+            },
+            "properties": {
+                "name": "Almaty",
+                "country": "Kazakhstan",
+                "ef_per_cap": 13.8718,
+                "ef": 25170000,
+                "pop_in_cluster": 1814478,
+                "ef_as_pct_of_national": "12.9%",
+                "global_ranking": 95,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    125.2966,
+                    43.87748
+                ]
+            },
+            "properties": {
+                "name": "Changchun",
+                "country": "China",
+                "ef_per_cap": 7.5739,
+                "ef": 25193000,
+                "pop_in_cluster": 3326311,
+                "ef_as_pct_of_national": "0.3%",
+                "global_ranking": 94,
+                "domestic_ranking": 24,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -76.6564,
+                    39.3269
+                ]
+            },
+            "properties": {
+                "name": "Baltimore",
+                "country": "USA",
+                "ef_per_cap": 20.2459,
+                "ef": 25396000,
+                "pop_in_cluster": 1254375,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 93,
+                "domestic_ranking": 19,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.11335,
+                    41.4789
+                ]
+            },
+            "properties": {
+                "name": "Barcelona",
+                "country": "Spain",
+                "ef_per_cap": 7.1442,
+                "ef": 26060000,
+                "pop_in_cluster": 3647722,
+                "ef_as_pct_of_national": "7.6%",
+                "global_ranking": 92,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    106.6912,
+                    10.87065
+                ]
+            },
+            "properties": {
+                "name": "Ho Chi Minh City",
+                "country": "Viet Nam",
+                "ef_per_cap": 2.2753,
+                "ef": 26306000,
+                "pop_in_cluster": 11561652,
+                "ef_as_pct_of_national": "16.1%",
+                "global_ranking": 91,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    78.4717,
+                    17.4518
+                ]
+            },
+            "properties": {
+                "name": "Hyderabad",
+                "country": "India",
+                "ef_per_cap": 3.1619,
+                "ef": 26547000,
+                "pop_in_cluster": 8396001,
+                "ef_as_pct_of_national": "1.4%",
+                "global_ranking": 90,
+                "domestic_ranking": 4,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.5775,
+                    -33.9625
+                ]
+            },
+            "properties": {
+                "name": "Cape Town",
+                "country": "South Africa",
+                "ef_per_cap": 7.7099,
+                "ef": 26772000,
+                "pop_in_cluster": 3472437,
+                "ef_as_pct_of_national": "7.4%",
+                "global_ranking": 89,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.41519,
+                    51.9588
+                ]
+            },
+            "properties": {
+                "name": "Rotterdam",
+                "country": "Netherlands",
+                "ef_per_cap": 11.0501,
+                "ef": 27112000,
+                "pop_in_cluster": 2453544,
+                "ef_as_pct_of_national": "14.0%",
+                "global_ranking": 88,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6611,
+                    -33.4681
+                ]
+            },
+            "properties": {
+                "name": "Santiago",
+                "country": "Chile",
+                "ef_per_cap": 4.3807,
+                "ef": 27274000,
+                "pop_in_cluster": 6225904,
+                "ef_as_pct_of_national": "30.7%",
+                "global_ranking": 87,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    117.0421,
+                    36.67991
+                ]
+            },
+            "properties": {
+                "name": "Jinan",
+                "country": "China",
+                "ef_per_cap": 8.5077,
+                "ef": 28036000,
+                "pop_in_cluster": 3295352,
+                "ef_as_pct_of_national": "0.3%",
+                "global_ranking": 86,
+                "domestic_ranking": 23,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -117.1063,
+                    32.7846
+                ]
+            },
+            "properties": {
+                "name": "San Diego",
+                "country": "USA",
+                "ef_per_cap": 14.4791,
+                "ef": 28121000,
+                "pop_in_cluster": 1942172,
+                "ef_as_pct_of_national": "0.5%",
+                "global_ranking": 85,
+                "domestic_ranking": 18,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.3813,
+                    38.6951
+                ]
+            },
+            "properties": {
+                "name": "St. Louis",
+                "country": "USA",
+                "ef_per_cap": 24.0629,
+                "ef": 28314000,
+                "pop_in_cluster": 1176666,
+                "ef_as_pct_of_national": "0.5%",
+                "global_ranking": 84,
+                "domestic_ranking": 17,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.6943,
+                    45.5521
+                ]
+            },
+            "properties": {
+                "name": "Montreal",
+                "country": "Canada",
+                "ef_per_cap": 10.136,
+                "ef": 28335000,
+                "pop_in_cluster": 2795492,
+                "ef_as_pct_of_national": "5.4%",
+                "global_ranking": 83,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    136.8378,
+                    35.12043
+                ]
+            },
+            "properties": {
+                "name": "Nagoya",
+                "country": "Japan",
+                "ef_per_cap": 3.7218,
+                "ef": 28801000,
+                "pop_in_cluster": 7738386,
+                "ef_as_pct_of_national": "2.0%",
+                "global_ranking": 82,
+                "domestic_ranking": 3,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.411,
+                    36.28456
+                ]
+            },
+            "properties": {
+                "name": "Qingdao",
+                "country": "China",
+                "ef_per_cap": 8.1821,
+                "ef": 29224000,
+                "pop_in_cluster": 3571716,
+                "ef_as_pct_of_national": "0.3%",
+                "global_ranking": 81,
+                "domestic_ranking": 22,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.7928,
+                    39.9609
+                ]
+            },
+            "properties": {
+                "name": "Ankara",
+                "country": "Turkey",
+                "ef_per_cap": 6.8533,
+                "ef": 29259000,
+                "pop_in_cluster": 4269330,
+                "ef_as_pct_of_national": "6.8%",
+                "global_ranking": 80,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    30.3371,
+                    59.9087
+                ]
+            },
+            "properties": {
+                "name": "Saint Petersburg",
+                "country": "Russia",
+                "ef_per_cap": 6.9829,
+                "ef": 29635000,
+                "pop_in_cluster": 4243939,
+                "ef_as_pct_of_national": "2.2%",
+                "global_ranking": 79,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    54.454,
+                    24.4269
+                ]
+            },
+            "properties": {
+                "name": "Abu Dhabi",
+                "country": "UAE",
+                "ef_per_cap": 32.8602,
+                "ef": 29927000,
+                "pop_in_cluster": 910738,
+                "ef_as_pct_of_national": "14.9%",
+                "global_ranking": 78,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    9.13365,
+                    45.5798
+                ]
+            },
+            "properties": {
+                "name": "Milan",
+                "country": "Italy",
+                "ef_per_cap": 7.9525,
+                "ef": 30418000,
+                "pop_in_cluster": 3824980,
+                "ef_as_pct_of_national": "6.8%",
+                "global_ranking": 77,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    34.8784,
+                    32.1031
+                ]
+            },
+            "properties": {
+                "name": "Tel Aviv-Yafo",
+                "country": "Israel",
+                "ef_per_cap": 11.5437,
+                "ef": 30630000,
+                "pop_in_cluster": 2653392,
+                "ef_as_pct_of_national": "39.0%",
+                "global_ranking": 76,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.6263,
+                    38.99737
+                ]
+            },
+            "properties": {
+                "name": "Dalian",
+                "country": "China",
+                "ef_per_cap": 9.3952,
+                "ef": 30901000,
+                "pop_in_cluster": 3289015,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 75,
+                "domestic_ranking": 21,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.0552,
+                    -27.51827
+                ]
+            },
+            "properties": {
+                "name": "Brisbane",
+                "country": "Australia",
+                "ef_per_cap": 19.0862,
+                "ef": 31386000,
+                "pop_in_cluster": 1644437,
+                "ef_as_pct_of_national": "7.9%",
+                "global_ranking": 74,
+                "domestic_ranking": 3,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    118.5938,
+                    24.78757
+                ]
+            },
+            "properties": {
+                "name": "Quanzhou",
+                "country": "China",
+                "ef_per_cap": 8.4048,
+                "ef": 31500000,
+                "pop_in_cluster": 3747850,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 73,
+                "domestic_ranking": 20,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.6562,
+                    27.82322
+                ]
+            },
+            "properties": {
+                "name": "Wenzhou",
+                "country": "China",
+                "ef_per_cap": 6.4134,
+                "ef": 31686000,
+                "pop_in_cluster": 4940580,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 72,
+                "domestic_ranking": 19,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    50.0839,
+                    26.3944
+                ]
+            },
+            "properties": {
+                "name": "Ad Damman",
+                "country": "Saudi Arabia",
+                "ef_per_cap": 19.8472,
+                "ef": 31974000,
+                "pop_in_cluster": 1611004,
+                "ef_as_pct_of_national": "6.6%",
+                "global_ranking": 71,
+                "domestic_ranking": 3,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    72.9619,
+                    19.1761
+                ]
+            },
+            "properties": {
+                "name": "Mumbai",
+                "country": "India",
+                "ef_per_cap": 1.4947,
+                "ef": 32061000,
+                "pop_in_cluster": 21449557,
+                "ef_as_pct_of_national": "1.7%",
+                "global_ranking": 70,
+                "domestic_ranking": 3,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    51.4579,
+                    25.2746
+                ]
+            },
+            "properties": {
+                "name": "Doha",
+                "country": "Qatar",
+                "ef_per_cap": 28.7132,
+                "ef": 32396000,
+                "pop_in_cluster": 1128263,
+                "ef_as_pct_of_national": "53.3%",
+                "global_ranking": 69,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    106.5132,
+                    29.57461
+                ]
+            },
+            "properties": {
+                "name": "Chongqing",
+                "country": "China",
+                "ef_per_cap": 6.5559,
+                "ef": 32644000,
+                "pop_in_cluster": 4979301,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 68,
+                "domestic_ranking": 18,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.6637,
+                    34.76283
+                ]
+            },
+            "properties": {
+                "name": "Zhengzhou",
+                "country": "China",
+                "ef_per_cap": 7.179,
+                "ef": 32709000,
+                "pop_in_cluster": 4556231,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 67,
+                "domestic_ranking": 17,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2164,
+                    44.9888
+                ]
+            },
+            "properties": {
+                "name": "Minneapolis",
+                "country": "USA",
+                "ef_per_cap": 21.7644,
+                "ef": 33037000,
+                "pop_in_cluster": 1517940,
+                "ef_as_pct_of_national": "0.6%",
+                "global_ranking": 66,
+                "domestic_ranking": 16,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -2.36078,
+                    53.4913
+                ]
+            },
+            "properties": {
+                "name": "Manchester",
+                "country": "UK",
+                "ef_per_cap": 9.4653,
+                "ef": 33242000,
+                "pop_in_cluster": 3511977,
+                "ef_as_pct_of_national": "4.7%",
+                "global_ranking": 65,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.405,
+                    52.5129
+                ]
+            },
+            "properties": {
+                "name": "Berlin",
+                "country": "Germany",
+                "ef_per_cap": 10.4007,
+                "ef": 33458000,
+                "pop_in_cluster": 3216908,
+                "ef_as_pct_of_national": "4.3%",
+                "global_ranking": 64,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -46.6011,
+                    -23.5479
+                ]
+            },
+            "properties": {
+                "name": "Sao Paulo",
+                "country": "Brazil",
+                "ef_per_cap": 1.698,
+                "ef": 33570000,
+                "pop_in_cluster": 19769903,
+                "ef_as_pct_of_national": "6.0%",
+                "global_ranking": 63,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    106.233,
+                    38.48197
+                ]
+            },
+            "properties": {
+                "name": "Yinchuan",
+                "country": "China",
+                "ef_per_cap": 25.2636,
+                "ef": 33806000,
+                "pop_in_cluster": 1338129,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 62,
+                "domestic_ranking": 16,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.2551,
+                    47.45143
+                ]
+            },
+            "properties": {
+                "name": "Seattle",
+                "country": "USA",
+                "ef_per_cap": 17.2947,
+                "ef": 34117000,
+                "pop_in_cluster": 1972688,
+                "ef_as_pct_of_national": "0.6%",
+                "global_ranking": 61,
+                "domestic_ranking": 15,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -84.3574,
+                    33.8844
+                ]
+            },
+            "properties": {
+                "name": "Atlanta",
+                "country": "USA",
+                "ef_per_cap": 18.7141,
+                "ef": 34813000,
+                "pop_in_cluster": 1860257,
+                "ef_as_pct_of_national": "0.6%",
+                "global_ranking": 60,
+                "domestic_ranking": 14,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    23.7196,
+                    38.0211
+                ]
+            },
+            "properties": {
+                "name": "Athens",
+                "country": "Greece",
+                "ef_per_cap": 10.7727,
+                "ef": 35290000,
+                "pop_in_cluster": 3275872,
+                "ef_as_pct_of_national": "31.9%",
+                "global_ranking": 59,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.9711,
+                    39.72846
+                ]
+            },
+            "properties": {
+                "name": "Denver",
+                "country": "USA",
+                "ef_per_cap": 19.4066,
+                "ef": 35406000,
+                "pop_in_cluster": 1824431,
+                "ef_as_pct_of_national": "0.6%",
+                "global_ranking": 58,
+                "domestic_ranking": 13,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    112.5425,
+                    37.83523
+                ]
+            },
+            "properties": {
+                "name": "Taiyuan",
+                "country": "China",
+                "ef_per_cap": 10.1129,
+                "ef": 35568000,
+                "pop_in_cluster": 3517104,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 57,
+                "domestic_ranking": 15,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    109.8445,
+                    40.62399
+                ]
+            },
+            "properties": {
+                "name": "Baotou",
+                "country": "China",
+                "ef_per_cap": 18.4846,
+                "ef": 36796000,
+                "pop_in_cluster": 1990624,
+                "ef_as_pct_of_national": "0.4%",
+                "global_ranking": 56,
+                "domestic_ranking": 14,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.1091,
+                    42.3653
+                ]
+            },
+            "properties": {
+                "name": "Boston",
+                "country": "USA",
+                "ef_per_cap": 19.0138,
+                "ef": 37076000,
+                "pop_in_cluster": 1949948,
+                "ef_as_pct_of_national": "0.6%",
+                "global_ranking": 55,
+                "domestic_ranking": 12,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    111.672,
+                    40.83059
+                ]
+            },
+            "properties": {
+                "name": "Huhot",
+                "country": "China",
+                "ef_per_cap": 22.0458,
+                "ef": 39591000,
+                "pop_in_cluster": 1795852,
+                "ef_as_pct_of_national": "0.5%",
+                "global_ranking": 54,
+                "domestic_ranking": 13,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    104.0681,
+                    30.69432
+                ]
+            },
+            "properties": {
+                "name": "Chengdu",
+                "country": "China",
+                "ef_per_cap": 4.3541,
+                "ef": 40529000,
+                "pop_in_cluster": 9308183,
+                "ef_as_pct_of_national": "0.5%",
+                "global_ranking": 53,
+                "domestic_ranking": 12,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    108.9148,
+                    34.27534
+                ]
+            },
+            "properties": {
+                "name": "Xi'an",
+                "country": "China",
+                "ef_per_cap": 7.285,
+                "ef": 41185000,
+                "pop_in_cluster": 5653432,
+                "ef_as_pct_of_national": "0.5%",
+                "global_ranking": 52,
+                "domestic_ranking": 11,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    150.9992,
+                    -33.82363
+                ]
+            },
+            "properties": {
+                "name": "Sydney",
+                "country": "Australia",
+                "ef_per_cap": 11.6716,
+                "ef": 41233000,
+                "pop_in_cluster": 3532748,
+                "ef_as_pct_of_national": "10.4%",
+                "global_ranking": 51,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#2B83BA"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    129.0178,
+                    35.19027
+                ]
+            },
+            "properties": {
+                "name": "Pusan",
+                "country": "South Korea",
+                "ef_per_cap": 13.7911,
+                "ef": 42257000,
+                "pop_in_cluster": 3064079,
+                "ef_as_pct_of_national": "6.9%",
+                "global_ranking": 50,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    88.283,
+                    22.4544
+                ]
+            },
+            "properties": {
+                "name": "Kolkata",
+                "country": "India",
+                "ef_per_cap": 1.7307,
+                "ef": 42907000,
+                "pop_in_cluster": 24792053,
+                "ef_as_pct_of_national": "2.3%",
+                "global_ranking": 49,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -3.71157,
+                    40.4176
+                ]
+            },
+            "properties": {
+                "name": "Madrid",
+                "country": "Spain",
+                "ef_per_cap": 8.7745,
+                "ef": 43425000,
+                "pop_in_cluster": 4948998,
+                "ef_as_pct_of_national": "12.6%",
+                "global_ranking": 48,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.4689,
+                    23.44762
+                ]
+            },
+            "properties": {
+                "name": "Shantou",
+                "country": "China",
+                "ef_per_cap": 3.9664,
+                "ef": 43820000,
+                "pop_in_cluster": 11047682,
+                "ef_as_pct_of_national": "0.5%",
+                "global_ranking": 47,
+                "domestic_ranking": 10,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.0297,
+                    -37.8087
+                ]
+            },
+            "properties": {
+                "name": "Melbourne",
+                "country": "Australia",
+                "ef_per_cap": 13.9293,
+                "ef": 44364000,
+                "pop_in_cluster": 3184938,
+                "ef_as_pct_of_national": "11.1%",
+                "global_ranking": 46,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    123.3946,
+                    41.79495
+                ]
+            },
+            "properties": {
+                "name": "Shenyang",
+                "country": "China",
+                "ef_per_cap": 8.0044,
+                "ef": 44608000,
+                "pop_in_cluster": 5572948,
+                "ef_as_pct_of_national": "0.5%",
+                "global_ranking": 45,
+                "domestic_ranking": 9,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    118.7815,
+                    32.0514
+                ]
+            },
+            "properties": {
+                "name": "Nanjing",
+                "country": "China",
+                "ef_per_cap": 7.066,
+                "ef": 44680000,
+                "pop_in_cluster": 6323263,
+                "ef_as_pct_of_national": "0.5%",
+                "global_ranking": 44,
+                "domestic_ranking": 8,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.5519,
+                    43.722
+                ]
+            },
+            "properties": {
+                "name": "Toronto",
+                "country": "Canada",
+                "ef_per_cap": 9.7113,
+                "ef": 49089000,
+                "pop_in_cluster": 5054854,
+                "ef_as_pct_of_national": "9.3%",
+                "global_ranking": 43,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.2954,
+                    30.19798
+                ]
+            },
+            "properties": {
+                "name": "Hangzhou",
+                "country": "China",
+                "ef_per_cap": 7.0071,
+                "ef": 49183000,
+                "pop_in_cluster": 7019035,
+                "ef_as_pct_of_national": "0.6%",
+                "global_ranking": 42,
+                "domestic_ranking": 7,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.2986,
+                    30.5573
+                ]
+            },
+            "properties": {
+                "name": "Wuhan",
+                "country": "China",
+                "ef_per_cap": 7.0301,
+                "ef": 51215000,
+                "pop_in_cluster": 7285073,
+                "ef_as_pct_of_national": "0.6%",
+                "global_ranking": 41,
+                "domestic_ranking": 6,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -112.0331,
+                    33.47676
+                ]
+            },
+            "properties": {
+                "name": "Phoenix",
+                "country": "USA",
+                "ef_per_cap": 15.8974,
+                "ef": 52127000,
+                "pop_in_cluster": 3278968,
+                "ef_as_pct_of_national": "0.9%",
+                "global_ranking": 40,
+                "domestic_ranking": 11,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.3855,
+                    25.00582
+                ]
+            },
+            "properties": {
+                "name": "Taipei",
+                "country": "Taiwan",
+                "ef_per_cap": 6.1994,
+                "ef": 53265000,
+                "pop_in_cluster": 8591946,
+                "ef_as_pct_of_national": "38.6%",
+                "global_ranking": 39,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.6246,
+                    3.073899
+                ]
+            },
+            "properties": {
+                "name": "Shah Alam",
+                "country": "Malaysia",
+                "ef_per_cap": 8.5001,
+                "ef": 53857000,
+                "pop_in_cluster": 6336025,
+                "ef_as_pct_of_national": "26.9%",
+                "global_ranking": 38,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -99.0966,
+                    19.4655
+                ]
+            },
+            "properties": {
+                "name": "Mexico City",
+                "country": "Mexico",
+                "ef_per_cap": 2.808,
+                "ef": 55657000,
+                "pop_in_cluster": 19820539,
+                "ef_as_pct_of_national": "11.1%",
+                "global_ranking": 37,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -58.5965,
+                    -34.6496
+                ]
+            },
+            "properties": {
+                "name": "Buenos Aires",
+                "country": "Argentina",
+                "ef_per_cap": 4.1468,
+                "ef": 57510000,
+                "pop_in_cluster": 13868675,
+                "ef_as_pct_of_national": "29.0%",
+                "global_ranking": 36,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.5467,
+                    34.7454
+                ]
+            },
+            "properties": {
+                "name": "Osaka",
+                "country": "Japan",
+                "ef_per_cap": 3.785,
+                "ef": 58916000,
+                "pop_in_cluster": 15565787,
+                "ef_as_pct_of_national": "4.1%",
+                "global_ranking": 35,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -77.1072,
+                    38.9262
+                ]
+            },
+            "properties": {
+                "name": "Washington D.C.",
+                "country": "USA",
+                "ef_per_cap": 18.9625,
+                "ef": 62293000,
+                "pop_in_cluster": 3285055,
+                "ef_as_pct_of_national": "1.0%",
+                "global_ranking": 34,
+                "domestic_ranking": 10,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    39.2097,
+                    21.5221
+                ]
+            },
+            "properties": {
+                "name": "Jeddah",
+                "country": "Saudi Arabia",
+                "ef_per_cap": 19.198,
+                "ef": 63110000,
+                "pop_in_cluster": 3287324,
+                "ef_as_pct_of_national": "13.1%",
+                "global_ranking": 33,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -95.4129,
+                    29.7709
+                ]
+            },
+            "properties": {
+                "name": "Houston",
+                "country": "USA",
+                "ef_per_cap": 14.6026,
+                "ef": 66062000,
+                "pop_in_cluster": 4523988,
+                "ef_as_pct_of_national": "1.1%",
+                "global_ranking": 32,
+                "domestic_ranking": 9,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.04013,
+                    51.33
+                ]
+            },
+            "properties": {
+                "name": "Cologne",
+                "country": "Germany",
+                "ef_per_cap": 10.0302,
+                "ef": 69626000,
+                "pop_in_cluster": 6941660,
+                "ef_as_pct_of_national": "8.9%",
+                "global_ranking": 31,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    77.1916,
+                    28.6125
+                ]
+            },
+            "properties": {
+                "name": "New Delhi",
+                "country": "India",
+                "ef_per_cap": 2.5576,
+                "ef": 69645000,
+                "pop_in_cluster": 27230177,
+                "ef_as_pct_of_national": "3.8%",
+                "global_ranking": 30,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.0793,
+                    37.48175
+                ]
+            },
+            "properties": {
+                "name": "San Jose",
+                "country": "USA",
+                "ef_per_cap": 17.4855,
+                "ef": 69987000,
+                "pop_in_cluster": 4002567,
+                "ef_as_pct_of_national": "1.2%",
+                "global_ranking": 29,
+                "domestic_ranking": 8,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.1326,
+                    39.9967
+                ]
+            },
+            "properties": {
+                "name": "Philadelphia",
+                "country": "USA",
+                "ef_per_cap": 19.5442,
+                "ef": 70176000,
+                "pop_in_cluster": 3590636,
+                "ef_as_pct_of_national": "1.2%",
+                "global_ranking": 28,
+                "domestic_ranking": 7,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -83.1926,
+                    42.456
+                ]
+            },
+            "properties": {
+                "name": "Detroit",
+                "country": "USA",
+                "ef_per_cap": 25.4882,
+                "ef": 70613000,
+                "pop_in_cluster": 2770416,
+                "ef_as_pct_of_national": "1.2%",
+                "global_ranking": 27,
+                "domestic_ranking": 6,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.0052,
+                    41.0194
+                ]
+            },
+            "properties": {
+                "name": "Istanbul",
+                "country": "Turkey",
+                "ef_per_cap": 5.2215,
+                "ef": 70945000,
+                "pop_in_cluster": 13587140,
+                "ef_as_pct_of_national": "16.4%",
+                "global_ranking": 26,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    117.2377,
+                    39.08638
+                ]
+            },
+            "properties": {
+                "name": "Tianjin",
+                "country": "China",
+                "ef_per_cap": 8.9609,
+                "ef": 71424000,
+                "pop_in_cluster": 7970606,
+                "ef_as_pct_of_national": "0.8%",
+                "global_ranking": 25,
+                "domestic_ranking": 5,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.9646,
+                    32.8364
+                ]
+            },
+            "properties": {
+                "name": "Dallas",
+                "country": "USA",
+                "ef_per_cap": 16.4596,
+                "ef": 76932000,
+                "pop_in_cluster": 4673977,
+                "ef_as_pct_of_national": "1.3%",
+                "global_ranking": 24,
+                "domestic_ranking": 5,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    2.33188,
+                    48.8549
+                ]
+            },
+            "properties": {
+                "name": "Paris",
+                "country": "France",
+                "ef_per_cap": 7.7125,
+                "ef": 78050000,
+                "pop_in_cluster": 10119954,
+                "ef_as_pct_of_national": "15.6%",
+                "global_ranking": 23,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.5417,
+                    13.75945
+                ]
+            },
+            "properties": {
+                "name": "Samut Prakan",
+                "country": "Thailand",
+                "ef_per_cap": 5.3063,
+                "ef": 80035000,
+                "pop_in_cluster": 15083027,
+                "ef_as_pct_of_national": "28.4%",
+                "global_ranking": 22,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -80.2208,
+                    26.133
+                ]
+            },
+            "properties": {
+                "name": "Miami",
+                "country": "USA",
+                "ef_per_cap": 15.9651,
+                "ef": 80321000,
+                "pop_in_cluster": 5031024,
+                "ef_as_pct_of_national": "1.3%",
+                "global_ranking": 21,
+                "domestic_ranking": 4,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    47.9852,
+                    29.2763
+                ]
+            },
+            "properties": {
+                "name": "Al-Ahmadi",
+                "country": "Kuwait",
+                "ef_per_cap": 29.8952,
+                "ef": 80642000,
+                "pop_in_cluster": 2697487,
+                "ef_as_pct_of_national": "82.4%",
+                "global_ranking": 20,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    106.8005,
+                    -6.289
+                ]
+            },
+            "properties": {
+                "name": "Jakarta",
+                "country": "Indonesia",
+                "ef_per_cap": 2.3034,
+                "ef": 83733000,
+                "pop_in_cluster": 36351309,
+                "ef_as_pct_of_national": "17.5%",
+                "global_ranking": 19,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    116.3516,
+                    39.91616
+                ]
+            },
+            "properties": {
+                "name": "Beijing",
+                "country": "China",
+                "ef_per_cap": 4.2042,
+                "ef": 83742000,
+                "pop_in_cluster": 19918677,
+                "ef_as_pct_of_national": "1.0%",
+                "global_ranking": 18,
+                "domestic_ranking": 4,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.3098,
+                    30.5231
+                ]
+            },
+            "properties": {
+                "name": "Benha",
+                "country": "Egypt",
+                "ef_per_cap": 2.5246,
+                "ef": 87240000,
+                "pop_in_cluster": 34556464,
+                "ef_as_pct_of_national": "42.4%",
+                "global_ranking": 17,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.147562,
+                    51.4941
+                ]
+            },
+            "properties": {
+                "name": "London",
+                "country": "UK",
+                "ef_per_cap": 10.4272,
+                "ef": 98916000,
+                "pop_in_cluster": 9486361,
+                "ef_as_pct_of_national": "14.0%",
+                "global_ranking": 16,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    37.6495,
+                    55.7439
+                ]
+            },
+            "properties": {
+                "name": "Moscow",
+                "country": "Russia",
+                "ef_per_cap": 6.8852,
+                "ef": 99509000,
+                "pop_in_cluster": 14452621,
+                "ef_as_pct_of_national": "7.4%",
+                "global_ranking": 15,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    51.2507,
+                    35.7061
+                ]
+            },
+            "properties": {
+                "name": "Tehran",
+                "country": "Iran",
+                "ef_per_cap": 8.2422,
+                "ef": 104440000,
+                "pop_in_cluster": 12671317,
+                "ef_as_pct_of_national": "17.2%",
+                "global_ranking": 14,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    28.1444,
+                    -26.1077
+                ]
+            },
+            "properties": {
+                "name": "Johannesburg",
+                "country": "South Africa",
+                "ef_per_cap": 9.524,
+                "ef": 105233000,
+                "pop_in_cluster": 11049299,
+                "ef_as_pct_of_national": "28.9%",
+                "global_ranking": 13,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    120.4197,
+                    31.5094
+                ]
+            },
+            "properties": {
+                "name": "Wuxi",
+                "country": "China",
+                "ef_per_cap": 9.1925,
+                "ef": 110402000,
+                "pop_in_cluster": 12009948,
+                "ef_as_pct_of_national": "1.3%",
+                "global_ranking": 12,
+                "domestic_ranking": 3,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    55.3454,
+                    25.241
+                ]
+            },
+            "properties": {
+                "name": "Dubai",
+                "country": "UAE",
+                "ef_per_cap": 22.2961,
+                "ef": 110834000,
+                "pop_in_cluster": 4971000,
+                "ef_as_pct_of_national": "55.1%",
+                "global_ranking": 11,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#FDAE61"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    46.7299,
+                    24.6785
+                ]
+            },
+            "properties": {
+                "name": "Riyadh",
+                "country": "Saudi Arabia",
+                "ef_per_cap": 20.6706,
+                "ef": 118786000,
+                "pop_in_cluster": 5746603,
+                "ef_as_pct_of_national": "24.7%",
+                "global_ranking": 10,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.6472,
+                    35.72358
+                ]
+            },
+            "properties": {
+                "name": "Tokyo/Yokohama",
+                "country": "Japan",
+                "ef_per_cap": 4.0243,
+                "ef": 132796000,
+                "pop_in_cluster": 32998894,
+                "ef_as_pct_of_national": "9.4%",
+                "global_ranking": 9,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -87.82,
+                    41.804
+                ]
+            },
+            "properties": {
+                "name": "Chicago",
+                "country": "USA",
+                "ef_per_cap": 21.0648,
+                "ef": 152932000,
+                "pop_in_cluster": 7260071,
+                "ef_as_pct_of_national": "2.6%",
+                "global_ranking": 8,
+                "domestic_ranking": 3,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    103.8072,
+                    1.350698
+                ]
+            },
+            "properties": {
+                "name": "Country of Singapore",
+                "country": "Singapore",
+                "ef_per_cap": 30.7692,
+                "ef": 161079000,
+                "pop_in_cluster": 5235079,
+                "ef_as_pct_of_national": "100.0%",
+                "global_ranking": 7,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.4062,
+                    31.17447
+                ]
+            },
+            "properties": {
+                "name": "Shanghai",
+                "country": "China",
+                "ef_per_cap": 7.6019,
+                "ef": 180956000,
+                "pop_in_cluster": 23803934,
+                "ef_as_pct_of_national": "2.1%",
+                "global_ranking": 6,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.08,
+                    34.00594
+                ]
+            },
+            "properties": {
+                "name": "Los Angeles",
+                "country": "USA",
+                "ef_per_cap": 14.5675,
+                "ef": 196401000,
+                "pop_in_cluster": 13482152,
+                "ef_as_pct_of_national": "3.3%",
+                "global_ranking": 5,
+                "domestic_ranking": 2,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.1044,
+                    22.38772
+                ]
+            },
+            "properties": {
+                "name": "Hong Kong SAR",
+                "country": "China",
+                "ef_per_cap": 34.5765,
+                "ef": 208451000,
+                "pop_in_cluster": 6028691,
+                "ef_as_pct_of_national": "100.0%",
+                "global_ranking": 4,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -73.947,
+                    40.7587
+                ]
+            },
+            "properties": {
+                "name": "New York",
+                "country": "USA",
+                "ef_per_cap": 17.1069,
+                "ef": 233480000,
+                "pop_in_cluster": 13648289,
+                "ef_as_pct_of_national": "3.9%",
+                "global_ranking": 3,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.4872,
+                    22.92145
+                ]
+            },
+            "properties": {
+                "name": "Guangzhou",
+                "country": "China",
+                "ef_per_cap": 6.1392,
+                "ef": 272022000,
+                "pop_in_cluster": 44309369,
+                "ef_as_pct_of_national": "3.1%",
+                "global_ranking": 2,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    126.9629,
+                    37.48175
+                ]
+            },
+            "properties": {
+                "name": "Seoul",
+                "country": "South Korea",
+                "ef_per_cap": 12.989,
+                "ef": 276064000,
+                "pop_in_cluster": 21253719,
+                "ef_as_pct_of_national": "45.1%",
+                "global_ranking": 1,
+                "domestic_ranking": 1,
+                "marker-size": "small",
+                "marker-color": "#D7191C"
+            }
+        }
+    ]
+}
