@@ -15,7 +15,7 @@
     "sine-waves": "^0.3.0"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "SKIP_PREFLIGHT_CHECK=true craco start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
