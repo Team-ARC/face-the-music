@@ -1,8 +1,9 @@
 import React from 'react';
 import Cesium from "cesium"
 import { Viewer } from "cesium-react";
+import waves from '../Waves'
 import { getNearestCity } from '../../services/location.service';
-import waves from '../Waves';
+
 
 Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwZTU3ZDZlZi1lNzdiLTQ4MjUtYTliYy1mOTg1MWUyM2JmYTUiLCJpZCI6MTcwMjgsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzE0OTc5Mjl9.eAnkhlgA9PGlI4zGdof-ovkLOehYWKIGxdUe4zX9z_U";
 function radians_to_degrees(radians)
@@ -24,8 +25,21 @@ const getScore = async ({ latitude, longitude }, target, feature) => {
 }
 class CesiumMap extends React.PureComponent {
 
+  constructor() {
+    super();
+    this.state = {
+      started: false,
+      stage: 0,
+      stages: ['co2', 'landfill', 'warming']
+    }
+
+  }
 
   componentDidMount() {
+    if(!this.state.started) {
+      waves();
+      this.setState({ started: true });
+    }
     this.viewer.cesiumElement.scene.camera.changed.addEventListener(() => {
       const camera = this.viewer.cesiumElement.scene.camera;
       const position = camera.positionCartographic;
