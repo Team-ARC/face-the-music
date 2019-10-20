@@ -9,8 +9,9 @@ import './App.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTemperatureHigh, faTrash, faSmog } from '@fortawesome/free-solid-svg-icons'
 
+const matchLimit = 50;
 export default class App extends React.Component {
-  
+
   constructor() {
     library.add(faTemperatureHigh, faTrash, faSmog)
     super();
@@ -112,7 +113,7 @@ export default class App extends React.Component {
 
   incrementStage() {
     const { matchPercentage, pollutionStageIndex, pollutionStages } = this.state;
-    if (matchPercentage >= 80) {
+    if (matchPercentage >= matchLimit) {
       const newStageIndex = pollutionStageIndex + 1;
       console.log('newStageIndex ' + newStageIndex);
       console.log('pollutionStages[newStageIndex] ' + pollutionStages[newStageIndex]);
@@ -171,9 +172,9 @@ export default class App extends React.Component {
                 <FontAwesomeIcon icon={this.getPollutionIcon(pollutionStage)} size="2x"></FontAwesomeIcon>
                 <div className='bottom-text' style={{ color: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>{comparedCity}</div>
               </div>
-              <div onClick={this.incrementStage} className={'sideBox rightBox ' + (matchPercentage >= 80 ? 'rightBoxEnable' : 'rightBoxDisable')} style={{ backgroundColor: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>
+              <div onClick={this.incrementStage} className={'sideBox rightBox ' + (matchPercentage >= matchLimit ? 'rightBoxEnable' : 'rightBoxDisable')} style={{ backgroundColor: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>
                 <div className="percent">{`${matchPercentage}%`}</div>
-                {matchPercentage >= 80 ? (
+                {matchPercentage >= matchLimit ? (
                   <i className="fa fa-arrow-right nextButton"></i>
                 ) : null}
               </div>
