@@ -6,9 +6,7 @@ import { getNearestCity } from '../../services/location.service';
 import clone from 'clone';
 import {
   playPlayerBasedOnScoreAndStage,
-  playOnlyOriginalPlayer,
   startFirstPlayer,
-  // stopAllPlayers,
 } from '../../services/music.service';
 
 const targetWaves = [
@@ -69,7 +67,7 @@ class CesiumMap extends React.PureComponent {
     this.currentScore = { name: response[0].name, score: score * 100, stage: stageName, data: response[0] };
     this.props.setMatchPercentage(this.currentScore.score, this.currentScore.name);
 
-    playPlayerBasedOnScoreAndStage(score, stageNumber);
+    playPlayerBasedOnScoreAndStage(stageNumber, score);
   }
 
   getCameraLocation(override = false) {
@@ -99,7 +97,6 @@ class CesiumMap extends React.PureComponent {
       const stage = this.props.stageIndex;
       this.results.push(this.currentScore);
       if (stage >= this.state.stages.length) {
-        playOnlyOriginalPlayer();
         this.props.onComplete(this.results);
       } else {
         this.setState({ stage: this.props.stageIndex }, () => {
