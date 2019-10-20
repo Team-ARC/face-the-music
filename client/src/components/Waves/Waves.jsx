@@ -23,14 +23,14 @@ const waves = (wavelength) => {
       {
         timeModifier: 1,
         lineWidth: 10,
-        amplitude: 150,
+        amplitude: 110,
         wavelength: 143,
         strokeStyle: 'rgba(100, 100, 100, 1)'
       },
       {
         timeModifier: 1,   // This is multiplied againse `speed`
         lineWidth: 2,      // Stroke width
-        amplitude: 150,    // How tall is the wave
+        amplitude: 110,    // How tall is the wave
         wavelength: wavelength,   // How long is the wave
         strokeStyle: 'rgba(0, 255, 0, 1)', // Stroke color and opacity
       },

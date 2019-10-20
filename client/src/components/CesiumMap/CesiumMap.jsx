@@ -52,7 +52,8 @@ class CesiumMap extends React.PureComponent {
 
   render() {
     return (
-      <Viewer 
+      <Viewer
+        style={{height: '90vh'}}
         // baseLayerPicker={false}
         timeline={false}
         homeButton={false}
