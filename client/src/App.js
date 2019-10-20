@@ -61,10 +61,10 @@ export default class App extends React.Component {
       <div style={{ height: '100vh', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
         {stage === 'START' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
-            <h1 style={{ textAlign: 'center', 'margin-bottom': '60px' }}>Face the Music</h1>
-            <h3 style={{ textAlign: 'center', 'margin-bottom': '80px' }}>Understand the impact of your city to tune into its inner song</h3>
+            <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
+            <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Understand the impact of your city to tune into its inner song</h3>
             <Button
-              variant="primary" size="lg" block
+              variant="outline-info" size="lg" block
               onClick={() => { this.setState({ stage: 'SELECT' }) }}>
               Play
                 </Button>
@@ -72,10 +72,10 @@ export default class App extends React.Component {
           : null}
         {stage === 'SELECT' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
-            <h2 style={{ textAlign: 'center', 'margin-bottom': '40px' }}>Choose your city</h2>
+            <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Choose your city</h2>
             {availableCities.map(city => (
               <Button
-                variant="primary" size="lg" block
+                variant="outline-info" size="lg" block
                 style={{ marginBottom: '30px' }}
                 onClick={() => { this.selectCity(city.id) }}>
                 {city.name}
@@ -92,7 +92,7 @@ export default class App extends React.Component {
           : null}
         {stage === 'SUMMARY' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
-            <h2 style={{ textAlign: 'center', 'margin-bottom': '40px' }}>Results</h2>
+            <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h2>
             <ListGroup>
               {results.map(result => (
                 <ListGroup.Item
@@ -103,7 +103,7 @@ export default class App extends React.Component {
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            <h2 style={{ textAlign: 'center', 'marginTop': '40px' }}>{`Score ${results.reduce(scoreTotal, 0) / results.length}`}</h2>
+            <h2 style={{ textAlign: 'center', marginTop: '40px' }}>{`Score ${results.reduce(scoreTotal, 0) / results.length}`}</h2>
           </Container>
           : null}
       </div>);
