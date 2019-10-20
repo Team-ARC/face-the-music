@@ -79,6 +79,7 @@ class CesiumMap extends React.PureComponent {
   }
 
   componentDidMount() {
+    this.viewer.cesiumElement.scene.camera.percentageChanged = 0.01
     if(!this.state.started) {
       waves({wavelength: 300, amplitude: 110, speed: 1}, {wavelength: 143, amplitude: 110, speed: 1});
       this.setState({ started: true });
