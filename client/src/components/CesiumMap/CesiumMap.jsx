@@ -4,6 +4,12 @@ import { Viewer } from "cesium-react";
 import waves from '../Waves'
 import { getNearestCity } from '../../services/location.service';
 import clone from 'clone';
+import {
+  playPlayerBasedOnScoreAndStage,
+  playOnlyOriginalPlayer,
+  startFirstPlayer,
+  // stopAllPlayers,
+} from '../../services/music.service';
 
 const targetWaves = [
   { wavelength: 286, amplitude: 110, phase: 0 },
@@ -29,6 +35,7 @@ class CesiumMap extends React.PureComponent {
       stages: ['co2', 'landfill', 'warming'],
       city: props.selectedCity,
     }
+    startFirstPlayer();
   }
 
   async getScore({ latitude, longitude }, targetCity, stageName, stageNumber) {
@@ -61,6 +68,8 @@ class CesiumMap extends React.PureComponent {
     waves(actualWave, targetWave);
     this.currentScore = { name: response[0].name, score: score * 100, stage: stageName };
     this.props.setMatchPercentage(this.currentScore.score);
+
+    playPlayerBasedOnScoreAndStage(score, stageNumber);
   }
 
   getCameraLocation(override = false) {
@@ -90,6 +99,7 @@ class CesiumMap extends React.PureComponent {
       const stage = this.props.stageIndex;
       this.results.push(this.currentScore);
       if (stage >= this.state.stages.length) {
+        playOnlyOriginalPlayer();
         this.props.onComplete(this.results);
       } else {
         this.setState({ stage: this.props.stageIndex }, () => {
