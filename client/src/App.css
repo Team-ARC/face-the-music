@@ -56,6 +56,44 @@ body {
   width: 8px;
 }
 
+.sideBox {
+  position: absolute;
+  bottom: 0;
+  background-color: black;
+  vertical-align: middle;
+  text-align: center;
+  height: 100%;
+  width: 10vw;
+  line-height: 35vh;
+  font-size: 30px;
+}
+
+.leftBox {
+  left: 0;
+  font-size: 20px;
+}
+
+.rightBox {
+  right: 0;
+}
+
+.rightBoxEnable {
+  background-color: rgb(97, 138, 56);
+  cursor: pointer;
+}
+
+.rightBoxDisable {
+  cursor: not-allowed;
+}
+
+.bottom-text {
+  bottom: 4vh;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

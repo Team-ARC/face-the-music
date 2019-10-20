@@ -3,6 +3,7 @@ import CesiumMap from './components/CesiumMap'
 import { getCities } from './services/location.service'
 import { Button, Container, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import './App.css'
 export default class App extends React.Component {
 
@@ -11,14 +12,18 @@ export default class App extends React.Component {
     this.state = {
       stage: 'START',
       pollutionStage: 'co2',
+      pollutionStages: ['co2', 'landfill', 'warming'],
+      pollutionStageIndex: 0,
       selectedCity: null,
+      matchPercentage: 0,
       results: [],
       cities: [],
       availableCities: [{ name: 'London' }, { name: 'Sydney' }, { name: 'New York' }, { name: 'Paris' }]
     }
     this.selectCity = this.selectCity.bind(this);
     this.mapComplete = this.mapComplete.bind(this);
-    this.setPollutionStage = this.setPollutionStage.bind(this);
+    this.setMatchPercentage = this.setMatchPercentage.bind(this);
+    this.incrementStage = this.incrementStage.bind(this);
     this.getAvailableCities();
   }
 
@@ -35,11 +40,12 @@ export default class App extends React.Component {
     }
   }
 
-  setPollutionStage(pollutionStage) {
-    this.setState({ pollutionStage });
+  setMatchPercentage(matchPercentage) {
+    this.setState({ matchPercentage: Math.round(matchPercentage) });
   }
 
   getPollutionQuestion(pollutionStage) {
+    console.log('GET Q', pollutionStage);
     switch (pollutionStage) {
       case 'co2':
         return 'CO2 Emissions';
@@ -61,7 +67,6 @@ export default class App extends React.Component {
       return avail;
     })
     this.setState({ cities, availableCities });
-    console.log(availableCities);
   }
 
   selectCity(id) {
@@ -73,8 +78,24 @@ export default class App extends React.Component {
     this.setState({ stage: 'SUMMARY', results });
   }
 
+  incrementStage() {
+    const { matchPercentage, pollutionStageIndex, pollutionStages } = this.state;
+    if(matchPercentage >= 80) {
+        const newStageIndex = pollutionStageIndex + 1;
+        console.log(newStageIndex);
+        console.log(pollutionStages[newStageIndex]);
+        const update = {
+          pollutionStageIndex: newStageIndex
+        }
+        if(pollutionStages[newStageIndex]) {
+          update.pollutionStage = pollutionStages[newStageIndex]
+        }
+        this.setState(update)
+    }
+  }
+
   render() {
-    const { stage, availableCities, selectedCity, results, pollutionStage } = this.state;
+    const { stage, availableCities, selectedCity, results, pollutionStage, matchPercentage, pollutionStageIndex } = this.state;
     const scoreTotal = (accumulator, currentValue) => accumulator + currentValue.score;
     return (
       <div style={{ height: '100vh', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
@@ -104,10 +125,21 @@ export default class App extends React.Component {
           : null}
         {stage === 'MAP' ?
           <div>
-            <CesiumMap style={{ height: "100vh !important", position: "absolute", top: 0, left: 0 }} className="map" selectedCity={selectedCity} onComplete={this.mapComplete} setPollutionStage={this.setPollutionStage} />,
+            <CesiumMap style={{ position: "absolute", top: 0, left: 0 }} 
+            className="map"
+            selectedCity={selectedCity}
+            setMatchPercentage={this.setMatchPercentage}
+            onComplete={this.mapComplete}
+            stageIndex={pollutionStageIndex}/>,
             <div className='hud'>
               <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
               <canvas className="waves" id="waves" />
+              <div className='sideBox leftBox'>
+                <div>{`${matchPercentage}%`}
+                <div className='bottom-text'>Sync</div>
+                </div>
+              </div>
+              <div onClick={this.incrementStage} className={'sideBox rightBox ' + (matchPercentage >= 80 ? 'rightBoxEnable' : 'rightBoxDisable')}><i className="fa fa-arrow-right"></i></div>
             </div>
             <div className="circle circle-center"></div>
       </div>
@@ -121,11 +153,11 @@ export default class App extends React.Component {
                   variant={result.score > 90 ? 'warning' : 'success'}
                 >
                   <h2>{this.getPollutionLabel(result.stage)}</h2>
-                  <h3>{`${result.name}: ${result.score}% match`}</h3>
+                  <h3>{`${result.name}: ${Math.round(result.score)}% match`}</h3>
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            <h2 style={{ textAlign: 'center', marginTop: '40px' }}>{`Score ${results.reduce(scoreTotal, 0) / results.length}`}</h2>
+            <h2 style={{ textAlign: 'center', marginTop: '40px' }}>{`Score ${Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</h2>
           </Container>
           : null}
       </div>);
