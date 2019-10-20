@@ -92,8 +92,9 @@ class CesiumMap extends React.PureComponent {
       if (stage >= this.state.stages.length) {
         this.props.onComplete(this.results);
       } else {
-        this.setState({ stage: this.props.stageIndex });
+        this.setState({ stage: this.props.stageIndex }, () => {
         this.getCameraLocation(true);
+        });
       }
     }
   }

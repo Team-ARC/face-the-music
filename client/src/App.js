@@ -134,7 +134,7 @@ export default class App extends React.Component {
             <div className='hud'>
               <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
               <canvas className="waves" id="waves" />
-              <div className='sideBox leftBox'>
+              <div className='sideBox leftBox' style={{backgroundColor: `rgba(${(1-(matchPercentage/100)) * 220}, ${matchPercentage/100 * 220}, 0, 1)`}}>
                 <div>{`${matchPercentage}%`}
                 <div className='bottom-text'>Sync</div>
                 </div>
