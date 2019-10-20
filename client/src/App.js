@@ -58,9 +58,9 @@ export default class App extends React.Component {
     const { stage, availableCities, selectedCity, results } = this.state;
     const scoreTotal = (accumulator, currentValue) => accumulator + currentValue.score;
     return (
-      <div style={{ height: '100vh', position: "relative" }}>
+      <div style={{ height: '100vh', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
         {stage === 'START' ?
-          <Container className="align-middle" style={{ maxWidth: '50%', marginTop: '20vh' }}>
+          <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <h1 style={{ textAlign: 'center', 'margin-bottom': '60px' }}>Face the Music</h1>
             <h3 style={{ textAlign: 'center', 'margin-bottom': '80px' }}>Understand the impact of your city ton tune into its inner song</h3>
             <Button
@@ -71,7 +71,7 @@ export default class App extends React.Component {
           </Container>
           : null}
         {stage === 'SELECT' ?
-          <Container className="align-middle" style={{ maxWidth: '50%', marginTop: '20vh' }}>
+          <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <h2 style={{ textAlign: 'center', 'margin-bottom': '40px' }}>Choose your city</h2>
             {availableCities.map(city => (
               <Button
@@ -91,7 +91,7 @@ export default class App extends React.Component {
       </div>
           : null}
         {stage === 'SUMMARY' ?
-          <Container className="align-middle" style={{ maxWidth: '50%', marginTop: '20vh' }}>
+          <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <h2 style={{ textAlign: 'center', 'margin-bottom': '40px' }}>Results</h2>
             <ListGroup>
               {results.map(result => (
