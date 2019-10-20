@@ -182,7 +182,7 @@ export default class App extends React.Component {
           </div>
           : null}
         {stage === 'SUMMARY' ?
-          <Container style={{ maxWidth: '70%', paddingTop: '20vh' }}>
+          <Container style={{ maxWidth: '70%', paddingTop: '15vh' }}>
             <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h2>
             <ListGroup>
               {results.map(result => (
