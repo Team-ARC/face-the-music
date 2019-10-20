@@ -10,6 +10,7 @@ export default class App extends React.Component {
     super();
     this.state = {
       stage: 'START',
+      pollutionStage: 'co2',
       selectedCity: null,
       results: [],
       cities: [],
@@ -17,10 +18,28 @@ export default class App extends React.Component {
     }
     this.selectCity = this.selectCity.bind(this);
     this.mapComplete = this.mapComplete.bind(this);
+    this.setPollutionStage = this.setPollutionStage.bind(this);
     this.getAvailableCities();
   }
 
   getPollutionLabel(pollutionStage) {
+    switch (pollutionStage) {
+      case 'co2':
+        return 'CO2 Emissions';
+      case 'landfill':
+        return 'Landfilled Waste Percentage';
+      case 'warming':
+        return 'Tempature Increase since 1960';
+      default:
+        return 'ERROR';
+    }
+  }
+
+  setPollutionStage(pollutionStage) {
+    this.setState({ pollutionStage });
+  }
+
+  getPollutionQuestion(pollutionStage) {
     switch (pollutionStage) {
       case 'co2':
         return 'CO2 Emissions';
@@ -55,16 +74,16 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { stage, availableCities, selectedCity, results } = this.state;
+    const { stage, availableCities, selectedCity, results, pollutionStage } = this.state;
     const scoreTotal = (accumulator, currentValue) => accumulator + currentValue.score;
     return (
       <div style={{ height: '100vh', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
         {stage === 'START' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
-            <h1 style={{ textAlign: 'center', 'margin-bottom': '60px' }}>Face the Music</h1>
-            <h3 style={{ textAlign: 'center', 'margin-bottom': '80px' }}>Understand the impact of your city to tune into its inner song</h3>
+            <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
+            <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Understand the impact of your city to tune into its inner song</h3>
             <Button
-              variant="primary" size="lg" block
+              variant="outline-info" size="lg" block
               onClick={() => { this.setState({ stage: 'SELECT' }) }}>
               Play
                 </Button>
@@ -72,10 +91,10 @@ export default class App extends React.Component {
           : null}
         {stage === 'SELECT' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
-            <h2 style={{ textAlign: 'center', 'margin-bottom': '40px' }}>Choose your city</h2>
+            <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Choose your city</h2>
             {availableCities.map(city => (
               <Button
-                variant="primary" size="lg" block
+                variant="outline-info" size="lg" block
                 style={{ marginBottom: '30px' }}
                 onClick={() => { this.selectCity(city.id) }}>
                 {city.name}
@@ -85,14 +104,17 @@ export default class App extends React.Component {
           : null}
         {stage === 'MAP' ?
           <div>
-            <CesiumMap style={{ height: "100vh !important", position: "absolute", top: 0, left: 0 }} className="map" selectedCity={selectedCity} onComplete={this.mapComplete} />,
-        <canvas style={{ position: "absolute", top: "75vh", left: 0, height: "25vh", width: "100vw" }} className="waves" id="waves" />
-            <div style={{ position: "absolute", top: 770 / 2 - 4, left: 1440 / 2 - 4, height: "8px", width: "8px" }} className="circle"></div>,
+            <CesiumMap style={{ height: "100vh !important", position: "absolute", top: 0, left: 0 }} className="map" selectedCity={selectedCity} onComplete={this.mapComplete} setPollutionStage={this.setPollutionStage} />,
+            <div className='hud'>
+              <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
+              <canvas className="waves" id="waves" />
+            </div>
+            <div className="circle circle-center"></div>
       </div>
           : null}
         {stage === 'SUMMARY' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
-            <h2 style={{ textAlign: 'center', 'margin-bottom': '40px' }}>Results</h2>
+            <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h2>
             <ListGroup>
               {results.map(result => (
                 <ListGroup.Item
@@ -103,7 +125,7 @@ export default class App extends React.Component {
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            <h2 style={{ textAlign: 'center', 'marginTop': '40px' }}>{`Score ${results.reduce(scoreTotal, 0) / results.length}`}</h2>
+            <h2 style={{ textAlign: 'center', marginTop: '40px' }}>{`Score ${results.reduce(scoreTotal, 0) / results.length}`}</h2>
           </Container>
           : null}
       </div>);

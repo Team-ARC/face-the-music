@@ -44,7 +44,8 @@ class CesiumMap extends React.PureComponent {
       stage: 0,
       stages: ['co2', 'landfill', 'warming'],
       city: props.selectedCity,
-      onComplete: props.onComplete,
+      // onComplete: props.onComplete,
+      // setPollutionStage: props.setPollutionStage,
     }
   }
 
@@ -58,6 +59,7 @@ class CesiumMap extends React.PureComponent {
   }
 
   componentDidMount() {
+    console.log(this.props)
     if(!this.state.started) {
       waves();
       this.setState({ started: true });
@@ -68,19 +70,23 @@ class CesiumMap extends React.PureComponent {
   render() {
     return [
         <button onClick={() => {
+          console.log("this.state")
+          console.log(this.state)
+          console.log("this.state")
           this.state.stage += 1;
           this.results.push(this.currentScore);
           this.setState({score: calcScore(this.results)})
           console.log("this.state.score")
           console.log(this.state.score)
           if (this.state.stage >= this.state.stages.length) {
-            this.state.onComplete(this.results);
+            this.props.onComplete(this.results);
           }
           this.getCameraLocation();
-          console.log(this.results)
+          this.props.setPollutionStage(this.state.stages[this.state.stage])
         }}>Inspect camera</button>,
         <h1>Score: {this.state.score}</h1>,
-      <Viewer 
+      <Viewer
+        style={{height: '90vh'}}
         // baseLayerPicker={false}
         timeline={false}
         homeButton={false}
