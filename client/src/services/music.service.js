@@ -1,7 +1,11 @@
 import Tone from 'tone';
-import soundfile from '../assets/rocket_man_elton_john.mp3'
+import {Howl, Howler} from 'howler';
+import soundfile_perfect from '../assets/rocket_man_elton_john.mp3'
+import soundfile_slow_30pct from '../assets/rocket_man_slow_30pct.mp3'
+import soundfile_slow_70pct from '../assets/rocket_man_slow_70pct.mp3'
 
 let startTime;
+let timeSongStarted;
 
 // const highPass = new Tone.Filter(1600, 'highpass');
 // const dist = new Tone.Distortion();
@@ -18,55 +22,55 @@ let startTime;
 const players = [
   [
     {
-      player: (new Tone.Player(soundfile)),
+      player: (new Tone.Player(soundfile_slow_30pct)),
       transformations: [
         (new Tone.Filter(50, 'lowpass')),
         (new Tone.EQ3(10, -1000, -1000)),
-        (new Tone.PitchShift(12)),
+        (new Tone.PitchShift(10)),
         (new Tone.Freeverb()),
       ],
     },
     {
-      player: (new Tone.Player(soundfile)),
+      player: (new Tone.Player(soundfile_slow_30pct)),
       transformations: [
         (new Tone.Filter(400, 'lowpass')),
         (new Tone.EQ3(10, -1000, -1000)),
-        (new Tone.PitchShift(12)),
+        (new Tone.PitchShift(10)),
         (new Tone.Freeverb()),
       ],
     },
   ],
   [
     {
-      player: (new Tone.Player(soundfile)),
+      player: (new Tone.Player(soundfile_slow_30pct)),
       transformations: [
-        (new Tone.PitchShift(12)),
+        (new Tone.PitchShift(10)),
         (new Tone.Freeverb()),
       ],
     },
     {
-      player: (new Tone.Player(soundfile)),
+      player: (new Tone.Player(soundfile_slow_30pct)),
       transformations: [
-        (new Tone.PitchShift(7)),
+        (new Tone.PitchShift(5)),
         (new Tone.Freeverb()),
       ],
     },
   ],
-  [
-    {
-      // Duplicated to make accessing this player easier (can just access the same array)
-      player: (new Tone.Player(soundfile)),
-      transformations: [],
-    },
-    {
-      // Original
-      player: (new Tone.Player(soundfile)),
-      transformations: [],
-    },
-  ],
+  // [
+  //   {
+  //     player: (new Tone.Player(soundfile_slow_70pct, () => console.log('Player 1 loaded'))),
+  //     transformations: [(new Tone.Freeverb())],
+  //   },
+  //   {
+  //     player: (new Tone.Player(soundfile_slow_30pct, () => console.log('Player 2 loaded'))),
+  //     transformations: [(new Tone.Freeverb())],
+  //   },
+  // ],
 ];
 
-const originalPlayer = (new Tone.Player(soundfile));
+const originalPlayer = new Tone.Player(soundfile_perfect, () => {
+  console.log('original player loaded');
+});
 
 const loadPlayers = (players) => {
   for (const transformationCategory of players) {
@@ -85,6 +89,7 @@ loadPlayers(players);
 export const startFirstPlayer = () => {
   const player = getPlayer(0, 0);
   const offset = 0;
+  timeSongStarted = Tone.now();
   playOnlyPlayer(player, offset);
 }
 
@@ -116,11 +121,28 @@ export const playOnlyOriginalPlayer = () => {
   playOnlyPlayer(originalPlayer);
 }
 
-export const playPlayerBasedOnScoreAndStage = (score, stageNumber) => {
-  const transformationIndex = stageNumber;
-  console.log('transformationIndex ' + transformationIndex);
-  console.log('score ' + score);
-  const playerIndex = Math.round(score);
-  console.log('playerIndex ' + playerIndex);
-  playOnlyPlayerAtIndex(transformationIndex, playerIndex);
+const howlerSound = new Howl({
+  src: [soundfile_perfect],
+});
+let isHowlerPlaying = false;
+
+export const playPlayerBasedOnScoreAndStage = (stageNumber, score) => {
+
+  if (stageNumber <= 1) {
+    const transformationIndex = stageNumber;
+    console.log('transformationIndex ' + transformationIndex);
+    console.log('score ' + score);
+    const playerIndex = Math.round(score);
+    console.log('playerIndex ' + playerIndex);
+    playOnlyPlayerAtIndex(transformationIndex, playerIndex);
+  } else {
+    stopAllPlayers();
+    if (!isHowlerPlaying) {
+      isHowlerPlaying = true;
+      const offset = Tone.now() - timeSongStarted;
+      howlerSound.seek(offset);
+      howlerSound.play();
+    }
+    howlerSound.rate(0.5 + score*0.5);
+  }
 }
