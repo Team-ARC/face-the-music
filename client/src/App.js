@@ -2,12 +2,17 @@ import React from 'react';
 import CesiumMap from './components/CesiumMap'
 import { getCities } from './services/location.service'
 import { Button, Container, ListGroup } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css'
-export default class App extends React.Component {
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTemperatureHigh, faTrash, faSmog } from '@fortawesome/free-solid-svg-icons'
 
+export default class App extends React.Component {
+  
   constructor() {
+    library.add(faTemperatureHigh, faTrash, faSmog)
     super();
     this.state = {
       stage: 'START',
@@ -15,6 +20,7 @@ export default class App extends React.Component {
       pollutionStages: ['co2', 'landfill', 'warming'],
       pollutionStageIndex: 0,
       selectedCity: null,
+      comparedCity: '',
       matchPercentage: 0,
       results: [],
       cities: [],
@@ -40,12 +46,12 @@ export default class App extends React.Component {
     }
   }
 
-  setMatchPercentage(matchPercentage) {
+  setMatchPercentage(matchPercentage, name) {
     this.setState({ matchPercentage: Math.round(matchPercentage) });
+    this.setState({ comparedCity: name });
   }
 
   getPollutionQuestion(pollutionStage) {
-    console.log('GET Q', pollutionStage);
     switch (pollutionStage) {
       case 'co2':
         return 'CO2 Emissions';
@@ -53,6 +59,32 @@ export default class App extends React.Component {
         return 'Landfilled Waste Percentage';
       case 'warming':
         return 'Tempature Increase since 1960';
+      default:
+        return 'ERROR';
+    }
+  }
+
+  getPollutionIcon(pollutionStage) {
+    switch (pollutionStage) {
+      case 'co2':
+        return 'smog';
+      case 'landfill':
+        return 'trash';
+      case 'warming':
+        return 'temperature-high';
+      default:
+        return 'ERROR';
+    }
+  }
+
+  getPollutionString(pollutionStage, value) {
+    switch (pollutionStage) {
+      case 'co2':
+        return `${Math.round(value/1000000)}Mt`;
+      case 'landfill':
+        return `${value}%`;
+      case 'warming':
+          return `${value} degrees`;
       default:
         return 'ERROR';
     }
@@ -80,22 +112,22 @@ export default class App extends React.Component {
 
   incrementStage() {
     const { matchPercentage, pollutionStageIndex, pollutionStages } = this.state;
-    if(matchPercentage >= 80) {
-        const newStageIndex = pollutionStageIndex + 1;
-        console.log('newStageIndex ' + newStageIndex);
-        console.log('pollutionStages[newStageIndex] ' + pollutionStages[newStageIndex]);
-        const update = {
-          pollutionStageIndex: newStageIndex
-        }
-        if(pollutionStages[newStageIndex]) {
-          update.pollutionStage = pollutionStages[newStageIndex]
-        }
-        this.setState(update)
+    if (matchPercentage >= 80) {
+      const newStageIndex = pollutionStageIndex + 1;
+      console.log('newStageIndex ' + newStageIndex);
+      console.log('pollutionStages[newStageIndex] ' + pollutionStages[newStageIndex]);
+      const update = {
+        pollutionStageIndex: newStageIndex
+      }
+      if (pollutionStages[newStageIndex]) {
+        update.pollutionStage = pollutionStages[newStageIndex]
+      }
+      this.setState(update)
     }
   }
 
   render() {
-    const { stage, availableCities, selectedCity, results, pollutionStage, matchPercentage, pollutionStageIndex } = this.state;
+    const { stage, availableCities, selectedCity, results, pollutionStage, matchPercentage, pollutionStageIndex, comparedCity } = this.state;
     const scoreTotal = (accumulator, currentValue) => accumulator + currentValue.score;
     return (
       <div style={{ height: '100vh', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
@@ -126,38 +158,43 @@ export default class App extends React.Component {
         {stage === 'MAP' ?
           <div>
             <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
-            className="map"
-            selectedCity={selectedCity}
-            setMatchPercentage={this.setMatchPercentage}
-            onComplete={this.mapComplete}
-            stageIndex={pollutionStageIndex}/>,
+              className="map"
+              selectedCity={selectedCity}
+              setMatchPercentage={this.setMatchPercentage}
+              onComplete={this.mapComplete}
+              stageIndex={pollutionStageIndex} />,
             <div className='hud'>
               <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
               <canvas className="waves" id="waves" />
-              <div className='sideBox leftBox' style={{backgroundColor: `rgba(${(1-(matchPercentage/100)) * 220}, ${matchPercentage/100 * 220}, 0, 1)`}}>
-                <div>{`${matchPercentage}%`}
-                <div className='bottom-text'>Sync</div>
-                </div>
+              <div className='sideBox leftBox'>
+                <div className='top-text'>{selectedCity.name}</div>
+                <FontAwesomeIcon icon={this.getPollutionIcon(pollutionStage)} size="2x"></FontAwesomeIcon>
+                <div className='bottom-text' style={{ color: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>{comparedCity}</div>
               </div>
-              <div onClick={this.incrementStage} className={'sideBox rightBox ' + (matchPercentage >= 80 ? 'rightBoxEnable' : 'rightBoxDisable')}><i className="fa fa-arrow-right"></i></div>
+              <div onClick={this.incrementStage} className={'sideBox rightBox ' + (matchPercentage >= 80 ? 'rightBoxEnable' : 'rightBoxDisable')} style={{ backgroundColor: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>
+                <div className="percent">{`${matchPercentage}%`}</div>
+                {matchPercentage >= 80 ? (
+                  <i className="fa fa-arrow-right nextButton"></i>
+                ) : null}
+              </div>
             </div>
             <div className="circle circle-center"></div>
-      </div>
+          </div>
           : null}
         {stage === 'SUMMARY' ?
-          <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
+          <Container style={{ maxWidth: '70%', paddingTop: '20vh' }}>
             <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h2>
             <ListGroup>
               {results.map(result => (
-                <ListGroup.Item
-                  variant={result.score > 90 ? 'warning' : 'success'}
-                >
+                <ListGroup.Item variant={result.score > 90 ? 'warning' : 'success'}>
                   <h2>{this.getPollutionLabel(result.stage)}</h2>
-                  <h3>{`${result.name}: ${Math.round(result.score)}% match`}</h3>
+                  <h3>{`${selectedCity.name}: ${this.getPollutionString(result.stage, selectedCity[result.stage])}`}</h3>
+                  <h3>{`${result.name}: ${this.getPollutionString(result.stage, result.data[result.stage])}`}</h3>
+                  <h3 style={{fontWeight: 'bold'}}>{`${Math.round(result.score)}% match`}</h3>
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            <h2 style={{ textAlign: 'center', marginTop: '40px' }}>{`Score ${Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</h2>
+            <h2 style={{ textAlign: 'center', marginTop: '40px' }}>{`Score ${Math.round(results.reduce(scoreTotal, 0) / results.length)}%`}</h2>
           </Container>
           : null}
       </div>);

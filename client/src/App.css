@@ -50,7 +50,7 @@ body {
 }
 .circle-center {
   position: absolute;
-  top: calc(50vh - 4px);
+  top: calc(50vh - 60px);
   left: calc(50vw - 4px);
   height: 8px;
   width: 8px;
@@ -78,7 +78,6 @@ body {
 }
 
 .rightBoxEnable {
-  background-color: #1FAD0F;
   cursor: pointer;
 }
 
@@ -86,11 +85,31 @@ body {
   cursor: not-allowed;
 }
 
+.top-text {
+  bottom: 20vh;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
 .bottom-text {
   bottom: 4vh;
   line-height: 20px;
   position: absolute;
   text-align: center;
+  width: 100%;
+}
+
+.percent {
+  line-height: 20px;
+  position: absolute;
+  bottom: 17vh;
+  width: 100%;
+}
+
+.nextButton {
+  line-height: 20px;
   width: 100%;
 }
 

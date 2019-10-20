@@ -66,8 +66,8 @@ class CesiumMap extends React.PureComponent {
     }
     actualWave.score = score
     waves(actualWave, targetWave);
-    this.currentScore = { name: response[0].name, score: score * 100, stage: stageName };
-    this.props.setMatchPercentage(this.currentScore.score);
+    this.currentScore = { name: response[0].name, score: score * 100, stage: stageName, data: response[0] };
+    this.props.setMatchPercentage(this.currentScore.score, this.currentScore.name);
 
     playPlayerBasedOnScoreAndStage(score, stageNumber);
   }
