@@ -8,6 +8,7 @@
     "bootstrap": "^4.3.1",
     "cesium": "^1.60.0",
     "cesium-react": "^0.2.2",
+    "clone": "^2.1.2",
     "craco-cesium": "^1.1.1",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.14",

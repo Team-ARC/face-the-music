@@ -1,6 +1,6 @@
 import SineWaves from "sine-waves"
 
-const waves = (wavelength) => {
+const waves = (actual, target) => {
   new SineWaves({
     // Canvas Element
     el: document.getElementById('waves'),
@@ -23,16 +23,17 @@ const waves = (wavelength) => {
       {
         timeModifier: 1,
         lineWidth: 10,
-        amplitude: 110,
-        wavelength: 143,
+        amplitude: target.amplitude,
+        wavelength: target.wavelength,
         strokeStyle: 'rgba(100, 100, 100, 1)'
       },
       {
         timeModifier: 1,   // This is multiplied againse `speed`
         lineWidth: 2,      // Stroke width
-        amplitude: 110,    // How tall is the wave
-        wavelength: wavelength,   // How long is the wave
-        strokeStyle: 'rgba(0, 255, 0, 1)', // Stroke color and opacity
+        amplitude: actual.amplitude,    // How tall is the wave
+        wavelength: actual.wavelength,   // How long is the wave
+        strokeStyle: `rgba(${(1-actual.score) * 255}, ${actual.score * 255}, 0, 1)`,
+        type: x => Math.sin(x - actual.phase),
       },
     ],
    
