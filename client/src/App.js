@@ -62,7 +62,7 @@ export default class App extends React.Component {
         {stage === 'START' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <h1 style={{ textAlign: 'center', 'margin-bottom': '60px' }}>Face the Music</h1>
-            <h3 style={{ textAlign: 'center', 'margin-bottom': '80px' }}>Understand the impact of your city ton tune into its inner song</h3>
+            <h3 style={{ textAlign: 'center', 'margin-bottom': '80px' }}>Understand the impact of your city to tune into its inner song</h3>
             <Button
               variant="primary" size="lg" block
               onClick={() => { this.setState({ stage: 'SELECT' }) }}>
