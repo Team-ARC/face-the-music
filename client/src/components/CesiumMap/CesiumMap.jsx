@@ -72,7 +72,7 @@ class CesiumMap extends React.PureComponent {
     if (this.timer) {
       clearTimeout(this.timer);
     }
-    this.timer = setTimeout(() => this.getScore(position, this.state.city, this.state.stages[this.state.stage], this.state.stage), 2000);
+    this.timer = setTimeout(() => this.getScore(position, this.state.city, this.state.stages[this.state.stage], this.state.stage), 1000);
   }
 
   componentDidMount() {
@@ -93,7 +93,7 @@ class CesiumMap extends React.PureComponent {
         this.props.onComplete(this.results);
       } else {
         this.setState({ stage: this.props.stageIndex });
-        this.getCameraLocation();
+        this.getCameraLocation(true);
       }
     }
   }
