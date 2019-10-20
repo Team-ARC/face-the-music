@@ -82,8 +82,8 @@ export default class App extends React.Component {
     const { matchPercentage, pollutionStageIndex, pollutionStages } = this.state;
     if(matchPercentage >= 80) {
         const newStageIndex = pollutionStageIndex + 1;
-        console.log(newStageIndex);
-        console.log(pollutionStages[newStageIndex]);
+        console.log('newStageIndex ' + newStageIndex);
+        console.log('pollutionStages[newStageIndex] ' + pollutionStages[newStageIndex]);
         const update = {
           pollutionStageIndex: newStageIndex
         }
@@ -125,7 +125,7 @@ export default class App extends React.Component {
           : null}
         {stage === 'MAP' ?
           <div>
-            <CesiumMap style={{ position: "absolute", top: 0, left: 0 }} 
+            <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
             className="map"
             selectedCity={selectedCity}
             setMatchPercentage={this.setMatchPercentage}
