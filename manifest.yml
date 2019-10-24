@@ -1,0 +1,11 @@
+applications:
+  - name: face-the-music
+    routes:
+      - route: face-the-music.eu-gb.cf.appdomain.cloud
+    memory: 128M
+    timeout: 180
+    # domain: null
+    # host: rwalle61
+    # buildpack: sdk-for-nodejs
+    # command: npm start
+    # instances: 1

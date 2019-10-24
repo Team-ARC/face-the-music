@@ -26,8 +26,8 @@
   },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true craco start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "SKIP_PREFLIGHT_CHECK=true craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

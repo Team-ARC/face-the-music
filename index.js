@@ -8,10 +8,9 @@ const compress = require('compression');
 const methodOverride = require('method-override');
 const cors = require('cors')
 
-const config = require('./server/config/env');
+const { port } = require('./server/config/env');
 const routes = require('./server/routes/index.route');
 
-const port = config.port;
 const app = express();
 
 app.set('port', port);
@@ -35,7 +34,7 @@ app.use('/', routes);
 app.use(methodOverride());
 
 app.listen(port, () => {
-    console.log(`server started on port ${port} (${port})`);
+    console.log(`server started on port ${port}`);
 });
 
 module.exports = app;
