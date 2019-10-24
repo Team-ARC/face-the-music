@@ -6,7 +6,6 @@ import { getNearestCity } from '../../services/location.service';
 import clone from 'clone';
 import {
   playPlayerBasedOnScoreAndStage,
-  startFirstPlayer,
 } from '../../services/music.service';
 
 const targetWaves = [
@@ -33,7 +32,6 @@ class CesiumMap extends React.PureComponent {
       stages: ['co2', 'landfill', 'warming'],
       city: props.selectedCity,
     }
-    startFirstPlayer();
   }
 
   async getScore({ latitude, longitude }, targetCity, stageName, stageNumber) {
@@ -109,7 +107,7 @@ class CesiumMap extends React.PureComponent {
   render() {
     return (
       <Viewer
-        style={{ height: '90vh' }}
+        style={{ height: '100vh' }}
         timeline={false}
         homeButton={false}
         infoBox={false}

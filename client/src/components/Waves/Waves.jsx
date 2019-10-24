@@ -1,5 +1,7 @@
 import SineWaves from "sine-waves"
 
+const maximumAmplitude = 230;
+
 const waves = (actual, target) => {
   new SineWaves({
     // Canvas Element
@@ -22,15 +24,16 @@ const waves = (actual, target) => {
     waves: [
       {
         timeModifier: 1,
-        lineWidth: 10,
-        amplitude: target.amplitude,
+        lineWidth: 8,
+        amplitude: Math.min(target.amplitude, maximumAmplitude),
         wavelength: target.wavelength,
-        strokeStyle: 'rgba(100, 100, 100, 1)'
+        strokeStyle: 'rgba(25, 25, 25, 1)',
+        type: x => 0,
       },
       {
         timeModifier: 1,   // This is multiplied againse `speed`
-        lineWidth: 2,      // Stroke width
-        amplitude: actual.amplitude,    // How tall is the wave
+        lineWidth: 6,      // Stroke width
+        amplitude: Math.min(actual.amplitude, maximumAmplitude),    // How tall is the wave
         wavelength: actual.wavelength,   // How long is the wave
         strokeStyle: `rgba(${(1-actual.score) * 255}, ${actual.score * 255}, 0, 1)`,
         type: x => Math.sin(x - actual.phase),
