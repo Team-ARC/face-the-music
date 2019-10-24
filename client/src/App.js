@@ -55,11 +55,11 @@ export default class App extends React.Component {
   getPollutionQuestion(pollutionStage) {
     switch (pollutionStage) {
       case 'co2':
-        return 'CO2 Emissions';
+        return 'Which city has the lowest levels of CO2 Emissions?';
       case 'landfill':
-        return 'Landfilled Waste Percentage';
+        return 'Which city has the lowest landfilled waste percentage?';
       case 'warming':
-        return 'Tempature Increase since 1960';
+        return 'Which city has the lowest tempature increase since 1960?';
       default:
         return 'ERROR';
     }
@@ -167,13 +167,17 @@ export default class App extends React.Component {
             <div className='hud'>
               <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
               <canvas className="waves" id="waves" />
-              <div className='sideBox leftBox'>
-                <div className='top-text'>{selectedCity.name}</div>
+              <div className='sideBox leftBox' style={{ backgroundColor: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>
+                <div className='top-text' >{comparedCity}</div>
                 <FontAwesomeIcon icon={this.getPollutionIcon(pollutionStage)} size="2x"></FontAwesomeIcon>
-                <div className='bottom-text' style={{ color: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>{comparedCity}</div>
               </div>
               <div onClick={this.incrementStage} className={'sideBox rightBox ' + (matchPercentage >= matchLimit ? 'rightBoxEnable' : 'rightBoxDisable')} style={{ backgroundColor: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>
-                <div className="percent">{`${matchPercentage}%`}</div>
+                <div className="percent">
+                  <div className='text' >{`${matchPercentage}%`}</div>
+                  <br />
+                  <div className='text' >{"too high"}</div>
+                </div>
+                <div className="percent"></div>
                 {matchPercentage >= matchLimit ? (
                   <i className="fa fa-arrow-right nextButton"></i>
                 ) : null}
