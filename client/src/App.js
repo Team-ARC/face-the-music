@@ -9,7 +9,22 @@ import './App.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTemperatureHigh, faTrash, faSmog } from '@fortawesome/free-solid-svg-icons'
 
-const matchLimit = 50;
+const matchLimit = 20;
+const cleanestCity = {
+  "name": "Copenhagen",
+  "country": "Made up",
+  "countryAlt": "Made up",
+  "population": 21253719,
+  "co2NatPercentage": 45.1,
+  "location": {
+      "long": 126.9629,
+      "lat": 37.48175
+  },
+  "co2": 28335000,
+  "warming": 0.72,
+  "landfill": 8,
+  "id": 29
+};
 export default class App extends React.Component {
 
   constructor() {
@@ -18,7 +33,7 @@ export default class App extends React.Component {
     this.state = {
       stage: 'START',
       pollutionStage: 'co2',
-      pollutionStages: ['co2', 'landfill', 'warming'],
+      pollutionStages: ['co2', 'warming'],
       pollutionStageIndex: 0,
       selectedCity: null,
       comparedCity: '',
@@ -55,11 +70,11 @@ export default class App extends React.Component {
   getPollutionQuestion(pollutionStage) {
     switch (pollutionStage) {
       case 'co2':
-        return 'Which city has the lowest levels of CO2 Emissions?';
-      case 'landfill':
-        return 'Which city has the lowest landfilled waste percentage?';
+        return 'Which city has the lowest carbon footprint?';
+      // case 'landfill':
+      //   return 'Which city has the lowest landfilled waste percentage?';
       case 'warming':
-        return 'Which city has the lowest temperature increase since 1960?';
+        return 'Which city has had the lowest rise in temperature since 1960?';
       default:
         return 'ERROR';
     }
@@ -130,6 +145,12 @@ export default class App extends React.Component {
   render() {
     const { stage, availableCities, selectedCity, results, pollutionStage, matchPercentage, pollutionStageIndex, comparedCity } = this.state;
     const scoreTotal = (accumulator, currentValue) => accumulator + currentValue.score;
+
+    const pollutionStageNames = {
+      co2: 'Carbon Footprint',
+      warming: 'Temperature Rise',
+    }
+    const pollutionStageName = pollutionStageNames[pollutionStage];
     return (
       <div style={{ height: '100%', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
         {stage === 'START' ?
@@ -138,12 +159,17 @@ export default class App extends React.Component {
             <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Understand the impact of your city to tune into its inner song</h3>
             <Button
               variant="outline-info" size="lg" block
-              onClick={() => { this.setState({ stage: 'SELECT' }) }}>
+              onClick={() => {
+                this.setState({
+                  stage: 'MAP',
+                  selectedCity: cleanestCity,
+                });
+              }}>
               Play
                 </Button>
           </Container>
           : null}
-        {stage === 'SELECT' ?
+        {/* {stage === 'SELECT' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Choose your city</h2>
             {availableCities.map(city => (
@@ -155,7 +181,7 @@ export default class App extends React.Component {
               </Button>
             ))}
           </Container>
-          : null}
+          : null} */}
         {stage === 'MAP' ?
           <div>
             <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
@@ -168,14 +194,15 @@ export default class App extends React.Component {
               <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
               <canvas className="waves" id="waves" />
               <div className='sideBox leftBox' style={{ backgroundColor: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>
-                <div className='top-text' >{comparedCity}</div>
+                <div className='top-text' >{`Current city: ${comparedCity}`}</div>
                 <FontAwesomeIcon icon={this.getPollutionIcon(pollutionStage)} size="2x"></FontAwesomeIcon>
+                <div className='bottom-text' >{pollutionStageName}</div>
               </div>
               <div onClick={this.incrementStage} className={'sideBox rightBox ' + (matchPercentage >= matchLimit ? 'rightBoxEnable' : 'rightBoxDisable')} style={{ backgroundColor: `rgba(${(1 - (matchPercentage / 100)) * 220}, ${matchPercentage / 100 * 220}, 0, 1)` }}>
                 <div className="percent">
                   <div className='text' >{`${matchPercentage}%`}</div>
                   <br />
-                  <div className='text' >{"too high"}</div>
+                  <div className='text' >{'too high'}</div>
                 </div>
                 <div className="percent"></div>
                 {matchPercentage >= matchLimit ? (
@@ -191,7 +218,7 @@ export default class App extends React.Component {
             <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h2>
             <ListGroup>
               {results.map(result => (
-                <ListGroup.Item variant={result.score > 90 ? 'warning' : 'success'}>
+                <ListGroup.Item variant={result.score > 90 ? 'success' : 'warning'}>
                   <h2>{this.getPollutionLabel(result.stage)}</h2>
                   <h3>{`${selectedCity.name}: ${this.getPollutionString(result.stage, selectedCity[result.stage])}`}</h3>
                   <h3>{`${result.name}: ${this.getPollutionString(result.stage, result.data[result.stage])}`}</h3>
