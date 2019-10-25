@@ -131,7 +131,7 @@ export default class App extends React.Component {
     const { stage, availableCities, selectedCity, results, pollutionStage, matchPercentage, pollutionStageIndex, comparedCity } = this.state;
     const scoreTotal = (accumulator, currentValue) => accumulator + currentValue.score;
     return (
-      <div style={{ height: '100vh', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
+      <div style={{ height: '100%', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
         {stage === 'START' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
@@ -199,7 +199,7 @@ export default class App extends React.Component {
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            <h2 style={{ textAlign: 'center', marginTop: '40px' }}>{`Score ${Math.round(results.reduce(scoreTotal, 0) / results.length)}%`}</h2>
+            <h2 style={{ textAlign: 'center', marginTop: '40px', paddingBottom: '15vh' }}>{`Score ${Math.round(results.reduce(scoreTotal, 0) / results.length)}%`}</h2>
           </Container>
           : null}
       </div>);
