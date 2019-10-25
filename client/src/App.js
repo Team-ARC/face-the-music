@@ -59,7 +59,7 @@ export default class App extends React.Component {
       case 'landfill':
         return 'Which city has the lowest landfilled waste percentage?';
       case 'warming':
-        return 'Which city has the lowest tempature increase since 1960?';
+        return 'Which city has the lowest temperature increase since 1960?';
       default:
         return 'ERROR';
     }
