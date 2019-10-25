@@ -29,7 +29,7 @@ class CesiumMap extends React.PureComponent {
     this.state = {
       started: false,
       stage: 0,
-      stages: ['co2', 'landfill', 'warming'],
+      stages: ['co2', 'warming'],
       city: props.selectedCity,
     }
   }
@@ -52,9 +52,6 @@ class CesiumMap extends React.PureComponent {
         actualWave.amplitude *= signedScore;
         break;
       case 1:
-        actualWave.phase = 5 * (1 - signedScore)
-        break;
-      case 2:
         actualWave.wavelength /= signedScore
         break;
       default:
