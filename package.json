@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "(cd client && npm install)",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
+    "deploy:local": "REACT_APP_SERVER_LOCATION=local npm run build && npm start",
+    "deploy:cloud": "REACT_APP_SERVER_LOCATION=cloud npm run build && ibmcloud cf push face-the-music",
+    "build": "(cd client && npm run build)",
     "generate-cities": "node ./scripts/generateCities.js"
   },
   "repository": {

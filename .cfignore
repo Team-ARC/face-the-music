@@ -1,0 +1,14 @@
+/**/node_modules/
+/**/.nyc_output/
+/**/.stryker-tmp/
+/**/coverage/
+/**/test
+/**/README.md
+.git/
+.github/
+.vscode
+cypress/
+.gitignore
+.travis.yml
+cypress.json
+vcap-local.js
