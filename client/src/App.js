@@ -41,7 +41,7 @@ export default class App extends React.Component {
       case 'landfill':
         return 'Landfilled Waste Percentage';
       case 'warming':
-        return 'Tempature Increase since 1960';
+        return 'Temperature Increase since 1960';
       default:
         return 'ERROR';
     }
