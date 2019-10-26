@@ -1,30 +1,63 @@
 import {Howl, Howler} from 'howler';
-import nice_song from '../assets/rocket_man_elton_john.mp3'
-import pollution_noise from '../assets/david_bowie_space_oddity.mp3'
+import nice_song from '../assets/rainforest2.m4a'
+import factorySounds from '../assets/factory.mp3'
+import trafficSounds from '../assets/traffic.mp3'
+import fireSounds from '../assets/fire.mp3'
 
-let isHowlerPlaying = false;
-
-const pollutionTrack = new Howl({
-  src: [pollution_noise],
-});
+const pollutionTracks = [
+  {
+    howler: new Howl({
+      src: [factorySounds],
+      loop: true,
+    }),
+    volumeModifier: 1/8,
+  },
+  {
+    howler: new Howl({
+      src: [trafficSounds],
+      loop: true,
+    }),
+    volumeModifier: 1,
+  },
+  {
+    howler: new Howl({
+      src: [fireSounds],
+      loop: true,
+    }),
+    volumeModifier: 1/2,
+  },
+];
 
 const niceSong = new Howl({
   src: [nice_song],
+  loop: true,
 });
 
+const volumes = [
+  0.7,
+  0.7,
+  0.7,
+];
+
+const average = arr => arr.reduce((sum, x) => sum + x) / arr.length;
+
+export const initiateNiceMusic = () => {
+  if(!niceSong.playing()) {
+    niceSong.play();
+  }
+};
+
+export const initiatePollutedMusic = () => {
+  pollutionTracks.forEach(({ howler, volumeModifier }) => {
+    howler.play();
+    howler.volume(volumeModifier);
+  });
+  
+}
 
 export const playPlayerBasedOnScoreAndStage = (stageNumber, score) => {
-  if (stageNumber <= 0) {
-    if (!isHowlerPlaying) {
-      isHowlerPlaying = true;
-      niceSong.play();
-      niceSong.rate(0.5);
-      pollutionTrack.play();
-    }
-    pollutionTrack.volume(score);
-  } else {
-    pollutionTrack.stop();
-    const tempo = 0.5 + score*0.5;
-    niceSong.rate(tempo);
-  }
+  const { howler, volumeModifier } =  pollutionTracks[stageNumber]
+  howler.volume(score * volumeModifier);
+  volumes[stageNumber] = score;
+  niceSong.volume(0.7 - average(volumes));
 }

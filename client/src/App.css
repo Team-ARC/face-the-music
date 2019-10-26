@@ -117,6 +117,10 @@ body {
   width: 100%;
 }
 
+.menu-button {
+  margin: 100px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

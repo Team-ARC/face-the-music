@@ -1,11 +1,13 @@
 import React from 'react';
 import Cesium from "cesium"
-import { Viewer } from "cesium-react";
+import { Viewer, CameraFlyTo, } from "cesium-react";
 import waves from '../Waves'
 import { getNearestCity } from '../../services/location.service';
 import clone from 'clone';
 import {
   playPlayerBasedOnScoreAndStage,
+  initiateNiceMusic,
+  initiatePollutedMusic,
 } from '../../services/music.service';
 
 const targetWaves = [
@@ -26,15 +28,25 @@ class CesiumMap extends React.PureComponent {
 
   constructor(props) {
     super();
+    console.log(props)
     this.state = {
       started: false,
-      stage: 0,
-      stages: ['co2', 'warming'],
-      city: props.selectedCity,
+      stage: -1,
+      stages: ['co2', 'landfill', 'warming'],
+      city: props.city,
     }
   }
 
   async getScore({ latitude, longitude }, targetCity, stageName, stageNumber) {
+    console.log("stageNumber")
+    targetCity = {
+      "co2": 24086000,
+      "warming": 0.72,
+      "landfill": 1,
+    }
+    console.log(targetCity)
+    if(stageNumber < 0) return;
+
     const latitudeDegrees = radians_to_degrees(latitude)
     const longitudeDegrees = radians_to_degrees(longitude)
     const response = await getNearestCity(longitudeDegrees, latitudeDegrees);
@@ -44,7 +56,17 @@ class CesiumMap extends React.PureComponent {
 
     const actualValue = response[0][stageName]
     const targetValue = targetCity[stageName]
-    const score = Math.min(actualValue, targetValue) / Math.max(actualValue, targetValue)
+    console.log("targetValue")
+    console.log(targetValue)
+    console.log("actualValue")
+    console.log(actualValue)
+
+    let score = 1 - (Math.min(actualValue, targetValue) / Math.max(actualValue, targetValue))
+
+    if (stageName === "landfill") {
+      score = (actualValue - 1) / 100;
+    }
+
     const signedScore = actualValue / targetValue // How far from target in positive or negative
 
     switch (stageNumber) {
@@ -69,12 +91,12 @@ class CesiumMap extends React.PureComponent {
     const camera = this.viewer.cesiumElement.scene.camera;
     const position = camera.positionCartographic;
     if(override) {
-      return this.getScore(position, this.state.city, this.state.stages[this.state.stage], this.state.stage);
+      return this.getScore(position, this.props.city, this.state.stages[this.state.stage], this.state.stage);
     }
     if (this.timer) {
       clearTimeout(this.timer);
     }
-    this.timer = setTimeout(() => this.getScore(position, this.state.city, this.state.stages[this.state.stage], this.state.stage), 1000);
+    this.timer = setTimeout(() => this.getScore(position, this.props.city, this.state.stages[this.state.stage], this.state.stage), 1000);
   }
 
   componentDidMount() {
@@ -90,7 +112,14 @@ class CesiumMap extends React.PureComponent {
   componentDidUpdate() {
     if (this.state.stage !== this.props.stageIndex) {
       const stage = this.props.stageIndex;
-      this.results.push(this.currentScore);
+      console.log("this.state")
+      console.log(this.state)
+      if (this.state.stage >= 0) {
+        this.results.push(this.currentScore);
+      }
+      
+      console.log("results")
+      console.log(this.results)
       if (stage >= this.state.stages.length) {
         this.props.onComplete(this.results);
       } else {
@@ -102,6 +131,10 @@ class CesiumMap extends React.PureComponent {
   }
 
   render() {
+    initiateNiceMusic();
+    if (this.state.stage >= 0) {
+      initiatePollutedMusic();
+    }
     return (
       <Viewer
         style={{ height: '100vh' }}
@@ -114,6 +147,14 @@ class CesiumMap extends React.PureComponent {
         fullscreenButton={false}
 
         ref={e => { this.viewer = e; }} >
+        { this.state.stage < 0 ? 
+          <CameraFlyTo
+            destination={Cesium.Cartesian3.fromDegrees(this.props.cameraLocation.longitude, this.props.cameraLocation.latitude, 25000000)}
+            duration={3}
+          />
+          : null
+        
+        }
       </Viewer>
     );
   }

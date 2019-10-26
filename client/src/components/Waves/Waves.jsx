@@ -35,7 +35,7 @@ const waves = (actual, target) => {
         lineWidth: 6,      // Stroke width
         amplitude: Math.min(actual.amplitude, maximumAmplitude),    // How tall is the wave
         wavelength: actual.wavelength,   // How long is the wave
-        strokeStyle: `rgba(${(1-actual.score) * 255}, ${actual.score * 255}, 0, 1)`,
+        strokeStyle: `rgb(${(actual.score) * 255}, ${(1 - actual.score) * 255}, 0)`,
         type: x => Math.sin(x - actual.phase),
       },
     ],
