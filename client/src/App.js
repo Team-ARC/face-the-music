@@ -8,6 +8,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import './App.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTemperatureHigh, faTrash, faSmog } from '@fortawesome/free-solid-svg-icons'
+import logo from './assets/logo.png';
 
 const matchLimit = 0;
 const cleanestCity = {
@@ -165,6 +166,7 @@ export default class App extends React.Component {
       <div style={{ height: '100vh', height: '100vh', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
         {stage === 'START' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
+            <img className="center" src={logo} alt="Logo" />
             <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
             <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Understand the impact of your city to tune into its inner song</h3>
             <Button
