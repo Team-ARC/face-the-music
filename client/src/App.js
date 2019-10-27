@@ -65,7 +65,7 @@ export default class App extends React.Component {
       case 'landfill':
         return 'Landfilled Waste Percentage';
       case 'warming':
-        return 'Tempature Increase since 1960';
+        return 'Temperature Increase since 1960';
       default:
         return 'ERROR';
     }
@@ -163,7 +163,7 @@ export default class App extends React.Component {
     console.log("pollutionStageIndex")
     console.log(results)
     return (
-      <div style={{ height: '100vh', height: '100vh', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
+      <div style={{ height: '100%', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
         {stage === 'START' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <img className="center" src={logo} alt="Logo" />
@@ -254,7 +254,7 @@ export default class App extends React.Component {
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            <h2 style={{ textAlign: 'center', marginTop: '40px' }}>{`Score ${100 - Math.round(results.reduce(scoreTotal, 0) / results.length)}%`}</h2>
+            <h2 style={{ textAlign: 'center', marginTop: '40px', paddingBottom: '15vh' }}>{`Score ${100 - Math.round(results.reduce(scoreTotal, 0) / results.length)}%`}</h2>
           </Container>
           : null}
       </div>);
