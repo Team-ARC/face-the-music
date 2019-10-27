@@ -168,20 +168,50 @@ export default class App extends React.Component {
     const pollutionStageName = pollutionStageNames[pollutionStage];
     return (
       <div style={{ height: '100%', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
-        {stage === 'START' ?
+      {stage === 'START' ?
+        <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
+          <img className="center" src={logo} alt="Logo" />
+          <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
+          <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Understand the impact of your city to tune into its inner song</h3>
+          <Button
+            variant="outline-info" size="lg" block
+            onClick={() => {
+              this.setState({
+                stage: 'SELECT',
+                selectedCity: cleanestCity,
+              });
+            }}>
+            Play
+              </Button>
+          <Button
+            variant="outline-info" size="lg" block
+            onClick={() => {
+              this.setState({
+                stage: 'INSTRUCTIONS',
+                selectedCity: cleanestCity,
+              });
+            }}>
+            Instructions
+              </Button>
+        </Container>
+        : null}
+        {stage === 'INSTRUCTIONS' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <img className="center" src={logo} alt="Logo" />
             <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
-            <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Understand the impact of your city to tune into its inner song</h3>
+            <h3 style={{ textAlign: 'center' }}>To play the game, first choose a biome to begin your journey</h3>
+            <h3 style={{ textAlign: 'center' }}>Then move the globe to a city which best answers the question</h3>
+            <h3 style={{ textAlign: 'center' }}>Once you're happy with your choice, you can go to the next question by pressing the bottom right button</h3>
+            <h3 style={{ textAlign: 'center', marginBottom: '30px' }}>The cleaner the city you select, the cleaner the song becomes!</h3>
             <Button
               variant="outline-info" size="lg" block
               onClick={() => {
                 this.setState({
-                  stage: 'SELECT',
+                  stage: 'START',
                   selectedCity: cleanestCity,
                 });
               }}>
-              Play
+              Back
                 </Button>
           </Container>
           : null}
