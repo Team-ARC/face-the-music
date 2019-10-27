@@ -292,7 +292,7 @@ export default class App extends React.Component {
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            <h2 style={{ textAlign: 'center', marginTop: '40px', paddingBottom: '15vh' }}>{`Score ${100 - Math.round(results.reduce(scoreTotal, 0) / results.length)}%`}</h2>
+            <h2 style={{ textAlign: 'center', marginTop: '40px', paddingBottom: '15vh' }}>{`Climate IQ: ${150 - Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</h2>
           </Container>
           : null}
       </div>);

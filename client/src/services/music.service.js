@@ -27,14 +27,14 @@ const pollutionTracks = [
       src: [factorySounds],
       loop: true,
     }),
-    volumeModifier: 1/8,
+    volumeModifier: 1/6,
   },
   {
     howler: new Howl({
       src: [trafficSounds],
       loop: true,
     }),
-    volumeModifier: 1,
+    volumeModifier: 1/2,
   },
   {
     howler: new Howl({
@@ -68,15 +68,17 @@ export const initiateNiceMusic = (location) => {
 
 export const initiatePollutedMusic = () => {
   pollutionTracks.forEach(({ howler, volumeModifier }) => {
-    howler.play();
-    howler.volume(volumeModifier);
+    if (!howler.playing()) {
+      howler.play();
+      howler.volume(volumeModifier);
+    }
   });
   
 }
 
 export const playPlayerBasedOnScoreAndStage = (stageNumber, score) => {
   const { howler, volumeModifier } =  pollutionTracks[stageNumber]
-  howler.volume(score * volumeModifier);
+  howler.volume((score) * volumeModifier);
   volumes[stageNumber] = score;
-  niceSongs[currentPlayingNiceSong].volume(0.7 - average(volumes));
+  niceSongs[currentPlayingNiceSong].volume(1 - average(volumes));
 }
