@@ -1,8 +1,9 @@
 import SineWaves from "sine-waves"
 
-const maximumAmplitude = 230;
+const maximumAmplitude = 200;
 
 const waves = (actual, target) => {
+  console.log(actual)
   new SineWaves({
     // Canvas Element
     el: document.getElementById('waves'),

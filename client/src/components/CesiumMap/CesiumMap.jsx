@@ -13,7 +13,7 @@ import {
 const targetWaves = [
   { wavelength: 286, amplitude: 110, phase: 0 },
   { wavelength: 286, amplitude: 110, phase: 0 },
-  { wavelength: 143, amplitude: 110, phase: 0 },
+  { wavelength: 286, amplitude: 110, phase: 0 },
 ]
 
 Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwZTU3ZDZlZi1lNzdiLTQ4MjUtYTliYy1mOTg1MWUyM2JmYTUiLCJpZCI6MTcwMjgsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzE0OTc5Mjl9.eAnkhlgA9PGlI4zGdof-ovkLOehYWKIGxdUe4zX9z_U";
@@ -57,18 +57,23 @@ class CesiumMap extends React.PureComponent {
     let score = 1 - (Math.min(actualValue, targetValue) / Math.max(actualValue, targetValue))
 
     const signedScore = actualValue / targetValue; // How far from target in positive or negative
-
-    switch (stageNumber) {
-      case 0:
-        actualWave.amplitude *= signedScore;
-        break;
-      case 1:
-        actualWave.wavelength /= signedScore;
-        break;
-      default:
-        break;
+    
+    if (stageNumber % 2) {
+      actualWave.amplitude *= signedScore - 0.7;
+    } else {
+      actualWave.wavelength /= signedScore - 0.85;
     }
-    actualWave.score = score
+    // switch (stageNumber) {
+    //   case 0:
+    //     actualWave.amplitude *= signedScore;
+    //     break;
+    //   case 1:
+    //     actualWave.wavelength /= signedScore;
+    //     break;
+    //   default:
+    //     break;
+    // }
+    actualWave.score = signedScore - 1
     waves(actualWave, targetWave);
     this.currentScore = { name: response[0].name, score: (signedScore - 1) * 100, stage: stageName, data: response[0] };
     this.props.setMatchPercentage(this.currentScore.score, this.currentScore.name);
