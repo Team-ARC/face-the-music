@@ -230,14 +230,14 @@ export default class App extends React.Component {
                   {city.name}
                 </Button>
               ))}
+              <Button
+                variant={startingCity ? 'outline-info' : 'outline-secondary'} size="lg" block
+                style={{ marginBottom: '30px', marginTop: '40px' }}
+                disabled={!startingCity}
+                onClick={this.startGame}>
+                Select
+              </Button>
             </Row>
-            <Button
-              variant={startingCity ? 'outline-info' : 'outline-secondary'} size="lg" block
-              style={{ marginBottom: '30px', marginTop: '40px' }}
-              disabled={!startingCity}
-              onClick={this.startGame}>
-              Select
-            </Button>
           </Container>
           : null}
         {stage === 'SUMMARY' ?

@@ -28,7 +28,6 @@ class CesiumMap extends React.PureComponent {
 
   constructor(props) {
     super();
-    console.log(props)
     this.state = {
       started: false,
       stage: -1,
@@ -38,13 +37,11 @@ class CesiumMap extends React.PureComponent {
   }
 
   async getScore({ latitude, longitude }, targetCity, stageName, stageNumber) {
-    console.log("stageNumber")
     targetCity = {
       "co2": 24086000,
       "warming": 0.72,
       "landfill": 1,
     }
-    console.log(targetCity)
     if(stageNumber < 0) return;
 
     const latitudeDegrees = radians_to_degrees(latitude)
@@ -56,15 +53,11 @@ class CesiumMap extends React.PureComponent {
 
     const actualValue = response[0][stageName]
     const targetValue = targetCity[stageName]
-    console.log("targetValue")
-    console.log(targetValue)
-    console.log("actualValue")
-    console.log(actualValue)
 
     let score = 1 - (Math.min(actualValue, targetValue) / Math.max(actualValue, targetValue))
 
     if (stageName === "landfill") {
-      score = (actualValue - 1) / 100;
+      score = actualValue / 100;
     }
 
     const signedScore = actualValue / targetValue // How far from target in positive or negative
@@ -112,14 +105,9 @@ class CesiumMap extends React.PureComponent {
   componentDidUpdate() {
     if (this.state.stage !== this.props.stageIndex) {
       const stage = this.props.stageIndex;
-      console.log("this.state")
-      console.log(this.state)
       if (this.state.stage >= 0) {
         this.results.push(this.currentScore);
       }
-      
-      console.log("results")
-      console.log(this.results)
       if (stage >= this.state.stages.length) {
         this.props.onComplete(this.results);
       } else {
@@ -131,7 +119,7 @@ class CesiumMap extends React.PureComponent {
   }
 
   render() {
-    initiateNiceMusic();
+    initiateNiceMusic(this.props.city.name);
     if (this.state.stage >= 0) {
       initiatePollutedMusic();
     }
