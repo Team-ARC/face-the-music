@@ -152,3 +152,7 @@ html, body {
 .App-link {
   color: #09d3ac;
 }
+
+.hidden {
+  display:none;
+}

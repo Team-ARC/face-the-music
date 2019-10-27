@@ -5,9 +5,9 @@ import waves from '../Waves'
 import { getNearestCity } from '../../services/location.service';
 import clone from 'clone';
 import {
-  playPlayerBasedOnScoreAndStage,
-  initiateNiceMusic,
-  initiatePollutedMusic,
+  adjustSounds,
+  // startNiceMusic,
+  startPollutedMusic,
 } from '../../services/music.service';
 
 const targetWaves = [
@@ -42,7 +42,7 @@ class CesiumMap extends React.PureComponent {
       "warming": 0.72,
       "nitrousOxides": 163,
     }
-    if(stageNumber < 0) return;
+    if (stageNumber < 0) return;
 
     const latitudeDegrees = radians_to_degrees(latitude)
     const longitudeDegrees = radians_to_degrees(longitude)
@@ -57,7 +57,7 @@ class CesiumMap extends React.PureComponent {
     let score = 1 - (Math.min(actualValue, targetValue) / Math.max(actualValue, targetValue))
 
     const signedScore = actualValue / targetValue; // How far from target in positive or negative
-    
+
     if (stageNumber % 2) {
       actualWave.amplitude *= signedScore - 0.7;
     } else {
@@ -78,7 +78,7 @@ class CesiumMap extends React.PureComponent {
     this.currentScore = { name: response[0].name, score: (signedScore - 1) * 100, stage: stageName, data: response[0] };
     this.props.setMatchPercentage(this.currentScore.score, this.currentScore.name);
 
-    playPlayerBasedOnScoreAndStage(stageNumber, score);
+    adjustSounds(stageNumber, score);
   }
 
   getCameraLocation(override = false) {
@@ -120,9 +120,8 @@ class CesiumMap extends React.PureComponent {
   }
 
   render() {
-    initiateNiceMusic(this.props.city.name);
     if (this.state.stage >= 0) {
-      initiatePollutedMusic();
+      startPollutedMusic();
     }
     return (
       <Viewer
@@ -136,13 +135,13 @@ class CesiumMap extends React.PureComponent {
         fullscreenButton={false}
 
         ref={e => { this.viewer = e; }} >
-        { this.state.stage < 0 ? 
+        { this.state.stage < 0 ?
           <CameraFlyTo
             destination={Cesium.Cartesian3.fromDegrees(this.props.cameraLocation.longitude, this.props.cameraLocation.latitude, 25000000)}
             duration={3}
           />
           : null
-        
+
         }
       </Viewer>
     );

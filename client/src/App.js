@@ -1,13 +1,15 @@
 import React from 'react';
-import CesiumMap from './components/CesiumMap'
-import { getCities } from './services/location.service'
 import { Button, Container, ListGroup, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import './App.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTemperatureHigh, faTrash, faSmog } from '@fortawesome/free-solid-svg-icons'
+
+import './App.css'
+import CesiumMap from './components/CesiumMap'
+import { getCities } from './services/location.service'
+import { startNiceMusic } from './services/music.service';
 import logo from './assets/logo.png';
 
 const matchLimit = 0;
@@ -65,7 +67,6 @@ export default class App extends React.Component {
     this.startGame = this.startGame.bind(this);
 
     this.getAvailableCities();
-    this.state.startingCity = this.state.availableCities[0];
   }
 
   getPollutionLabel(pollutionStage) {
@@ -75,9 +76,9 @@ export default class App extends React.Component {
       case 'landfill':
         return 'Landfilled Waste Percentage';
       case 'nitrousOxides':
-        return 'Nitrous Oxide levels';
+        return 'Nitrous Oxide Level';
       case 'warming':
-        return 'Temperature Increase since 1960';
+        return 'Temperature Rise Since 1960';
       default:
         return 'ERROR';
     }
@@ -95,9 +96,9 @@ export default class App extends React.Component {
       case 'landfill':
         return 'Which city has the lowest landfilled waste percentage?';
       case 'nitrousOxides':
-        return 'Which city has the least amount of nitrous oxides?';
+        return 'Which city emits the least nitrous oxide?';
       case 'warming':
-        return 'Which city has had the lowest rise in temperature since 1960?';
+        return 'Which city is rising in temperature most slowly?';
       default:
         return 'ERROR';
     }
@@ -177,6 +178,7 @@ export default class App extends React.Component {
 
     const pollutionStageNames = {
       co2: 'Carbon Footprint',
+      nitrousOxides: 'Nitrous Oxide',
       warming: 'Temperature Rise',
       fire: 'Fire Risk',
     }
@@ -187,9 +189,9 @@ export default class App extends React.Component {
         <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
           <img className="center" src={logo} alt="Logo" />
           <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
-          <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Understand the impact of your city to tune into its inner song</h3>
+          <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Clean the Earth to hear her song</h3>
           <Button
-            variant="outline-info" size="lg" block
+            variant="info" size="lg" block
             onClick={() => {
               this.setState({
                 stage: 'SELECT',
@@ -197,7 +199,7 @@ export default class App extends React.Component {
               });
             }}>
             Play
-              </Button>
+          </Button>
           <Button
             variant="outline-info" size="lg" block
             onClick={() => {
@@ -227,7 +229,7 @@ export default class App extends React.Component {
                 });
               }}>
               Back
-                </Button>
+            </Button>
           </Container>
           : null}
         {stage === 'MAP' || stage === 'SELECT' ?
@@ -243,15 +245,18 @@ export default class App extends React.Component {
               <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
               <canvas className="waves" id="waves" />
               <div className='sideBox leftBox' style={{ backgroundColor: `rgb(${((matchPercentage / 100)) * 220}, ${(1 - (matchPercentage / 100)) * 220}, 0, 1)` }}>
-                <div className='top-text' >{`Current city: ${comparedCity}`}</div>
+                <div className='top-text' >
+                  {`Selected City: `}
+                  <span style={{ fontWeight: 'bold' }}>{comparedCity}</span>
+                </div>
                 <FontAwesomeIcon icon={this.getPollutionIcon(pollutionStage)} size="2x"></FontAwesomeIcon>
                 <div className='bottom-text' >{pollutionStageName}</div>
               </div>
               <div onClick={this.incrementStage} className={'sideBox rightBox ' + (matchPercentage >= matchLimit ? 'rightBoxEnable' : 'rightBoxDisable')} style={{ backgroundColor: `rgb(${((matchPercentage / 100)) * 220}, ${(1 - (matchPercentage / 100)) * 220}, 0, 1)` }}>
                 <div className="percent">
-                  <div className='text' >{`${matchPercentage}%`}</div>
+                  <div className='text'>{`${matchPercentage}%`}</div>
                   <br />
-                  <div className='text' >{'too high'}</div>
+                  <div className='text'>{'too high'}</div>
                 </div>
                 <div className="percent"></div>
                 {matchPercentage >= matchLimit ? (
@@ -265,18 +270,27 @@ export default class App extends React.Component {
 
         {stage === 'SELECT' ?
           <Container style={{ paddingTop: '20vh', position: 'absolute', height: '100vh', minWidth: '100%', backgroundColor: 'rgba(0,0,0,0.7)' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Choose a Biome</h2>
+            <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Every ecosystem has a song. Choose one:</h2>
             <Row className="justify-content-md-center" style={{ marginLeft: '30vw', marginRight: '30vw' }}>
               {availableCities.map((city, index) => (
                 <Button
                   variant={startingCity && startingCity.name === city.name ? city.variant : `outline-${city.variant}`} size="lg" block
                   style={{ marginBottom: '30px' }}
-                  onClick={() => { this.selectCity(index) }}>
+                  onClick={() => {
+                    this.selectCity(index);
+                    startNiceMusic(city.name);
+                  }}>
                   {city.name}
                 </Button>
               ))}
+            </Row>
+            <br />
+            <br />
+            <br />
+            <Row className="justify-content-md-center" style={{ marginLeft: '30vw', marginRight: '30vw' }}>
               <Button
-                variant={startingCity ? 'outline-info' : 'outline-secondary'} size="lg" block
+                variant={'outline-info'} size="lg" block
+                className={startingCity ? '' : 'hidden'}
                 style={{ marginBottom: '30px', marginTop: '40px' }}
                 disabled={!startingCity}
                 onClick={this.startGame}>
@@ -287,15 +301,33 @@ export default class App extends React.Component {
           : null}
         {stage === 'SUMMARY' ?
           <Container style={{ maxWidth: '70%', paddingTop: '15vh' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h2>
-            <h2 style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px'}}>{`Your climate IQ is ${150 - Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</h2>
+            <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h1>
+            <h2 style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px'}}>
+              {`Congratulations, your Climate IQ is `}
+              <span style={{ fontWeight: 'bold' }}>{`${150 - Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</span>
+              {'!'}
+            </h2>
             <ListGroup>
               {results.map(result => (
-                <ListGroup.Item variant={result.score > 70 ? 'danger' : result.score > 20 ? 'success' : 'warning'}>
-                  <h2>{this.getPollutionQuestion(result.stage)}</h2>
-                  <h3>{`You said ${result.name}: ${this.getPollutionString(result.stage, result.data[result.stage])}`}</h3>
-                  <h3>{`The best city you could have chosen was ${cleanestCities[result.stage]}: ${this.getPollutionString(result.stage, selectedCity[result.stage])}`}</h3>
-                  <h3 style={{ fontWeight: 'bold' }}>{`${Math.round(result.score)}% too high`}</h3>
+                <ListGroup.Item variant={result.score > 70 ? 'danger' : result.score > 20 ? 'warning' : 'success'}>
+                  <h2 style={{ fontWeight: 'bold' }}>
+                    {this.getPollutionQuestion(result.stage)}
+                  </h2>
+                  <h3>
+                    {'You chose '}
+                    <span style={{ fontWeight: 'bold' }}>{result.name}</span>
+                    {` (${this.getPollutionString(result.stage, result.data[result.stage])})`}
+                  </h3>
+                  <h3>
+                    {'The best city was '}
+                    <span style={{ fontWeight: 'bold' }}>{cleanestCities[result.stage]}</span>
+                    {` (${this.getPollutionString(result.stage, selectedCity[result.stage])})`}
+                  </h3>
+                  <h3>
+                    {'Your city was '}
+                    <span style={{ fontWeight: 'bold' }}>{`${Math.round(result.score)}%`}</span>
+                    {' more polluting.'}
+                  </h3>
                 </ListGroup.Item>
               ))}
             </ListGroup>
