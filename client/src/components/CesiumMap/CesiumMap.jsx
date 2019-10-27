@@ -56,21 +56,21 @@ class CesiumMap extends React.PureComponent {
 
     let score = 1 - (Math.min(actualValue, targetValue) / Math.max(actualValue, targetValue))
 
-    const signedScore = actualValue / targetValue // How far from target in positive or negative
+    const signedScore = actualValue / targetValue; // How far from target in positive or negative
 
     switch (stageNumber) {
       case 0:
         actualWave.amplitude *= signedScore;
         break;
       case 1:
-        actualWave.wavelength /= signedScore
+        actualWave.wavelength /= signedScore;
         break;
       default:
         break;
     }
     actualWave.score = score
     waves(actualWave, targetWave);
-    this.currentScore = { name: response[0].name, score: score * 100, stage: stageName, data: response[0] };
+    this.currentScore = { name: response[0].name, score: (signedScore - 1) * 100, stage: stageName, data: response[0] };
     this.props.setMatchPercentage(this.currentScore.score, this.currentScore.name);
 
     playPlayerBasedOnScoreAndStage(stageNumber, score);

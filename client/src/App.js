@@ -28,6 +28,12 @@ const cleanestCity = {
   "id": 29
 };
 
+const cleanestCities = {
+  co2: 'Harbin',
+  warming: 'Guangzhou',
+  nitrousOxides: 'Melbourne',
+}
+
 export default class App extends React.Component {
 
   constructor() {
@@ -89,7 +95,7 @@ export default class App extends React.Component {
       case 'landfill':
         return 'Which city has the lowest landfilled waste percentage?';
       case 'nitrousOxides':
-        return 'Which city has the lowest levels of Nitrous Oxides?';
+        return 'Which city has the least amount of nitrous oxides?';
       case 'warming':
         return 'Which city has had the lowest rise in temperature since 1960?';
       default:
@@ -274,7 +280,7 @@ export default class App extends React.Component {
                 style={{ marginBottom: '30px', marginTop: '40px' }}
                 disabled={!startingCity}
                 onClick={this.startGame}>
-                Select
+                Start
               </Button>
             </Row>
           </Container>
@@ -282,17 +288,17 @@ export default class App extends React.Component {
         {stage === 'SUMMARY' ?
           <Container style={{ maxWidth: '70%', paddingTop: '15vh' }}>
             <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h2>
+            <h2 style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px'}}>{`Your climate IQ is ${150 - Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</h2>
             <ListGroup>
               {results.map(result => (
-                <ListGroup.Item variant={result.score > 20 ? 'success' : 'warning'}>
-                  <h2>{this.getPollutionLabel(result.stage)}</h2>
-                  <h3>{`${selectedCity.name}: ${this.getPollutionString(result.stage, selectedCity[result.stage])}`}</h3>
-                  <h3>{`${result.name}: ${this.getPollutionString(result.stage, result.data[result.stage])}`}</h3>
-                  <h3 style={{ fontWeight: 'bold' }}>{`${100 - Math.round(result.score)}% match`}</h3>
+                <ListGroup.Item variant={result.score > 70 ? 'danger' : result.score > 20 ? 'success' : 'warning'}>
+                  <h2>{this.getPollutionQuestion(result.stage)}</h2>
+                  <h3>{`You said ${result.name}: ${this.getPollutionString(result.stage, result.data[result.stage])}`}</h3>
+                  <h3>{`The best city you could have chosen was ${cleanestCities[result.stage]}: ${this.getPollutionString(result.stage, selectedCity[result.stage])}`}</h3>
+                  <h3 style={{ fontWeight: 'bold' }}>{`${Math.round(result.score)}% too high`}</h3>
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            <h2 style={{ textAlign: 'center', marginTop: '40px', paddingBottom: '15vh' }}>{`Climate IQ: ${150 - Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</h2>
           </Container>
           : null}
       </div>);
