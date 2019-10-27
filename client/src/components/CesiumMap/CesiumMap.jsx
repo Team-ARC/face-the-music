@@ -31,7 +31,7 @@ class CesiumMap extends React.PureComponent {
     this.state = {
       started: false,
       stage: -1,
-      stages: ['co2', 'landfill', 'warming'],
+      stages: ['co2', 'nitrousOxides', 'warming'],
       city: props.city,
     }
   }
@@ -40,7 +40,7 @@ class CesiumMap extends React.PureComponent {
     targetCity = {
       "co2": 24086000,
       "warming": 0.72,
-      "landfill": 1,
+      "nitrousOxides": 163,
     }
     if(stageNumber < 0) return;
 
@@ -55,10 +55,6 @@ class CesiumMap extends React.PureComponent {
     const targetValue = targetCity[stageName]
 
     let score = 1 - (Math.min(actualValue, targetValue) / Math.max(actualValue, targetValue))
-
-    if (stageName === "landfill") {
-      score = actualValue / 100;
-    }
 
     const signedScore = actualValue / targetValue // How far from target in positive or negative
 

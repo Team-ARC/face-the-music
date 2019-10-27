@@ -24,6 +24,7 @@ const cleanestCity = {
   "co2": 24086000,
   "warming": 0.72,
   "landfill": 1,
+  "nitrousOxides": 163,
   "id": 29
 };
 
@@ -35,7 +36,7 @@ export default class App extends React.Component {
     this.state = {
       stage: 'START',
       pollutionStage: 'co2',
-      pollutionStages: ['co2', 'landfill', 'warming'],
+      pollutionStages: ['co2', 'nitrousOxides', 'warming'],
       pollutionStageIndex: -1,
       selectedCity: null,
       startingCity: null,
@@ -67,6 +68,8 @@ export default class App extends React.Component {
         return 'CO2 Emissions';
       case 'landfill':
         return 'Landfilled Waste Percentage';
+      case 'nitrousOxides':
+        return 'Nitrous Oxide levels';
       case 'warming':
         return 'Temperature Increase since 1960';
       default:
@@ -85,6 +88,8 @@ export default class App extends React.Component {
         return 'Which city has the lowest carbon footprint?';
       case 'landfill':
         return 'Which city has the lowest landfilled waste percentage?';
+      case 'nitrousOxides':
+        return 'Which city has the lowest levels of Nitrous Oxides?';
       case 'warming':
         return 'Which city has had the lowest rise in temperature since 1960?';
       default:
@@ -98,6 +103,8 @@ export default class App extends React.Component {
         return 'smog';
       case 'landfill':
         return 'trash';
+      case 'nitrousOxides':
+        return 'smog';
       case 'warming':
         return 'temperature-high';
       default:
@@ -111,6 +118,8 @@ export default class App extends React.Component {
         return `${Math.round(value / 1000000)}Mt`;
       case 'landfill':
         return `${value}%`;
+      case 'nitrousOxides':
+        return `${value} ppbv`;
       case 'warming':
         return `${value} degrees`;
       default:
