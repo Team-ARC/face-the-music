@@ -189,7 +189,7 @@ export default class App extends React.Component {
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <img className="center" src={logo} alt="Logo" />
             <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
-            <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Clean the Earth to hear her song</h3>
+            <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Rediscover the Earth's natural songs</h3>
             <Button
               variant="info" size="lg" block
               onClick={() => {
