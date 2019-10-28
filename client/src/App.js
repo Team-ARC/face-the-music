@@ -169,7 +169,7 @@ export default class App extends React.Component {
   }
 
   startGame() {
-    this.setState({ stage: 'MAP', pollutionStageIndex: 0, pollutionStage: this.state.pollutionStages[0]});
+    this.setState({ stage: 'MAP', pollutionStageIndex: 0, pollutionStage: this.state.pollutionStages[0] });
   }
 
   render() {
@@ -185,33 +185,33 @@ export default class App extends React.Component {
     const pollutionStageName = pollutionStageNames[pollutionStage];
     return (
       <div style={{ height: '100%', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
-      {stage === 'START' ?
-        <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
-          <img className="center" src={logo} alt="Logo" />
-          <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
-          <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Clean the Earth to hear her song</h3>
-          <Button
-            variant="info" size="lg" block
-            onClick={() => {
-              this.setState({
-                stage: 'SELECT',
-                selectedCity: cleanestCity,
-              });
-            }}>
-            Play
+        {stage === 'START' ?
+          <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
+            <img className="center" src={logo} alt="Logo" />
+            <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
+            <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Clean the Earth to hear her song</h3>
+            <Button
+              variant="info" size="lg" block
+              onClick={() => {
+                this.setState({
+                  stage: 'SELECT',
+                  selectedCity: cleanestCity,
+                });
+              }}>
+              Play
           </Button>
-          <Button
-            variant="outline-info" size="lg" block
-            onClick={() => {
-              this.setState({
-                stage: 'INSTRUCTIONS',
-                selectedCity: cleanestCity,
-              });
-            }}>
-            Instructions
+            <Button
+              variant="outline-info" size="lg" block
+              onClick={() => {
+                this.setState({
+                  stage: 'INSTRUCTIONS',
+                  selectedCity: cleanestCity,
+                });
+              }}>
+              Instructions
               </Button>
-        </Container>
-        : null}
+          </Container>
+          : null}
         {stage === 'INSTRUCTIONS' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <img className="center" src={logo} alt="Logo" />
@@ -233,7 +233,7 @@ export default class App extends React.Component {
           </Container>
           : null}
         {stage === 'MAP' || stage === 'SELECT' ?
-          <div style={{ position: "absolute", top: 0, left: 0 }}>
+          <div style={{ position: "absolute", top: 0, left: 0, width: '100%' }}>
             <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
               className="map"
               city={startingCity}
@@ -271,7 +271,7 @@ export default class App extends React.Component {
         {stage === 'SELECT' ?
           <Container style={{ paddingTop: '20vh', position: 'absolute', height: '100vh', minWidth: '100%', backgroundColor: 'rgba(0,0,0,0.7)' }}>
             <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Every ecosystem has a song. Choose one:</h2>
-            <Row className="justify-content-md-center" style={{ marginLeft: '30vw', marginRight: '30vw' }}>
+            <Row className="justify-content-md-center" style={{ marginLeft: '30vw', marginRight: '30vw', marginBottom: '140px' }}>
               {availableCities.map((city, index) => (
                 <Button
                   variant={startingCity && startingCity.name === city.name ? city.variant : `outline-${city.variant}`} size="lg" block
@@ -284,25 +284,21 @@ export default class App extends React.Component {
                 </Button>
               ))}
             </Row>
-            <br />
-            <br />
-            <br />
-            <Row className="justify-content-md-center" style={{ marginLeft: '30vw', marginRight: '30vw' }}>
-              <Button
-                variant={'outline-info'} size="lg" block
-                className={startingCity ? '' : 'hidden'}
-                style={{ marginBottom: '30px', marginTop: '40px' }}
-                disabled={!startingCity}
-                onClick={this.startGame}>
-                Start
+            {startingCity ?
+              <Row className="justify-content-md-center" style={{ marginLeft: '30vw', marginRight: '30vw' }}>
+                <Button
+                  variant={'outline-info'} size="lg" block
+                  onClick={this.startGame}>
+                  Start
               </Button>
-            </Row>
+              </Row>
+              : null}
           </Container>
           : null}
         {stage === 'SUMMARY' ?
           <Container style={{ maxWidth: '70%', paddingTop: '15vh' }}>
             <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h1>
-            <h2 style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px'}}>
+            <h2 style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px' }}>
               {`Congratulations, your Climate IQ is `}
               <span style={{ fontWeight: 'bold' }}>{`${150 - Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</span>
               {'!'}
