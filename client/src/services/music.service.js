@@ -72,7 +72,6 @@ export const startPollutedMusic = () => {
   pollutionTracks.forEach(({ howler, volumeModifier }, index) => {
     if (!howler.playing()) {
       howler.play();
-      howler.fade(0, 1, 40000 * index);
       howler.volume(volumeModifier);
     }
   });
