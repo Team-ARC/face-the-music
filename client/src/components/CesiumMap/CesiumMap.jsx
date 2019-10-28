@@ -1,17 +1,19 @@
 import React from 'react';
 import Cesium from "cesium"
-import { Viewer } from "cesium-react";
+import { Viewer, CameraFlyTo, } from "cesium-react";
 import waves from '../Waves'
 import { getNearestCity } from '../../services/location.service';
 import clone from 'clone';
 import {
-  playPlayerBasedOnScoreAndStage,
+  adjustSounds,
+  // startNiceMusic,
+  startPollutedMusic,
 } from '../../services/music.service';
 
 const targetWaves = [
   { wavelength: 286, amplitude: 110, phase: 0 },
   { wavelength: 286, amplitude: 110, phase: 0 },
-  { wavelength: 143, amplitude: 110, phase: 0 },
+  { wavelength: 286, amplitude: 110, phase: 0 },
 ]
 
 Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwZTU3ZDZlZi1lNzdiLTQ4MjUtYTliYy1mOTg1MWUyM2JmYTUiLCJpZCI6MTcwMjgsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzE0OTc5Mjl9.eAnkhlgA9PGlI4zGdof-ovkLOehYWKIGxdUe4zX9z_U";
@@ -28,13 +30,20 @@ class CesiumMap extends React.PureComponent {
     super();
     this.state = {
       started: false,
-      stage: 0,
-      stages: ['co2', 'landfill', 'warming'],
-      city: props.selectedCity,
+      stage: -1,
+      stages: ['co2', 'nitrousOxides', 'warming'],
+      city: props.city,
     }
   }
 
   async getScore({ latitude, longitude }, targetCity, stageName, stageNumber) {
+    targetCity = {
+      "co2": 24086000,
+      "warming": 0.72,
+      "nitrousOxides": 163,
+    }
+    if (stageNumber < 0) return;
+
     const latitudeDegrees = radians_to_degrees(latitude)
     const longitudeDegrees = radians_to_degrees(longitude)
     const response = await getNearestCity(longitudeDegrees, latitudeDegrees);
@@ -44,40 +53,44 @@ class CesiumMap extends React.PureComponent {
 
     const actualValue = response[0][stageName]
     const targetValue = targetCity[stageName]
-    const score = Math.min(actualValue, targetValue) / Math.max(actualValue, targetValue)
-    const signedScore = actualValue / targetValue // How far from target in positive or negative
 
-    switch (stageNumber) {
-      case 0:
-        actualWave.amplitude *= signedScore;
-        break;
-      case 1:
-        actualWave.phase = 5 * (1 - signedScore)
-        break;
-      case 2:
-        actualWave.wavelength /= signedScore
-        break;
-      default:
-        break;
+    let score = 1 - (Math.min(actualValue, targetValue) / Math.max(actualValue, targetValue))
+
+    const signedScore = actualValue / targetValue; // How far from target in positive or negative
+
+    if (stageNumber % 2) {
+      actualWave.amplitude *= signedScore - 0.7;
+    } else {
+      actualWave.wavelength /= signedScore - 0.85;
     }
-    actualWave.score = score
+    // switch (stageNumber) {
+    //   case 0:
+    //     actualWave.amplitude *= signedScore;
+    //     break;
+    //   case 1:
+    //     actualWave.wavelength /= signedScore;
+    //     break;
+    //   default:
+    //     break;
+    // }
+    actualWave.score = signedScore - 1
     waves(actualWave, targetWave);
-    this.currentScore = { name: response[0].name, score: score * 100, stage: stageName, data: response[0] };
+    this.currentScore = { name: response[0].name, score: (signedScore - 1) * 100, stage: stageName, data: response[0] };
     this.props.setMatchPercentage(this.currentScore.score, this.currentScore.name);
 
-    playPlayerBasedOnScoreAndStage(stageNumber, score);
+    adjustSounds(stageNumber, score);
   }
 
   getCameraLocation(override = false) {
     const camera = this.viewer.cesiumElement.scene.camera;
     const position = camera.positionCartographic;
     if(override) {
-      return this.getScore(position, this.state.city, this.state.stages[this.state.stage], this.state.stage);
+      return this.getScore(position, this.props.city, this.state.stages[this.state.stage], this.state.stage);
     }
     if (this.timer) {
       clearTimeout(this.timer);
     }
-    this.timer = setTimeout(() => this.getScore(position, this.state.city, this.state.stages[this.state.stage], this.state.stage), 1000);
+    this.timer = setTimeout(() => this.getScore(position, this.props.city, this.state.stages[this.state.stage], this.state.stage), 1000);
   }
 
   componentDidMount() {
@@ -93,7 +106,9 @@ class CesiumMap extends React.PureComponent {
   componentDidUpdate() {
     if (this.state.stage !== this.props.stageIndex) {
       const stage = this.props.stageIndex;
-      this.results.push(this.currentScore);
+      if (this.state.stage >= 0) {
+        this.results.push(this.currentScore);
+      }
       if (stage >= this.state.stages.length) {
         this.props.onComplete(this.results);
       } else {
@@ -105,6 +120,9 @@ class CesiumMap extends React.PureComponent {
   }
 
   render() {
+    if (this.state.stage >= 0) {
+      startPollutedMusic();
+    }
     return (
       <Viewer
         style={{ height: '100vh' }}
@@ -117,6 +135,14 @@ class CesiumMap extends React.PureComponent {
         fullscreenButton={false}
 
         ref={e => { this.viewer = e; }} >
+        { this.state.stage < 0 ?
+          <CameraFlyTo
+            destination={Cesium.Cartesian3.fromDegrees(this.props.cameraLocation.longitude, this.props.cameraLocation.latitude, 25000000)}
+            duration={3}
+          />
+          : null
+
+        }
       </Viewer>
     );
   }
