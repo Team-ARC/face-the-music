@@ -5,12 +5,9 @@ const compress = require('compression');
 const methodOverride = require('method-override');
 const cors = require('cors')
 
-const { port } = require('./config/env');
 const routes = require('./routes/index.route');
 
 const app = express();
-
-app.set('port', port);
 
 app.use(cookieParser());
 app.use(compress());
