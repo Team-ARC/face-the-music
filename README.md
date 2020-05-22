@@ -1,6 +1,6 @@
 # Face The Music
 
-Face The Music is a video game that uses music to teach players about climate change on Earth. Our game brings NASA Earth data to a wider audience, helping raise awareness for one of the most important issues of our time. Try it yourself at https://tinyurl.com/facethemusic2!
+Face The Music is a video game that uses music to teach players about climate change on Earth. Our game brings NASA Earth data to a wider audience, helping raise awareness for one of the most important issues of our time. Try it yourself at https://face-the-music.netlify.app/!
 
 ## Challenge Background
 
@@ -49,4 +49,4 @@ Our game is coded in JavaScript, supported by the following technologies:
 * Game server
     * Node.js 
 * Hosting the game on the cloud
-    * IBM Cloud Foundry
+    * [Netlify](https://docs.netlify.com/) (with AWS Lambda serverless functions)
