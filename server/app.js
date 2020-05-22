@@ -22,12 +22,7 @@ app.use(cors({
     origin: true
 }));
 
-app.use('/api', routes);
-app.use('/.netlify/functions/api', routes);
-app.use('/', (req, res) => {
-    console.log('hit /');
-    res.send('hit app /');
-});
+app.use('/', routes);
 app.use(methodOverride());
 
 module.exports = app;
