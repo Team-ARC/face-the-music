@@ -1,5 +1,6 @@
+const { getDistance } = require('geolib');
+
 const cityData = require('../data/cities.final.json');
-const { getDistance } = require('geolib')
 
 const getClosestCity = (longitude, latitude) => {
     const distanceCities = cityData.map(city => {
