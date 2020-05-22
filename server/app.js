@@ -23,6 +23,10 @@ app.use(cors({
 }));
 
 app.use('/', routes);
+app.use('/', (req, res, next) => {
+    console.log('hit /');
+    res.send('foo');
+});
 app.use(methodOverride());
 
 module.exports = app;
