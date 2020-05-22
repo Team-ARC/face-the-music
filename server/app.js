@@ -23,6 +23,7 @@ app.use(cors({
 }));
 
 app.use('/', routes);
+app.use('/', (req, res) => res.send('Healthy'));
 app.use(methodOverride());
 
 module.exports = app;
