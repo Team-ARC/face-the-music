@@ -9,7 +9,7 @@ const origins = {
 // const serverLocation = 'netlify';
 console.log('process.env');
 console.log(process.env);
-const serverLocation = process.env.REACT_APP_SERVER_LOCATION || 'local';
+const serverLocation = process.env.REACT_APP_SERVER_LOCATION || (process.env.NODE_ENV === 'production' ? 'netlify' : 'local');
 
 const origin = origins[serverLocation];
 
