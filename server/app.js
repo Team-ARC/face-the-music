@@ -12,7 +12,6 @@ const app = express();
 app.use(cookieParser());
 app.use(compress());
 
-// parse body params and attache them to req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
