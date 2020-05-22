@@ -11,8 +11,9 @@ const findNearestCity = (req, res, next) => {
 }
 
 const getCities = (req, res, next) => {
-    const cities = mapService.getCities();
-    res.status(200).send(cities);
+    res.status(201).send('getCities');
+    // const cities = mapService.getCities();
+    // res.status(200).send(cities);
 };
 
 const getCity = (req, res, next) => {

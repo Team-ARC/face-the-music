@@ -23,9 +23,9 @@ app.use(cors({
 }));
 
 app.use('/', routes);
-app.use('/', (req, res, next) => {
+app.use('/', (req, res) => {
     console.log('hit /');
-    res.send('foo');
+    res.send('hit app /');
 });
 app.use(methodOverride());
 
