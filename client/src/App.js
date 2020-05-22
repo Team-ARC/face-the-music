@@ -188,7 +188,7 @@ export default class App extends React.Component {
         {stage === 'START' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <img className="center" src={logo} alt="Logo" />
-            <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
+            <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face The Music</h1>
             <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Rediscover the Earth's natural songs</h3>
             <Button
               variant="info" size="lg" block
@@ -215,7 +215,7 @@ export default class App extends React.Component {
         {stage === 'INSTRUCTIONS' ?
           <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
             <img className="center" src={logo} alt="Logo" />
-            <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
+            <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face The Music</h1>
             <h3 style={{ textAlign: 'center' }}>To play the game, first choose a biome to begin your journey</h3>
             <h3 style={{ textAlign: 'center' }}>Then move the globe to a city which best answers the question</h3>
             <h3 style={{ textAlign: 'center' }}>Once you're happy with your choice, you can go to the next question by pressing the bottom right button</h3>
