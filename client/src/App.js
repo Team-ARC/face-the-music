@@ -190,8 +190,6 @@ export default class App extends React.Component {
             <img className="center" src={logo} alt="Logo" />
             <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face the Music</h1>
             <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Rediscover the Earth's natural songs</h3>
-            <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>{'process.env'}</h3>
-            <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>{process.env}</h3>
             <Button
               variant="info" size="lg" block
               onClick={() => {
