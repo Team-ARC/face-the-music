@@ -12,7 +12,7 @@ import { getCities } from './services/location.service'
 import { startNiceMusic } from './services/music.service';
 import logo from './assets/logo.png';
 
-const matchLimit = 0;
+const matchRequirement = 100;
 const cleanestCity = {
   "name": "Copenhagen",
   "country": "Made up",
@@ -24,7 +24,7 @@ const cleanestCity = {
     "lat": 37.48175
   },
   "co2": 24086000,
-  "warming": 0.72,
+  "warming": 1.12,
   "landfill": 1,
   "nitrousOxides": 163,
   "id": 29
@@ -35,6 +35,9 @@ const cleanestCities = {
   warming: 'Guangzhou',
   nitrousOxides: 'Melbourne',
 }
+
+const getMatchPctColor = (matchPercentage) =>
+  `rgb(${((matchPercentage / 100)) * 220}, ${(1 - (matchPercentage / 100)) * 220}, 0, 1)`;
 
 export default class App extends React.Component {
 
@@ -61,7 +64,7 @@ export default class App extends React.Component {
       cameraLocation: { longitude: -62.2187, latitude: -3.46449 },
     }
     this.selectCity = this.selectCity.bind(this);
-    this.mapComplete = this.mapComplete.bind(this);
+    this.gameComplete = this.gameComplete.bind(this);
     this.setMatchPercentage = this.setMatchPercentage.bind(this);
     this.incrementStage = this.incrementStage.bind(this);
     this.startGame = this.startGame.bind(this);
@@ -146,26 +149,23 @@ export default class App extends React.Component {
 
   selectCity(index) {
     const city = this.state.availableCities[index];
-    // this.setState({ selectedCity: city, stage: 'MAP' });
     this.setState({ startingCity: city, cameraLocation: city.cameraLocation });
   }
 
-  mapComplete(results) {
+  gameComplete(results) {
     this.setState({ stage: 'SUMMARY', results });
   }
 
   incrementStage() {
-    const { matchPercentage, pollutionStageIndex, pollutionStages } = this.state;
-    if (matchPercentage >= matchLimit) {
-      const newStageIndex = pollutionStageIndex + 1;
-      const update = {
-        pollutionStageIndex: newStageIndex
-      }
-      if (pollutionStages[newStageIndex]) {
-        update.pollutionStage = pollutionStages[newStageIndex]
-      }
-      this.setState(update)
+    const { pollutionStageIndex, pollutionStages } = this.state;
+    const newStageIndex = pollutionStageIndex + 1;
+    const update = {
+      pollutionStageIndex: newStageIndex,
     }
+    if (pollutionStages[newStageIndex]) {
+      update.pollutionStage = pollutionStages[newStageIndex]
+    }
+    this.setState(update);
   }
 
   startGame() {
@@ -176,22 +176,24 @@ export default class App extends React.Component {
     const { stage, availableCities, selectedCity, startingCity, results, pollutionStage, matchPercentage, pollutionStageIndex, comparedCity } = this.state;
     const scoreTotal = (accumulator, currentValue) => accumulator + currentValue.score;
 
-    const pollutionStageNames = {
-      co2: 'Carbon Footprint',
-      nitrousOxides: 'Nitrous Oxide',
-      warming: 'Temperature Rise',
-      fire: 'Fire Risk',
-    }
-    const pollutionStageName = pollutionStageNames[pollutionStage];
     return (
       <div style={{ height: '100%', position: "relative" }} className={stage !== 'MAP' ? 'texture' : ''}>
         {stage === 'START' ?
-          <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
-            <img className="center" src={logo} alt="Logo" />
-            <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face The Music</h1>
-            <h3 style={{ textAlign: 'center', marginBottom: '80px' }}>Rediscover the Earth's natural songs</h3>
+          <Container fluid style={{
+            flexFlow: 'column',
+            textAlign: 'center',
+            height: '96vh',
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+            padding: '2vh 0',
+          }}>
+            <img className="logo" src={logo} alt="Logo" />
+            <h1 style={{}}>Face The Music</h1>
+            <h3 style={{}}>Rediscover the Earth's natural songs</h3>
             <Button
-              variant="info" size="lg" block
+              className={'button'}
+              variant="info" size="lg"
               onClick={() => {
                 this.setState({
                   stage: 'SELECT',
@@ -200,82 +202,72 @@ export default class App extends React.Component {
               }}>
               Play
           </Button>
-            <Button
-              variant="outline-info" size="lg" block
-              onClick={() => {
-                this.setState({
-                  stage: 'INSTRUCTIONS',
-                  selectedCity: cleanestCity,
-                });
-              }}>
-              Instructions
-              </Button>
-          </Container>
-          : null}
-        {stage === 'INSTRUCTIONS' ?
-          <Container style={{ maxWidth: '50%', paddingTop: '20vh' }}>
-            <img className="center" src={logo} alt="Logo" />
-            <h1 style={{ textAlign: 'center', marginBottom: '60px' }}>Face The Music</h1>
-            <h3 style={{ textAlign: 'center' }}>To play the game, first choose a biome to begin your journey</h3>
-            <h3 style={{ textAlign: 'center' }}>Then move the globe to a city which best answers the question</h3>
-            <h3 style={{ textAlign: 'center' }}>Once you're happy with your choice, you can go to the next question by pressing the bottom right button</h3>
-            <h3 style={{ textAlign: 'center', marginBottom: '30px' }}>The cleaner the city you select, the cleaner the song becomes!</h3>
-            <Button
-              variant="outline-info" size="lg" block
-              onClick={() => {
-                this.setState({
-                  stage: 'START',
-                  selectedCity: cleanestCity,
-                });
-              }}>
-              Back
-            </Button>
           </Container>
           : null}
         {stage === 'MAP' || stage === 'SELECT' ?
           <div style={{ position: "absolute", top: 0, left: 0, width: '100%' }}>
             <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
               className="map"
-              city={startingCity}
+              city={cleanestCity}
               cameraLocation={this.state.cameraLocation}
               setMatchPercentage={this.setMatchPercentage}
-              onComplete={this.mapComplete}
-              stageIndex={pollutionStageIndex} />,
-            <div style={{ display: pollutionStageIndex < 0 ? "none" : "block" }} className='hud'>
-              <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
-              <canvas className="waves" id="waves" />
-              <div className='sideBox leftBox' style={{ backgroundColor: `rgb(${((matchPercentage / 100)) * 220}, ${(1 - (matchPercentage / 100)) * 220}, 0, 1)` }}>
-                <div className='top-text' >
-                  {`Selected City: `}
-                  <span style={{ fontWeight: 'bold' }}>{comparedCity}</span>
+              onComplete={this.gameComplete}
+              stageIndex={pollutionStageIndex}
+            />
+            {stage === 'MAP' ?
+              <div>
+                <div className='hud-title'>
+                  <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
                 </div>
-                <FontAwesomeIcon icon={this.getPollutionIcon(pollutionStage)} size="2x"></FontAwesomeIcon>
-                <div className='bottom-text' >{pollutionStageName}</div>
-              </div>
-              <div onClick={this.incrementStage} className={'sideBox rightBox ' + (matchPercentage >= matchLimit ? 'rightBoxEnable' : 'rightBoxDisable')} style={{ backgroundColor: `rgb(${((matchPercentage / 100)) * 220}, ${(1 - (matchPercentage / 100)) * 220}, 0, 1)` }}>
-                <div className="percent">
-                  <div className='text'>{`${matchPercentage}%`}</div>
-                  <br />
-                  <div className='text'>{'too high'}</div>
+                <div className='hud-base'>
+                  <canvas className="waves" id="waves" />
+                  <h3 className='question hud-statement'>
+                    <span style={{
+                      fontWeight: 'bold',
+                      color: getMatchPctColor(matchPercentage),
+                    }}>{comparedCity}</span>
+                    {' is '}
+                    <span style={{
+                      fontWeight: 'bold',
+                      color: getMatchPctColor(matchPercentage),
+                    }}>{`${matchPercentage}%`}</span>
+                    {' worse than the best city '}
+                    {matchPercentage < matchRequirement
+                      ? (<i className="fa fa-arrow-right" style={{ color: getMatchPctColor(matchPercentage) }} onClick={this.incrementStage}></i>)
+                      : (<i className="fa fa-times" style={{ color: getMatchPctColor(matchPercentage) }}></i>)}
+                  </h3>
                 </div>
-                <div className="percent"></div>
-                {matchPercentage >= matchLimit ? (
-                  <i className="fa fa-arrow-right nextButton"></i>
-                ) : null}
+                <div className="circle circle-center"></div>
               </div>
-            </div>
-            <div className="circle circle-center"></div>
+            : null}
           </div>
-          : null}
+        : null}
+
 
         {stage === 'SELECT' ?
-          <Container style={{ paddingTop: '20vh', position: 'absolute', height: '100vh', minWidth: '100%', backgroundColor: 'rgba(0,0,0,0.7)' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Every ecosystem has a song. Choose one:</h2>
-            <Row className="justify-content-md-center" style={{ marginLeft: '30vw', marginRight: '30vw', marginBottom: '140px' }}>
+          <div style={{
+            position: 'absolute',
+            height: '100vh',
+            width: '100vw',
+            backgroundColor: 'rgba(0,0,0,0.7)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexFlow: 'column',
+            textAlign: 'center',
+          }}>
+            <h2 className={'hud-title'}>Every ecosystem has a song. Choose one:</h2>
+            <div style={{
+              alignItems: 'center',
+              flexFlow: 'column',
+              display: 'flex',
+            }} className={'center'}>
               {availableCities.map((city, index) => (
                 <Button
-                  variant={startingCity && startingCity.name === city.name ? city.variant : `outline-${city.variant}`} size="lg" block
-                  style={{ marginBottom: '30px' }}
+                  key={index}
+                  className={'button'}
+                  variant={startingCity && startingCity.name === city.name ? city.variant : `outline-${city.variant}`} size="lg"
+                  style={{ margin: '0.5rem' }}
                   onClick={() => {
                     this.selectCity(index);
                     startNiceMusic(city.name);
@@ -283,51 +275,49 @@ export default class App extends React.Component {
                   {city.name}
                 </Button>
               ))}
-            </Row>
+           </div>
             {startingCity ?
-              <Row className="justify-content-md-center" style={{ marginLeft: '30vw', marginRight: '30vw' }}>
-                <Button
-                  variant={'outline-info'} size="lg" block
-                  onClick={this.startGame}>
-                  Start
+              <Button
+                className={'button bottom'}
+                variant={'info'} size="lg"
+                onClick={this.startGame}>
+                Start
               </Button>
-              </Row>
-              : null}
-          </Container>
+            : null}
+          </div>
           : null}
         {stage === 'SUMMARY' ?
-          <Container style={{ maxWidth: '70%', paddingTop: '15vh' }}>
-            <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>Results</h1>
-            <h2 style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px' }}>
-              {`Congratulations, your Climate IQ is `}
+          <div style={{
+            flexFlow: 'column',
+            textAlign: 'center',
+            display: 'flex',
+            minHeight: '100vh',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            <h1>Results</h1>
+            <h2>
+              {`Your Climate IQ is `}
               <span style={{ fontWeight: 'bold' }}>{`${150 - Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</span>
-              {'!'}
             </h2>
             <ListGroup>
               {results.map(result => (
                 <ListGroup.Item variant={result.score > 70 ? 'danger' : result.score > 20 ? 'warning' : 'success'}>
-                  <h2 style={{ fontWeight: 'bold' }}>
+                  <h3 style={{ fontWeight: 'bold' }}>
                     {this.getPollutionQuestion(result.stage)}
-                  </h2>
-                  <h3>
-                    {'You chose '}
-                    <span style={{ fontWeight: 'bold' }}>{result.name}</span>
-                    {` (${this.getPollutionString(result.stage, result.data[result.stage])})`}
                   </h3>
-                  <h3>
-                    {'The best city was '}
+                  <h5>
+                    <span style={{ fontWeight: 'bold' }}>{result.name}</span>
+                    {` (${this.getPollutionString(result.stage, result.data[result.stage])}) was `}
+                    <span style={{ fontWeight: 'bold' }}>{`${Math.round(result.score)}%`}</span>
+                    {' more polluting than the best city, '}
                     <span style={{ fontWeight: 'bold' }}>{cleanestCities[result.stage]}</span>
                     {` (${this.getPollutionString(result.stage, selectedCity[result.stage])})`}
-                  </h3>
-                  <h3>
-                    {'Your city was '}
-                    <span style={{ fontWeight: 'bold' }}>{`${Math.round(result.score)}%`}</span>
-                    {' more polluting.'}
-                  </h3>
+                  </h5>
                 </ListGroup.Item>
               ))}
             </ListGroup>
-          </Container>
+          </div>
           : null}
       </div>);
   }

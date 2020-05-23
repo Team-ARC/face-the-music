@@ -14,5 +14,5 @@ export async function getCities() {
 
 export async function getNearestCity(long, lat) {
     const result = await axios.post(`${origin}/api/maps/locate`, { long, lat });
-    return result.data;
+    return result.data[0];
 };

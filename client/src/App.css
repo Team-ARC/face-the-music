@@ -20,12 +20,22 @@ html, body {
   height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
+.logo {
+  height: 10rem;
 }
 
-.hud {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), black);
+.hud-title {
+  background-image: linear-gradient( black, black, rgba(0, 0, 0, 0));
+  width: 100%;
+  color: white;
+  top: 0;
+  left: 0;
+  position: absolute;
+  padding: 2rem;
+  padding-top: 6vh;
+}
+.hud-base {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), black, black);
   width: 100%;
   color: white;
   bottom: 0;
@@ -33,20 +43,19 @@ html, body {
   position: absolute;
   height: 30vh;
 }
+.hud-statement {
+  position: absolute;
+  bottom: 5vh;
+}
 
 .question {
   width: 100%;
-  bottom: 25vh;
-  position: absolute;
   text-align: center;
 }
 
 .waves {
-  width: 100% !important;
-  height: 25vh !important;
-  left: 0;
-  bottom: 0;
-  position: absolute;
+  width: 100%;
+  height: 15vw
 }
 
 .circle {
@@ -66,60 +75,13 @@ html, body {
   width: 8px;
 }
 
-.sideBox {
+.button {
+  width: 14rem;
+}
+
+.bottom {
   position: absolute;
-  bottom: 0;
-  background-color: black;
-  vertical-align: middle;
-  text-align: center;
-  height: 100%;
-  width: 10vw;
-  line-height: 35vh;
-  font-size: 30px;
-}
-
-.leftBox {
-  left: 0;
-  font-size: 20px;
-}
-
-.rightBox {
-  right: 0;
-}
-
-.text {
-  font-size: 30px;
-}
-
-.rightBoxEnable {
-  cursor: pointer;
-}
-
-.rightBoxDisable {
-  cursor: not-allowed;
-}
-
-.top-text {
   bottom: 20vh;
-  line-height: 20px;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-
-.bottom-text {
-  bottom: 4vh;
-  line-height: 20px;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-
-.percent {
-  line-height: 20px;
-  position: absolute;
-  bottom: 17vh;
-  width: 100%;
 }
 
 .center {
@@ -127,32 +89,4 @@ html, body {
   margin-left: auto;
   margin-right: auto;
   width: 25%;
-}
-
-.nextButton {
-  line-height: 20px;
-  width: 100%;
-}
-
-.menu-button {
-  margin: 100px;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-.hidden {
-  display:none;
 }
