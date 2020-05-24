@@ -1,26 +1,27 @@
 import { Howl } from 'howler';
 
-import rainforest from '../assets/rainforest.m4a'
-import africa from '../assets/africa.m4a'
-import ocean from '../assets/ocean.m4a'
-import factorySounds from '../assets/factory.mp3'
-import trafficSounds from '../assets/traffic.mp3'
-import fireSounds from '../assets/fire.mp3'
+import rainforest from '../assets/sounds/ecosystem/rainforest.m4a';
+import africa from '../assets/sounds/ecosystem/africa.m4a';
+import ocean from '../assets/sounds/ecosystem/ocean.m4a';
+
+import factorySounds from '../assets/sounds/pollution/factory.mp3';
+import trafficSounds from '../assets/sounds/pollution/traffic.mp3';
+import fireSounds from '../assets/sounds/pollution/fire.mp3';
 
 const niceSongs = {
-  "African Savannah": new Howl({
+  'African Savannah': new Howl({
     src: [africa],
     loop: true,
   }),
-  "Amazon Rainforest": new Howl({
+  'Amazon Rainforest': new Howl({
     src: [rainforest],
     loop: true,
   }),
-  "Great Barrier Reef": new Howl({
+  'Great Barrier Reef': new Howl({
     src: [ocean],
     loop: true,
   }),
-}
+};
 
 const pollutionTracks = [
   {
@@ -69,7 +70,7 @@ export const startNiceMusic = (location) => {
 };
 
 export const startPollutedMusic = () => {
-  pollutionTracks.forEach(({ howler, volumeModifier }, index) => {
+  pollutionTracks.forEach(({ howler, volumeModifier }) => {
     if (!howler.playing()) {
       howler.play();
       howler.volume(volumeModifier);
