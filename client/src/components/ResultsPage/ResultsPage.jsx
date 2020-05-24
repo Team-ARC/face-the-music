@@ -17,6 +17,7 @@ export default ({ results }) => (
     minHeight: '100vh',
     justifyContent: 'center',
     alignItems: 'center',
+    padding: '1rem',
   }}>
     <h1>
       {`Your Climate IQ is `}

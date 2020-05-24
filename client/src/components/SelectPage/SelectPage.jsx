@@ -39,7 +39,7 @@ export default ({ songLocation, selectCity, startGame }) => (
     {songLocation ?
       <Button
         className={'button bottom'}
-        variant={'info'} size="lg"
+        variant={'outline-info'} size="lg"
         onClick={startGame}>
         Start
       </Button>

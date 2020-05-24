@@ -1,0 +1,26 @@
+.earthBackground {
+    background-image: url("../../assets/earthTopCombinedCrop.gif");
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.fullscreen {
+    height: 100vh;
+    width: 100vw;
+}
+
+.centerFlex {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    height: 10rem;
+}
+
+.margin {
+    margin: 2rem;
+}

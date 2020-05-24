@@ -5,6 +5,9 @@ const maximumAmplitude = 250;
 const waves = (actual, target) => {
   // console.log('[waves] actual', actual)
   // console.log('[waves] target', target)
+  if (!document.getElementById('waves')) {
+    return;
+  }
   // const targetWave = {
   //   timeModifier: 1,
   //   lineWidth: 8,

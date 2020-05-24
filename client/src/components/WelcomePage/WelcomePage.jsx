@@ -1,29 +1,32 @@
 import React from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
-import logo from '../../assets/logo.png';
+import logoImg from '../../assets/logo.png';
+import {
+  earthBackground,
+  fullscreen,
+  centerFlex,
+  logo,
+  margin,
+} from './WelcomePage.module.css';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-export default ({ onClick }) => (
-  <Container
-    fluid
-    style={{
-      flexFlow: 'column',
-      textAlign: 'center',
-      height: '96vh',
-      display: 'flex',
-      justifyContent: 'space-evenly',
-      alignItems: 'center',
-      padding: '2vh 0',
-    }}
-    >
-    <img className="logo" src={logo} alt="Logo" />
-    <h1 style={{}}>Face The Music</h1>
-    <h3 style={{}}>Rediscover the Earth's natural songs</h3>
-    <Button
-      className={'button'}
-      variant="info" size="lg"
-      onClick={onClick}>
-      Play
-    </Button>
-  </Container>
-);
+const widthOfEarthBackground = 800;
+
+export default ({ onClick }) => {
+  const { width } = useWindowDimensions();
+  const showEarthBackground = width < widthOfEarthBackground;
+  return (
+    <div className={`${fullscreen} ${centerFlex} ${showEarthBackground ? earthBackground : ''}`}>
+      {showEarthBackground ? null : <img className={`${logo} ${margin}`} src={logoImg} alt="Logo" />}
+      <h1 className={margin}>Face The Music</h1>
+      <h3 className={margin}>Rediscover the Earth's natural music</h3>
+      <Button
+        className={`button ${margin}`}
+        variant="outline-info" size="lg"
+        onClick={onClick}>
+        Play
+      </Button>
+    </div>
+  );
+};
