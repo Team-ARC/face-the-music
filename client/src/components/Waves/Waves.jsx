@@ -5,14 +5,14 @@ const maximumAmplitude = 250;
 const waves = (actual, target) => {
   // console.log('[waves] actual', actual)
   // console.log('[waves] target', target)
-  const targetWave = {
-    timeModifier: 1,
-    lineWidth: 8,
-    amplitude: Math.min(target.amplitude, maximumAmplitude) / 2.5,
-    wavelength: target.wavelength,
-    strokeStyle: 'rgba(25, 25, 25, 1)',
-    type: x => 0,
-  };
+  // const targetWave = {
+  //   timeModifier: 1,
+  //   lineWidth: 8,
+  //   amplitude: Math.min(target.amplitude, maximumAmplitude) / 2.5,
+  //   wavelength: target.wavelength,
+  //   strokeStyle: 'rgba(25, 25, 25, 1)',
+  //   type: x => 0,
+  // };
   const actualWave = {
     timeModifier: 1,   // This is multiplied against `speed`
     lineWidth: 2,      // Stroke width

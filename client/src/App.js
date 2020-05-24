@@ -1,155 +1,112 @@
 import React from 'react';
-import { Button, Container, ListGroup, Row } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button, Container, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTemperatureHigh, faTrash, faSmog } from '@fortawesome/free-solid-svg-icons'
 
 import './App.css'
 import CesiumMap from './components/CesiumMap'
-import { getCities } from './services/location.service'
 import { startNiceMusic } from './services/music.service';
 import logo from './assets/logo.png';
 
 const matchRequirement = 100;
-const cleanestCity = {
-  "name": "Copenhagen",
-  "country": "Made up",
-  "countryAlt": "Made up",
-  "population": 21253719,
-  "co2NatPercentage": 45.1,
-  "location": {
-    "long": 126.9629,
-    "lat": 37.48175
+
+const pollutionStages = ['co2', 'nitrousOxides', 'warming'];
+
+const dataOfCleanestCities = {
+  name: "Copenhagen",
+  population: 21253719,
+  co2NatPercentage: 45.1,
+  location: {
+    long: 126.9629,
+    lat: 37.48175
   },
-  "co2": 24086000,
-  "warming": 1.12,
-  "landfill": 1,
-  "nitrousOxides": 163,
-  "id": 29
+  co2: 24086000,
+  warming: 1.12,
+  landfill: 1,
+  nitrousOxides: 163,
 };
 
 const cleanestCities = {
-  co2: 'Harbin',
-  warming: 'Guangzhou',
-  nitrousOxides: 'Melbourne',
-}
+  co2: {
+    name: 'Harbin',
+    value: 24086000
+  },
+  warming: {
+    name: 'Guangzhou',
+    value: 1.12,
+  },
+  nitrousOxides: {
+    name: 'Melbourne',
+    value: 163,
+  },
+};
+
+const songLocations = [
+  { name: 'Amazon Rainforest', cameraLocation: { longitude: -62.2187, latitude: -3.46449 }, variant: 'success' },
+  { name: 'African Savannah', cameraLocation: { longitude: 22.609, latitude: 6.5329 }, variant: 'warning' },
+  { name: 'Great Barrier Reef', cameraLocation: { longitude: 147.7, latitude: -18.11238 }, variant: 'primary' },
+];
 
 const getMatchPctColor = (matchPercentage) =>
   `rgb(${((matchPercentage / 100)) * 220}, ${(1 - (matchPercentage / 100)) * 220}, 0, 1)`;
 
-export default class App extends React.Component {
+const getPollutionQuestion = (pollutionStage) => {
+  switch (pollutionStage) {
+    case 'co2':
+      return 'Which city has the lowest carbon footprint?';
+    case 'landfill':
+      return 'Which city has the lowest landfilled waste percentage?';
+    case 'nitrousOxides':
+      return 'Which city emits the least nitrous oxide?';
+    case 'warming':
+      return 'Which city is rising in temperature most slowly?';
+    default:
+      return 'ERROR';
+  }
+};
 
+const getPollutionString = (pollutionStage, value) => {
+  switch (pollutionStage) {
+    case 'co2':
+      return `${Math.round(value / 1000000)}Mt`;
+    case 'landfill':
+      return `${value}%`;
+    case 'nitrousOxides':
+      return `${value} ppbv`;
+    case 'warming':
+      return `${value} degrees`;
+    default:
+      return 'ERROR';
+  }
+};
+
+export default class App extends React.Component {
   constructor() {
-    library.add(faTemperatureHigh, faTrash, faSmog)
     super();
     this.state = {
       stage: 'START',
-      pollutionStage: 'co2',
-      pollutionStages: ['co2', 'nitrousOxides', 'warming'],
+      pollutionStage: '',
       pollutionStageIndex: -1,
-      selectedCity: null,
-      startingCity: null,
-      comparedCity: '',
+      songLocation: null,
+      currentLocation: '',
       matchPercentage: 0,
       results: [],
-      cities: [],
-      availableCities: [
-        { name: 'Amazon Rainforest', cameraLocation: { longitude: -62.2187, latitude: -3.46449 }, variant: 'success' },
-        { name: 'African Savannah', cameraLocation: { longitude: 22.609, latitude: 6.5329 }, variant: 'warning' },
-        { name: 'Great Barrier Reef', cameraLocation: { longitude: 147.7, latitude: -18.11238 }, variant: 'primary' },
-      ],
-      city: { name: 'Amazon Rainforest', cameraLocation: { longitude: -62.2187, latitude: -3.46449 } },
-      cameraLocation: { longitude: -62.2187, latitude: -3.46449 },
+      cameraLocation: songLocations[0].cameraLocation,
     }
     this.selectCity = this.selectCity.bind(this);
     this.gameComplete = this.gameComplete.bind(this);
     this.setMatchPercentage = this.setMatchPercentage.bind(this);
     this.incrementStage = this.incrementStage.bind(this);
     this.startGame = this.startGame.bind(this);
-
-    this.getAvailableCities();
-  }
-
-  getPollutionLabel(pollutionStage) {
-    switch (pollutionStage) {
-      case 'co2':
-        return 'CO2 Emissions';
-      case 'landfill':
-        return 'Landfilled Waste Percentage';
-      case 'nitrousOxides':
-        return 'Nitrous Oxide Level';
-      case 'warming':
-        return 'Temperature Rise Since 1960';
-      default:
-        return 'ERROR';
-    }
   }
 
   setMatchPercentage(matchPercentage, name) {
     this.setState({ matchPercentage: Math.round(matchPercentage) });
-    this.setState({ comparedCity: name });
+    this.setState({ currentLocation: name });
   }
 
-  getPollutionQuestion(pollutionStage) {
-    switch (pollutionStage) {
-      case 'co2':
-        return 'Which city has the lowest carbon footprint?';
-      case 'landfill':
-        return 'Which city has the lowest landfilled waste percentage?';
-      case 'nitrousOxides':
-        return 'Which city emits the least nitrous oxide?';
-      case 'warming':
-        return 'Which city is rising in temperature most slowly?';
-      default:
-        return 'ERROR';
-    }
-  }
-
-  getPollutionIcon(pollutionStage) {
-    switch (pollutionStage) {
-      case 'co2':
-        return 'smog';
-      case 'landfill':
-        return 'trash';
-      case 'nitrousOxides':
-        return 'smog';
-      case 'warming':
-        return 'temperature-high';
-      default:
-        return 'ERROR';
-    }
-  }
-
-  getPollutionString(pollutionStage, value) {
-    switch (pollutionStage) {
-      case 'co2':
-        return `${Math.round(value / 1000000)}Mt`;
-      case 'landfill':
-        return `${value}%`;
-      case 'nitrousOxides':
-        return `${value} ppbv`;
-      case 'warming':
-        return `${value} degrees`;
-      default:
-        return 'ERROR';
-    }
-  }
-
-  async getAvailableCities() {
-    let { availableCities } = this.state;
-    const cities = await getCities();
-    availableCities = availableCities.map(avail => {
-      avail.id = 10;
-      return avail;
-    })
-    this.setState({ cities, availableCities });
-  }
-
-  selectCity(index) {
-    const city = this.state.availableCities[index];
-    this.setState({ startingCity: city, cameraLocation: city.cameraLocation });
+  selectCity(city) {
+    this.setState({ songLocation: city, cameraLocation: city.cameraLocation });
   }
 
   gameComplete(results) {
@@ -157,23 +114,23 @@ export default class App extends React.Component {
   }
 
   incrementStage() {
-    const { pollutionStageIndex, pollutionStages } = this.state;
+    const { pollutionStageIndex } = this.state;
     const newStageIndex = pollutionStageIndex + 1;
     const update = {
       pollutionStageIndex: newStageIndex,
     }
     if (pollutionStages[newStageIndex]) {
-      update.pollutionStage = pollutionStages[newStageIndex]
+      update.pollutionStage = pollutionStages[newStageIndex];
     }
     this.setState(update);
   }
 
   startGame() {
-    this.setState({ stage: 'MAP', pollutionStageIndex: 0, pollutionStage: this.state.pollutionStages[0] });
+    this.setState({ stage: 'MAP', pollutionStageIndex: 0, pollutionStage: pollutionStages[0] });
   }
 
   render() {
-    const { stage, availableCities, selectedCity, startingCity, results, pollutionStage, matchPercentage, pollutionStageIndex, comparedCity } = this.state;
+    const { stage, songLocation, results, pollutionStage, matchPercentage, pollutionStageIndex, currentLocation } = this.state;
     const scoreTotal = (accumulator, currentValue) => accumulator + currentValue.score;
 
     return (
@@ -194,12 +151,7 @@ export default class App extends React.Component {
             <Button
               className={'button'}
               variant="info" size="lg"
-              onClick={() => {
-                this.setState({
-                  stage: 'SELECT',
-                  selectedCity: cleanestCity,
-                });
-              }}>
+              onClick={() => this.setState({ stage: 'SELECT' })}>
               Play
           </Button>
           </Container>
@@ -208,7 +160,7 @@ export default class App extends React.Component {
           <div style={{ position: "absolute", top: 0, left: 0, width: '100%' }}>
             <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
               className="map"
-              city={cleanestCity}
+              city={dataOfCleanestCities}
               cameraLocation={this.state.cameraLocation}
               setMatchPercentage={this.setMatchPercentage}
               onComplete={this.gameComplete}
@@ -217,7 +169,7 @@ export default class App extends React.Component {
             {stage === 'MAP' ?
               <div>
                 <div className='hud-title'>
-                  <h2 className='question'>{this.getPollutionQuestion(pollutionStage)}</h2>
+                  <h2 className='question'>{getPollutionQuestion(pollutionStage)}</h2>
                 </div>
                 <div className='hud-base'>
                   <canvas className="waves" id="waves" />
@@ -225,7 +177,7 @@ export default class App extends React.Component {
                     <span style={{
                       fontWeight: 'bold',
                       color: getMatchPctColor(matchPercentage),
-                    }}>{comparedCity}</span>
+                    }}>{currentLocation}</span>
                     {' is '}
                     <span style={{
                       fontWeight: 'bold',
@@ -242,7 +194,6 @@ export default class App extends React.Component {
             : null}
           </div>
         : null}
-
 
         {stage === 'SELECT' ?
           <div style={{
@@ -262,21 +213,21 @@ export default class App extends React.Component {
               flexFlow: 'column',
               display: 'flex',
             }} className={'center'}>
-              {availableCities.map((city, index) => (
+              {songLocations.map((city, i) => (
                 <Button
-                  key={index}
+                  key={i}
                   className={'button'}
-                  variant={startingCity && startingCity.name === city.name ? city.variant : `outline-${city.variant}`} size="lg"
+                  variant={songLocation && songLocation.name === city.name ? city.variant : `outline-${city.variant}`} size="lg"
                   style={{ margin: '0.5rem' }}
                   onClick={() => {
-                    this.selectCity(index);
+                    this.selectCity(city);
                     startNiceMusic(city.name);
                   }}>
                   {city.name}
                 </Button>
               ))}
            </div>
-            {startingCity ?
+            {songLocation ?
               <Button
                 className={'button bottom'}
                 variant={'info'} size="lg"
@@ -301,18 +252,21 @@ export default class App extends React.Component {
               <span style={{ fontWeight: 'bold' }}>{`${150 - Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</span>
             </h2>
             <ListGroup>
-              {results.map(result => (
-                <ListGroup.Item variant={result.score > 70 ? 'danger' : result.score > 20 ? 'warning' : 'success'}>
+              {results.map((result, i) => (
+                <ListGroup.Item
+                  variant={result.score > 70 ? 'danger' : result.score > 20 ? 'warning' : 'success'}
+                  key={i}
+                >
                   <h3 style={{ fontWeight: 'bold' }}>
-                    {this.getPollutionQuestion(result.stage)}
+                    {getPollutionQuestion(result.stage)}
                   </h3>
                   <h5>
                     <span style={{ fontWeight: 'bold' }}>{result.name}</span>
-                    {` (${this.getPollutionString(result.stage, result.data[result.stage])}) was `}
+                    {` (${getPollutionString(result.stage, result.data[result.stage])}) was `}
                     <span style={{ fontWeight: 'bold' }}>{`${Math.round(result.score)}%`}</span>
                     {' more polluting than the best city, '}
-                    <span style={{ fontWeight: 'bold' }}>{cleanestCities[result.stage]}</span>
-                    {` (${this.getPollutionString(result.stage, selectedCity[result.stage])})`}
+                    <span style={{ fontWeight: 'bold' }}>{cleanestCities[result.stage].name}</span>
+                    {` (${getPollutionString(result.stage, cleanestCities[result.stage].value)})`}
                   </h5>
                 </ListGroup.Item>
               ))}
