@@ -24,7 +24,7 @@ let currentScore;
 let timer;
 let viewer;
 
-const updateScore = async({ latitude, longitude }, targetCity, stageName, stageNumber, setMatchPercentage) => {
+const updateScore = async({ latitude, longitude }, targetCity, stageName, stageNumber, updateMatchPct) => {
   // console.log('targetCity', targetCity);
   if (stageNumber < 0) return;
 
@@ -54,37 +54,37 @@ const updateScore = async({ latitude, longitude }, targetCity, stageName, stageN
     stage: stageName,
     data: nearestCity,
   };
-  setMatchPercentage(currentScore.score, currentScore.name);
+  updateMatchPct(currentScore.score, currentScore.name);
 
   adjustSounds(stageNumber, score);
 };
 
-const updateCameraLocation = (city, stage, setMatchPercentage, updateImmediately) => {
+const updateCameraLocation = (city, stage, updateMatchPct, updateImmediately) => {
   const position = viewer.cesiumElement.scene.camera.positionCartographic;
   if (timer) {
     clearTimeout(timer);
   }
   if (updateImmediately) {
-    updateScore(position, city, stages[stage], stage, setMatchPercentage);
+    updateScore(position, city, stages[stage], stage, updateMatchPct);
     return;
   }
   timer = setTimeout(
-    () => updateScore(position, city, stages[stage], stage, setMatchPercentage),
+    () => updateScore(position, city, stages[stage], stage, updateMatchPct),
     1000,
   );
 }
 
-export default ({ city, stageIndex, setMatchPercentage, onComplete, cameraLocation }) => {
+export default ({ city, stageIndex, updateMatchPct, onComplete, cameraLocation }) => {
   const [stage, setStage] = useState(-1);
 
   useEffect(() => {
-    updateCameraLocation(city, stage, setMatchPercentage, true)
+    updateCameraLocation(city, stage, updateMatchPct, true)
     const { camera } = viewer.cesiumElement.scene;
     camera.percentageChanged = 0.01;
     camera.changed.addEventListener(
-      () => updateCameraLocation(city, stage, setMatchPercentage)
+      () => updateCameraLocation(city, stage, updateMatchPct)
     );
-  }, [stage, city, setMatchPercentage, stageIndex]);
+  }, [stage, city, updateMatchPct, stageIndex]);
 
   useEffect(() => {
     if (stage !== stageIndex) {
@@ -95,10 +95,10 @@ export default ({ city, stageIndex, setMatchPercentage, onComplete, cameraLocati
         onComplete(results);
       } else {
         setStage(stageIndex);
-        updateCameraLocation(city, stage, setMatchPercentage);
+        updateCameraLocation(city, stage, updateMatchPct);
       }
     }
-  }, [stage, city, setMatchPercentage, stageIndex, onComplete]);
+  }, [stage, city, updateMatchPct, stageIndex, onComplete]);
 
   if (stage >= 0) {
     startPollutedMusic();
