@@ -16,17 +16,21 @@ const earthBackgroundComponent = (
   </video>
 );
 
+const playButton = (onClick) => (
+  <Button
+    className={`button ${margin} ${layer1}`}
+    variant="outline-light" size="lg"
+    onClick={onClick}>
+    Play
+  </Button>
+);
+
 export default ({ onClick }) => {
   return (
     <div className={`${fullscreen} ${centerFlex}`}>
       <h1 className={`${margin} ${layer1}`}>Face The Music</h1>
       <h3 className={`${margin} ${layer1}`}>Rediscover the Earth's natural music</h3>
-      <Button
-        className={`button ${`${margin} ${layer1}`}`}
-        variant="outline-light" size="lg"
-        onClick={onClick}>
-        Play
-      </Button>
+      {playButton(onClick)}
       {earthBackgroundComponent}
     </div>
   );

@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 import './App.css';
+import CesiumMap from './components/CesiumMap';
 import WelcomePage from './components/WelcomePage';
 import ResultsPage from './components/ResultsPage';
 import {
@@ -13,7 +14,6 @@ import {
 } from './utils/utils';
 
 const SelectPage = React.lazy(() => import('./components/SelectPage'));
-const CesiumMap = React.lazy(() => import('./components/CesiumMap'));
 
 const matchRequirement = 100;
 
@@ -99,16 +99,14 @@ export default () => {
 
   const getMapAndHud = () => (
     <div style={{ position: "absolute", top: 0, left: 0, width: '100%' }}>
-      <Suspense fallback={null}>
-        <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
-          className="map"
-          city={dataOfCleanestCities}
-          cameraLocation={cameraLocation}
-          updateMatchPct={updateMatchPct}
-          onComplete={gameComplete}
-          stageIndex={pollutionStageIndex}
-        />
-      </Suspense>
+      <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
+        className="map"
+        city={dataOfCleanestCities}
+        cameraLocation={cameraLocation}
+        updateMatchPct={updateMatchPct}
+        onComplete={gameComplete}
+        stageIndex={pollutionStageIndex}
+      />
       {gameState === GAME_STATES.PLAYING ? getHud() : null}
     </div>
   );
