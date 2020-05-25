@@ -7,5 +7,5 @@
     align-items: center;
     flex-flow: column;
     text-align: center;
-    background-image: linear-gradient(black, rgba(0, 0, 0, 0.7), black);
+    background-image: linear-gradient(black, 0%, rgba(0, 0, 0, 0.7), 80%, black);
 }

@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 import './App.css';
-import CesiumMap from './components/CesiumMap';
 import WelcomePage from './components/WelcomePage';
-import SelectPage from './components/SelectPage';
 import ResultsPage from './components/ResultsPage';
 import {
   pollutionStages,
@@ -13,6 +11,9 @@ import {
   getPollutionQuestion,
   songLocations,
 } from './utils/utils';
+
+const SelectPage = React.lazy(() => import('./components/SelectPage'));
+const CesiumMap = React.lazy(() => import('./components/CesiumMap'));
 
 const matchRequirement = 100;
 
@@ -98,14 +99,16 @@ export default () => {
 
   const getMapAndHud = () => (
     <div style={{ position: "absolute", top: 0, left: 0, width: '100%' }}>
-      <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
-        className="map"
-        city={dataOfCleanestCities}
-        cameraLocation={cameraLocation}
-        updateMatchPct={updateMatchPct}
-        onComplete={gameComplete}
-        stageIndex={pollutionStageIndex}
-      />
+      <Suspense fallback={null}>
+        <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
+          className="map"
+          city={dataOfCleanestCities}
+          cameraLocation={cameraLocation}
+          updateMatchPct={updateMatchPct}
+          onComplete={gameComplete}
+          stageIndex={pollutionStageIndex}
+        />
+      </Suspense>
       {gameState === GAME_STATES.PLAYING ? getHud() : null}
     </div>
   );
@@ -121,7 +124,10 @@ export default () => {
           <div>
             {getMapAndHud()}
             {gameState === GAME_STATES.SELECT
-              ? <SelectPage songLocation={songLocation} selectCity={selectCity} startGame={startGame}/>
+              ?
+              (<Suspense fallback={null}>
+                  <SelectPage songLocation={songLocation} selectCity={selectCity} startGame={startGame}/>
+                </Suspense>)
               : null
             }
           </div>
