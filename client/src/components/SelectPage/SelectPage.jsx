@@ -3,19 +3,12 @@ import { Button } from 'react-bootstrap';
 
 import { songLocations } from '../../utils/utils';
 import { startNiceMusic } from '../../services/music.service';
+import {
+  selectPage,
+} from './SelectPage.module.css';
 
 export default ({ songLocation, selectCity, startGame }) => (
-  <div style={{
-    position: 'absolute',
-    height: '100vh',
-    width: '100vw',
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexFlow: 'column',
-    textAlign: 'center',
-  }}>
+  <div className={selectPage}>
     <h2 className={'hud-title'}>Every ecosystem has a song. Choose one:</h2>
     <div style={{
       alignItems: 'center',

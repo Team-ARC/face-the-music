@@ -9,9 +9,9 @@ html, body {
   margin: 0;
   overflow: auto;
   color: white;
-  background-image: url("https://i.stack.imgur.com/UJur5.png");
+  background-image: url('./assets/stars.png');
   background-position: center;
-  background-color: #0b090b;
+  background-color: rgb(11, 9, 11);
   background-blend-mode: screen;
 }
 
@@ -30,6 +30,7 @@ html, body {
   padding: 2rem;
   padding-top: 6vh;
 }
+
 .hud-base {
   background-image: linear-gradient(rgba(0, 0, 0, 0), black, black);
   width: 100%;
@@ -72,7 +73,7 @@ html, body {
 }
 
 .button {
-  width: 14rem;
+  width: 13rem;
 }
 
 .bottom {

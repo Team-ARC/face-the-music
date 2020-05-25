@@ -1,12 +1,17 @@
 .earthBackground {
-    background-image: url("../../assets/earthTopCombinedCrop.gif");
-    background-repeat: no-repeat;
-    background-position: bottom;
+    box-shadow: 0 0 10vh 10vh rgb(11, 9, 11, 1);
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
 }
 
 .fullscreen {
     height: 100vh;
     width: 100vw;
+}
+
+.layer1 {
+    z-index: 1;
 }
 
 .centerFlex {
