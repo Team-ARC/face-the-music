@@ -8,6 +8,9 @@ import {
   adjustSounds,
   startPollutedMusic,
 } from '../../services/music.service';
+import {
+  fullscreen,
+} from './CesiumMap.module.css';
 
 const targetWaves = [
   { wavelength: 286, amplitude: 110, phase: 0 },
@@ -105,25 +108,23 @@ export default ({ city, stageIndex, updateMatchPct, onComplete, cameraLocation }
   }
 
   return (
-    <div>
-      <Viewer
-        style={{ height: '100vh' }}
-        timeline={false}
-        homeButton={false}
-        infoBox={false}
-        sceneModePicker={false}
-        selectionIndicator={false}
-        navigationHelpButton={false}
-        fullscreenButton={false}
-        ref={e => { viewer = e; }} >
-        {stage < 0 ?
-          <CameraFlyTo
-            destination={Cesium.Cartesian3.fromDegrees(cameraLocation.longitude, cameraLocation.latitude, 25000000)}
-            duration={3}
-          />
-          : null
-        }
-      </Viewer>
-    </div>
+    <Viewer
+      className={fullscreen}
+      timeline={false}
+      homeButton={false}
+      infoBox={false}
+      sceneModePicker={false}
+      selectionIndicator={false}
+      navigationHelpButton={false}
+      fullscreenButton={false}
+      ref={e => { viewer = e; }} >
+      {stage < 0 ?
+        <CameraFlyTo
+          destination={Cesium.Cartesian3.fromDegrees(cameraLocation.longitude, cameraLocation.latitude, 25000000)}
+          duration={3}
+        />
+        : null
+      }
+    </Viewer>
   );
 };

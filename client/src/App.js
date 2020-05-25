@@ -12,6 +12,9 @@ import {
   getPollutionQuestion,
   songLocations,
 } from './utils/utils';
+import {
+  fullscreen,
+} from './MapAndHud.module.css';
 
 const SelectPage = React.lazy(() => import('./components/SelectPage'));
 
@@ -98,9 +101,8 @@ export default () => {
   );
 
   const getMapAndHud = () => (
-    <div style={{ position: "absolute", top: 0, left: 0, width: '100%' }}>
-      <CesiumMap style={{ position: "absolute", top: 0, left: 0 }}
-        className="map"
+    <div className={fullscreen}>
+      <CesiumMap
         city={dataOfCleanestCities}
         cameraLocation={cameraLocation}
         updateMatchPct={updateMatchPct}
