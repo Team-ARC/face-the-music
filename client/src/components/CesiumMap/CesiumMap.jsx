@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cesium from 'cesium';
-import { Viewer, CameraFlyTo, } from 'cesium-react';
+import { Viewer, CameraFlyTo, } from 'resium';
 import clone from 'clone';
 import waves from '../Waves';
 import { getNearestCity } from '../../services/location.service';

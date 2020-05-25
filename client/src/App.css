@@ -9,10 +9,8 @@ html, body {
   margin: 0;
   overflow: auto;
   color: white;
-  background-image: url('./assets/stars.png');
+  background-image: linear-gradient(rgba(11, 9, 11, 0), rgba(11, 9, 11, 1)), url("https://i.stack.imgur.com/UJur5.png");
   background-position: center;
-  background-color: rgb(11, 9, 11);
-  background-blend-mode: screen;
 }
 
 #root {

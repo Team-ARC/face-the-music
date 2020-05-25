@@ -1,13 +1,13 @@
 const getPollutionQuestion = ( pollutionStage ) => {
   switch ( pollutionStage ) {
     case 'co2':
-      return 'Which city has the lowest carbon footprint?';
+      return 'Which city has the smallest carbon footprint?';
     case 'landfill':
       return 'Which city has the lowest landfilled waste percentage?';
     case 'nitrousOxides':
       return 'Which city emits the least nitrous oxide?';
     case 'warming':
-      return 'Which city has least risen in temperature since 1900?';
+      return 'Which city has warmed the least since 1900?';
     default:
       return 'ERROR';
   }
@@ -22,7 +22,7 @@ const getPollutionString = ( pollutionStage, value ) => {
     case 'nitrousOxides':
       return `${value} ppbv`;
     case 'warming':
-      return `+${value}°C since 1900`;
+      return `+${value}°C`;
     default:
       return 'ERROR';
   }

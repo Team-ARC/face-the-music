@@ -6,19 +6,14 @@ import {
   getPollutionString,
   cleanestCities,
 } from '../../utils/utils';
+import {
+  resultsPage,
+} from './ResultsPage.module.css';
 
 const scoreTotal = (accumulator, currentValue) => accumulator + currentValue.score;
 
 export default ({ results }) => (
-  <div style={{
-    flexFlow: 'column',
-    textAlign: 'center',
-    display: 'flex',
-    minHeight: '100vh',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '1rem',
-  }}>
+  <div className={resultsPage}>
     <h1>
       {`Your Climate IQ is `}
       <span style={{ fontWeight: 'bold' }}>{`${150 - Math.round(results.reduce(scoreTotal, 0) / results.length)}`}</span>

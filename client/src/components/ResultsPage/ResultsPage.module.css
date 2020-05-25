@@ -1,0 +1,14 @@
+.resultsPage {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    text-align: center;
+    padding: 1rem;
+}
+
+.margin {
+    margin: 2rem;
+}

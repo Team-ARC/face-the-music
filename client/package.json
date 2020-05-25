@@ -11,7 +11,6 @@
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "cesium": "^1.60.0",
-    "cesium-react": "^0.2.2",
     "clone": "^2.1.2",
     "craco-cesium": "^1.1.1",
     "font-awesome": "^4.7.0",
@@ -20,7 +19,7 @@
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "16.9.0",
     "react-scripts": "3.1.1",
-    "resium": "^1.7.0",
+    "resium": "^1.11.0",
     "sine-waves": "^0.3.0",
     "tone": "^13.8.25"
   },
