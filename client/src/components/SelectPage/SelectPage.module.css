@@ -10,3 +10,14 @@
     text-align: center;
     background-image: linear-gradient(black, 0%, rgba(0, 0, 0, 0.7), 80%, black);
 }
+
+.bottom {
+    position: absolute;
+    bottom: 20vh;
+}
+
+.center {
+    align-items: 'center';
+    flex-flow: 'column';
+    display: 'flex';
+}

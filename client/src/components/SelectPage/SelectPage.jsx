@@ -5,16 +5,17 @@ import { songLocations } from '../../utils/utils';
 import { startNiceMusic } from '../../services/music.service';
 import {
   selectPage,
+  bottom,
+  center,
 } from './SelectPage.module.css';
+import {
+  hudTitle,
+} from '../../MapAndHud.module.css';
 
 export default ({ songLocation, selectCity, startGame }) => (
   <div className={selectPage}>
-    <h2 className={'hud-title'}>Every ecosystem has a song. Choose one:</h2>
-    <div style={{
-      alignItems: 'center',
-      flexFlow: 'column',
-      display: 'flex',
-    }} className={'center'}>
+    <h2 className={hudTitle}>Every ecosystem has a song. Choose one:</h2>
+    <div className={center}>
       {songLocations.map((city, i) => (
         <Button
           key={i}
@@ -31,7 +32,7 @@ export default ({ songLocation, selectCity, startGame }) => (
     </div>
     {songLocation ?
       <Button
-        className={'button bottom'}
+        className={`button ${bottom}`}
         variant={'outline-light'} size="lg"
         onClick={startGame}>
         Start

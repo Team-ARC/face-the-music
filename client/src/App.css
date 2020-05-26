@@ -1,87 +1,15 @@
-.App {
-  text-align: center;
+html {
+  height: -webkit-fill-available;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  overflow: auto;
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   color: white;
-  background-image: linear-gradient(rgba(11, 9, 11, 0), rgba(11, 9, 11, 1)), url("https://i.stack.imgur.com/UJur5.png");
+  background-image: linear-gradient(rgba(12, 12, 12, 0), rgba(12, 12, 12, 1)), url("./assets//stars.png");
   background-position: center;
-}
-
-#root {
-  width: 100%;
-  height: 100%;
-}
-
-.hud-title {
-  background-image: linear-gradient( black, black, rgba(0, 0, 0, 0));
-  width: 100%;
-  color: white;
-  top: 0;
-  left: 0;
-  position: absolute;
-  padding: 2rem;
-  padding-top: 6vh;
-}
-
-.hud-base {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), black, black);
-  width: 100%;
-  color: white;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  height: 30vh;
-}
-.hud-statement {
-  position: absolute;
-  bottom: 5vh;
-}
-
-.question {
-  width: 100%;
-  text-align: center;
-}
-
-.waves {
-  width: 100%;
-  height: 15vw
-}
-
-.circle {
-  border: 2px solid black;
-  height: 100px;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  width: 100px;
-}
-
-.circle-center {
-  position: absolute;
-  top: calc(50vh - 4px);
-  left: calc(50vw - 4px);
-  height: 8px;
-  width: 8px;
 }
 
 .button {
   width: 13rem;
-}
-
-.bottom {
-  position: absolute;
-  bottom: 20vh;
-}
-
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 25%;
 }

@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 import './App.css';
-import CesiumMap from './components/CesiumMap';
 import WelcomePage from './components/WelcomePage';
 import ResultsPage from './components/ResultsPage';
 import {
@@ -14,9 +13,17 @@ import {
 } from './utils/utils';
 import {
   fullscreen,
+  hudTitle,
+  hudBase,
+  hudStatement,
+  question,
+  waves,
+  circle,
+  circleCenter,
 } from './MapAndHud.module.css';
 
 const SelectPage = React.lazy(() => import('./components/SelectPage'));
+const CesiumMap = React.lazy(() => import('./components/CesiumMap'));
 
 const matchRequirement = 100;
 
@@ -29,6 +36,11 @@ const GAME_STATES = {
 
 const getMatchPctColor = (matchPercentage) =>
   `rgb(${((matchPercentage / 100)) * 220}, ${(1 - (matchPercentage / 100)) * 220}, 0, 1)`;
+
+const getMatchPctStyle = (matchPercentage) => ({
+  fontWeight: 'bold',
+  color: getMatchPctColor(matchPercentage),
+});
 
 export default () => {
   const [gameState, setGameState] = useState(GAME_STATES.WELCOME);
@@ -77,71 +89,58 @@ export default () => {
 
   const getHud = () => (
     <div>
-      <div className='hud-title'>
-        <h2 className='question'>{getPollutionQuestion(pollutionStage)}</h2>
+      <div className={hudTitle}>
+        <h2 className={question}>{getPollutionQuestion(pollutionStage)}</h2>
       </div>
-      <div className='hud-base'>
-        <canvas className="waves" id="waves" />
-        <h3 className='question hud-statement'>
-          <span style={{
-            fontWeight: 'bold',
-            color: getMatchPctColor(matchPercentage),
-          }}>{currentLocation}</span>
+      <div className={hudBase}>
+        <canvas className={waves} id="waves" />
+        <h3 className={`${question} ${hudStatement}`}>
+          <span style={getMatchPctStyle(matchPercentage)}>{currentLocation}</span>
           {' is '}
-          <span style={{
-            fontWeight: 'bold',
-            color: getMatchPctColor(matchPercentage),
-          }}>{`${matchPercentage}%`}</span>
+          <span style={getMatchPctStyle(matchPercentage)}>{`${matchPercentage}%`}</span>
           {' worse than the best city '}
           {getStageProgressionBtn(matchRequirement)}
         </h3>
       </div>
-      <div className="circle circle-center"></div>
+      <div className={`${circle} ${circleCenter}`}></div>
     </div>
   );
 
   const getMapAndHud = () => (
     <div className={fullscreen}>
-      <CesiumMap
-        city={dataOfCleanestCities}
-        cameraLocation={cameraLocation}
-        updateMatchPct={updateMatchPct}
-        onComplete={gameComplete}
-        stageIndex={pollutionStageIndex}
-      />
+      <Suspense fallback={null}>
+        <CesiumMap
+          city={dataOfCleanestCities}
+          cameraLocation={cameraLocation}
+          updateMatchPct={updateMatchPct}
+          onComplete={gameComplete}
+          stageIndex={pollutionStageIndex}
+        />
+      </Suspense>
       {gameState === GAME_STATES.PLAYING ? getHud() : null}
     </div>
   );
 
-  const getPage = () => {
-    switch (gameState) {
-      case GAME_STATES.WELCOME:
-        return <WelcomePage onClick={() => setGameState(GAME_STATES.SELECT)} />;
-      case GAME_STATES.SELECT:
-      case GAME_STATES.PLAYING:
-        // use the same cesium globe between SELECT and PLAYING pages
-        return (
-          <div>
-            {getMapAndHud()}
-            {gameState === GAME_STATES.SELECT
-              ?
-              (<Suspense fallback={null}>
-                  <SelectPage songLocation={songLocation} selectCity={selectCity} startGame={startGame}/>
-                </Suspense>)
-              : null
-            }
-          </div>
-        );
-      case GAME_STATES.SUMMARY:
-        return <ResultsPage results={results}/>;
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <div style={{ height: '100%', position: "relative" }}>
-      {getPage()}
-    </div>
-  );
+  switch (gameState) {
+    case GAME_STATES.WELCOME:
+      return <WelcomePage onClick={() => setGameState(GAME_STATES.SELECT)} />;
+    case GAME_STATES.SELECT:
+    case GAME_STATES.PLAYING:
+      // use the same cesium globe between SELECT and PLAYING pages
+      return (
+        <div>
+          {getMapAndHud()}
+          {gameState === GAME_STATES.SELECT
+            ? (<Suspense fallback={null}>
+                <SelectPage songLocation={songLocation} selectCity={selectCity} startGame={startGame}/>
+              </Suspense>)
+            : null
+          }
+        </div>
+      );
+    case GAME_STATES.SUMMARY:
+      return <ResultsPage results={results}/>;
+    default:
+      return null;
+  }
 };

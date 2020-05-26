@@ -11,7 +11,7 @@ import {
 } from './WelcomePage.module.css';
 
 const earthBackgroundComponent = (
-  <video autoPlay loop muted playsInline className={earthBackground}>
+  <video autoPlay muted playsInline className={earthBackground}>
     <source src={earthBackgroundVid} type="video/mp4"/>
   </video>
 );

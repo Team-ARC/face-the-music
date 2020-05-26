@@ -6,3 +6,56 @@
     min-height: -webkit-fill-available;
     width: 100vw;
 }
+
+.hudTitle {
+    background-image: linear-gradient( black, black, rgba(0, 0, 0, 0));
+    width: 100%;
+    color: white;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding: 2rem;
+    padding-top: 6vh;
+}
+
+.hudBase {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), black, black);
+    width: 100%;
+    color: white;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    height: 30vh;
+}
+
+.hudStatement {
+    position: absolute;
+    bottom: 5vh;
+}
+
+.question {
+    width: 100%;
+    text-align: center;
+}
+
+.waves {
+    width: 100%;
+    height: 15vw
+}
+
+.circle {
+    border: 2px solid black;
+    height: 100px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    width: 100px;
+}
+
+.circleCenter {
+    position: absolute;
+    top: calc(50vh - 4px);
+    left: calc(50vw - 4px);
+    height: 8px;
+    width: 8px;
+}
