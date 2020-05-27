@@ -35,7 +35,7 @@ const cleanestCities = {
   },
   warming: {
     name: 'Guangzhou',
-    value: 1.12,
+    value: 0.72,
   },
   nitrousOxides: {
     name: 'Melbourne',
@@ -51,10 +51,10 @@ const dataOfCleanestCities = {
     long: 126.9629,
     lat: 37.48175
   },
-  co2: 24086000,
-  warming: 1.12,
+  co2: cleanestCities.co2.value,
+  warming: cleanestCities.warming.value,
   landfill: 1,
-  nitrousOxides: 163,
+  nitrousOxides: cleanestCities.nitrousOxides.value,
 };
 
 const pollutionStages = ['co2', 'nitrousOxides', 'warming'];

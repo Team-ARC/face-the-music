@@ -25,7 +25,7 @@ import {
 const SelectPage = React.lazy(() => import('./components/SelectPage'));
 const CesiumMap = React.lazy(() => import('./components/CesiumMap'));
 
-const matchRequirement = 100;
+const MAX_PASS_MATCH_PCT = 150;
 
 const GAME_STATES = {
   WELCOME: 'WELCOME',
@@ -81,8 +81,8 @@ export default () => {
     setPollutionStageIndex(0);
   };
 
-  const getStageProgressionBtn = () => (
-    matchPercentage < matchRequirement
+  const getStageProgressionBtn = (maxPassMatchPct) => (
+    matchPercentage < maxPassMatchPct
       ? (<i className="fa fa-arrow-right" style={{ color: getMatchPctColor(matchPercentage) }} onClick={incrementStage}></i>)
       : (<i className="fa fa-times" style={{ color: getMatchPctColor(matchPercentage) }}></i>)
   );
@@ -99,7 +99,7 @@ export default () => {
           {' is '}
           <span style={getMatchPctStyle(matchPercentage)}>{`${matchPercentage}%`}</span>
           {' worse than the best city '}
-          {getStageProgressionBtn(matchRequirement)}
+          {getStageProgressionBtn(MAX_PASS_MATCH_PCT)}
         </h3>
       </div>
       <div className={`${circle} ${circleCenter}`}></div>
