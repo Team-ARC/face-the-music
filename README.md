@@ -1,6 +1,11 @@
 # Face The Music
 
-Face The Music is a video game that uses music to teach players about climate change on Earth. Our game brings NASA Earth data to a wider audience, helping raise awareness for one of the most important issues of our time. Try it yourself at https://face-the-music.netlify.app/!
+Face The Music is a video game that uses music to teach players about climate change on Earth. Our game brings NASA Earth data to a wider audience, helping raise awareness for one of the most important issues of our time. Try it yourself at https://face-the-music.netlify.app!
+
+[<img width="972" alt="thumbnail" src="https://img.youtube.com/vi/tsQ6HtsB79w/maxresdefault.jpg">
+](https://www.youtube.com/watch?v=tsQ6HtsB79w)
+
+
 
 ## Challenge Background
 
@@ -20,7 +25,7 @@ With each round, the player removes different impurities from the song, eventual
 
 ## To Infinity and Beyond
 
-Since the hackathon weekend, we have already improved the game so that the NASA data is more fun and easy to explore. We have deployed the game to a website https://tinyurl.com/facethemusic2 and will use it for improving education and social awareness.
+Since the hackathon weekend, we have already improved the game so that the NASA data is more fun and easy to explore. We have deployed the game to a website https://face-the-music.netlify.app and will use it for improving education and social awareness.
 
 Our game engages a wider audience in NASA's data. Players can interact with music rather than read numbers and graphs. The game runs on mobile devices, so gamers can spin the globe with their fingers on touchscreen phones or tablets, and play wherever they like. 
 
